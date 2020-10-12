@@ -1,0 +1,45 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceMap": true,
+    "pretty": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "noEmit": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true, 
+    "moduleResolution": "node",
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+    },
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016"
+    ],
+
+    "types": [
+      "@types/node",
+      "@types/less"
+    ],
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.less"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}
