@@ -11,20 +11,14 @@
     "noImplicitAny": false,
     "noEmit": true,
     "allowJs": true,
-    "forceConsistentCasingInFileNames": true, 
+    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "target": "esnext",
     "module": "commonjs",
     "jsx": "preserve",
     "baseUrl": ".",
-    "paths": {
-    },
-    "lib": [
-      "dom",
-      "es2015",
-      "es2016"
-    ],
-
+    "paths": {},
+    "lib": ["dom", "dom.iterable", "esnext"],
     "types": [
       "@types/node",
       "@types/less"
