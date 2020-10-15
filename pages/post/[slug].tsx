@@ -1,37 +1,26 @@
 
 import Head from 'next/head'
-import '@/assets/styles/Home.less'
-import Link from 'next/link'
-
 // import { useRouter } from 'next/router'
 import { NextPage, NextPageContext } from 'next';
 
-interface HomeProps {
+interface PostProps {
   title?: string;
+  slug?: string;
 }
 
-const Home: NextPage<HomeProps> = (props) => {
+const Post: NextPage<PostProps> = (props) => {
+  const { slug } = props
   return (
     <div className="container">
       <Head>
-        <title>{props.title}</title>
+        <title>{slug}</title>
       </Head>
       <main className="main">
+        {slug}
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-
-        <Link href="/post">
-          <a>Posts</a>
-        </Link>
-
-        <Link href="/post/18">
-          <a>Post-18</a>
-        </Link>
         <p className="description">
           Get started by editing
             <code className="code">pages/index.js</code>
@@ -82,11 +71,11 @@ const Home: NextPage<HomeProps> = (props) => {
   )
 }
 
-Home.getInitialProps = ({ query }: NextPageContext): HomeProps => {
-  
+Post.getInitialProps = ({ query }: NextPageContext): PostProps => {
+  const { slug } = query
   return {
-    // slug: String(slug),
+    slug: String(slug),
   };
 }
 
-export default Home;
+export default Post;

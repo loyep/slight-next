@@ -1,16 +1,16 @@
 const withLess = require("@zeit/next-less");
 const fs = require('fs');
 const {
-    DefinePlugin
+  DefinePlugin
 } = require('webpack');
 const path = require('path');
 const withCSS = require('@zeit/next-css');
 
 const {
-    parsed
+  parsed
 } = require('dotenv').config();
 const {
-    BASE_URL
+  BASE_URL
 } = parsed;
 
 const isDev = process.env.NODE_ENV !== 'production';
@@ -29,28 +29,32 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 // fix: prevents error when .css files are required by node
 if (typeof require !== 'undefined') {
-    require.extensions['.less'] = file => {}
+  require.extensions['.less'] = file => {}
 }
 
 module.exports = withLess(withCSS({
-    hasStaticDir: true,
-    lessLoaderOptions: {
-        lessOptions: {
-            javascriptEnabled: true,
-            localIdentName: '[local]___[hash:base64:5]',
-        }
-    },
-    webpack: (config, {
-        buildId,
-        dev,
-        isServer,
-        defaultLoaders
-    }) => {
-        return config
-    },
-    publicRuntimeConfig: {
-        // Will be available on both server and client
-        staticFolder: '/static',
-        isDev, // Pass through env variables
-    },
+  hasStaticDir: true,
+  lessLoaderOptions: {
+    lessOptions: {
+      javascriptEnabled: true,
+      localIdentName: '[local]___[hash:base64:5]',
+    }
+  },
+  webpack: (config, {
+    buildId,
+    dev,
+    isServer,
+    defaultLoaders
+  }) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': __dirname,
+    };
+    return config
+  },
+  publicRuntimeConfig: {
+    // Will be available on both server and client
+    staticFolder: '/static',
+    isDev, // Pass through env variables
+  },
 }));
