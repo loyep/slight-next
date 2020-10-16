@@ -26,7 +26,7 @@ const Posts: NextPage<PostsProps> = (_props) => {
           rel="noopener noreferrer"
         >
           Powered by
-            <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
     </div>

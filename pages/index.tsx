@@ -34,7 +34,7 @@ const Home: NextPage<HomeProps> = (props) => {
         </Link>
         <p className="description">
           Get started by editing
-            <code className="code">pages/index.js</code>
+          <code className="code">pages/index.js</code>
         </p>
 
         <div className="grid">
@@ -75,15 +75,15 @@ const Home: NextPage<HomeProps> = (props) => {
           rel="noopener noreferrer"
         >
           Powered by
-            <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
     </div>
   )
 }
 
-Home.getInitialProps = ({ query }: NextPageContext): HomeProps => {
-  
+Home.getInitialProps = ({ query:_query }: NextPageContext): HomeProps => {
+
   return {
     // slug: String(slug),
   };

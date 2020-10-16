@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
-import Router from 'next/router';
-import Link from 'next/link';
+// import Router from 'next/router';
+// import Link from 'next/link';
 import './index.less';
 
 interface SltFooterProps {

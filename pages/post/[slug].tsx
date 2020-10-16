@@ -23,7 +23,7 @@ const Post: NextPage<PostProps> = (props) => {
 
         <p className="description">
           Get started by editing
-            <code className="code">pages/index.js</code>
+          <code className="code">pages/index.js</code>
         </p>
 
         <div className="grid">
@@ -64,7 +64,7 @@ const Post: NextPage<PostProps> = (props) => {
           rel="noopener noreferrer"
         >
           Powered by
-            <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
     </div>
