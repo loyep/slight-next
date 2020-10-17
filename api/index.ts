@@ -3,8 +3,8 @@ import fetch from '../utils/fetch';
 
 export const fetchPostList = (params: any) => {
   return fetch({
-    method: 'post',
+    method: 'get',
     url: '/post',
-    data: params,
+    params,
   });
 };

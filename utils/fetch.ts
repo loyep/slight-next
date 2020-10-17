@@ -8,7 +8,7 @@ const instance = axios.create({
   timeout: 10000
 });
 
-export default async function fetch(options: any) {
+export default async function fetch(options: any): Promise<any> {
   if (options.useToken) {
     options.headers = {
       Authorization: 'Bearer ' + window.localStorage.getItem('Token'),

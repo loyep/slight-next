@@ -1,13 +1,15 @@
 
 import Head from 'next/head'
-import '@/assets/styles/Home.less'
 import Link from 'next/link'
+import { fetchPostList} from '@/api'
 
 // import { useRouter } from 'next/router'
 import { NextPage, NextPageContext } from 'next';
 
 interface HomeProps {
-  title?: string;
+  title?: string
+  data: any[]
+  page: number
 }
 
 const Home: NextPage<HomeProps> = (props) => {
@@ -82,9 +84,13 @@ const Home: NextPage<HomeProps> = (props) => {
   )
 }
 
-Home.getInitialProps = ({ query:_query }: NextPageContext): HomeProps => {
-
+Home.getInitialProps = async ({ query }: NextPageContext) => {
+  const page = 1
+  const res = await fetchPostList({ page })
+  console.log(res)
   return {
+    data: res.list,
+    page,
     // slug: String(slug),
   };
 }

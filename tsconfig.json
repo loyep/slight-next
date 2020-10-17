@@ -17,23 +17,14 @@
     "module": "commonjs",
     "jsx": "preserve",
     "baseUrl": ".",
-    "paths": {},
+    "paths": {
+      "@/*": ["./*"]
+    },
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": [
-      "@types/node",
-      "@types/less"
-    ],
+    "types": ["@types/node", "@types/less"],
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.less"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.less"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

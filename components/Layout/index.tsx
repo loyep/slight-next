@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
 import SltHeader from '../Header';
 import SltFooter from '../Footer';
-// import Router from 'next/router';
-// import Link from 'next/link';
-import './index.less';
+import { Layout, ConfigProvider } from 'antd'
+
+const { Content } = Layout
 
 interface SltLayoutProps {
   header?: boolean;
@@ -11,12 +11,17 @@ interface SltLayoutProps {
 }
 
 const SltLayout: NextPage<SltLayoutProps> = (props) => {
-  const { header, footer } = props
+  const { header = true, footer = true, children } = props
   return (
-    <div className="slt-layout">
-      {header && <SltHeader></SltHeader>}
-      {footer && <SltFooter></SltFooter>}
-    </div>
+    <ConfigProvider autoInsertSpaceInButton={false}>
+      <Layout>
+        {header && <SltHeader></SltHeader>}
+        <Content>
+          {children}
+        </Content>
+        {footer && <SltFooter></SltFooter>}
+      </Layout>
+    </ConfigProvider>
   );
 }
 
