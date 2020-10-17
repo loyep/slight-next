@@ -1,6 +1,4 @@
 
-import Head from 'next/head'
-import Link from 'next/link'
 import { fetchPostList } from '@/api'
 import SltList from '@/components/List'
 import { useState} from 'react'
@@ -38,8 +36,8 @@ const Home: NextPage<HomeProps> = (props) => {
       const res = await fetchPostList({ page })
 
       const { list = [], meta } = res.data
+      debugger
       if (list.length) {
-        console.log(data)
         setCurrentPage(page)
         const scrollTop = document.documentElement.scrollTop
         console.log(document.documentElement.scrollTop)

@@ -20,7 +20,7 @@ export default async function fetch(options: any): Promise<any> {
       .then(response => {
         const { data } = response;
         const { status } = data;
-        const success = status === 200 ? true : false;
+        const success = (status === 200 || status === 304) ? true : false;
         if (!success && typeof window !== 'undefined') {
           message.error(data.message);
         }

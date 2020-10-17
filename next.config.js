@@ -9,7 +9,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 const { parsed } = require('dotenv').config();
 const { BASE_URL } = parsed;
-
 const isDev = process.env.NODE_ENV !== 'production';
 
 const themeVariables = lessToJS(
