@@ -8,28 +8,27 @@ import "@/assets/styles/index.less";
 import SltLayout from '@/components/Layout'
 import NProgress from 'nprogress'
 
+Router.events.on('routeChangeStart', () => {
+  NProgress.start()
+  console.log('routeChangeStart')
+})
 
+Router.events.on('routeChangeComplete', () => {
+  setTimeout(() => {
+    NProgress.done()
+    window.scrollTo(0, 0);
+  }, 0);
+})
+
+Router.events.on('routeChangeError', () => {
+  NProgress.done()
+})
 
 type NextContext = AppProps & Record<string, any>;
 
 const NextApp: NextPage<NextContext> = (props: NextContext) => {
   const { Component, pageProps } = props;
   const { title } = pageProps
-  
-  Router.events.on('routeChangeStart', () => {
-    NProgress.start()
-  })
-  
-  Router.events.on('routeChangeComplete', () => {
-    setTimeout(() => {
-      NProgress.done()
-      window.scrollTo(0, 0);
-    }, 0);
-  })
-  
-  Router.events.on('routeChangeError', () => {
-    NProgress.done()
-  })
 
   return (
     <>
