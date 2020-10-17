@@ -35,8 +35,7 @@ const Home: NextPage<HomeProps> = (props) => {
       const page = currentPage + 1
       const res = await fetchPostList({ page })
 
-      const { list = [], meta } = res.data
-      debugger
+      const { list = [], meta } = res
       if (list.length) {
         setCurrentPage(page)
         const scrollTop = document.documentElement.scrollTop
