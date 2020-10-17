@@ -26,7 +26,8 @@ const Home: NextPage<HomeProps> = (props) => {
     ]);
   };
 
-  const onLoadMore = async () => {
+  const onLoadMore = async (e) => {
+    e.preventDefault()
     if (loading) {
       return
     }
