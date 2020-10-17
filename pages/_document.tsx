@@ -39,11 +39,10 @@ export default class SlightDocument extends Document {
 
 export class SltScript extends NextScript {
   getScripts(files: any) {
-    const scripts = super.getScripts(files);
-    scripts.forEach(script => {
-      script.props.async = false;
-    })
-    return scripts;
+    return super.getScripts(files).map(script => { 
+      script.props.async = false; 
+      return script
+    });
   }
 }
 
