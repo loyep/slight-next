@@ -1,4 +1,5 @@
 const withLess = require('@zeit/next-less');
+const lessToJS = require('less-vars-to-js')
 const fs = require('fs');
 const { DefinePlugin } = require('webpack');
 const path = require('path');
@@ -8,6 +9,10 @@ const { parsed } = require('dotenv').config();
 const { BASE_URL } = parsed;
 
 const isDev = process.env.NODE_ENV !== 'production';
+
+const themeVariables = lessToJS(
+  fs.readFileSync(path.resolve(__dirname, './assets/styles/variable.less'), 'utf8')
+)
 
 // fix antd bug in dev development
 // const devAntd = '@import "~antd/dist/antd.less";\n';
@@ -31,6 +36,7 @@ module.exports = withLess(withCSS({
   lessLoaderOptions: {
     lessOptions: {
       javascriptEnabled: true,
+      modifyVars: themeVariables, // make your antd custom effective
       localIdentName: '[local]___[hash:base64:5]',
     }
   },
@@ -40,6 +46,27 @@ module.exports = withLess(withCSS({
     isServer,
     defaultLoaders
   }) => {
+    if (isServer) {
+      const antStyles = /antd\/.*?\/style.*?/
+      const origExternals = [...config.externals]
+      config.externals = [
+        (context, request, callback) => {
+          if (request.match(antStyles)) return callback()
+          if (typeof origExternals[0] === 'function') {
+            origExternals[0](context, request, callback)
+          } else {
+            callback()
+          }
+        },
+        ...(typeof origExternals[0] === 'function' ? [] : origExternals),
+      ]
+
+      config.module.rules.unshift({
+        test: antStyles,
+        use: 'null-loader',
+      })
+    }
+
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': __dirname,
