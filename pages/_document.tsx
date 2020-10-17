@@ -19,8 +19,6 @@ export default class SlightDocument extends Document {
 		return { ...initialProps };
     }
     
-    static renderDocument<P>(DocumentComponent: new () => Document<P>, props: DocumentProps & P): React.ReactElement
-
     static renderDocument<P>(
         DocumentComponent: new () => Document<P>,
         props: DocumentProps & P
