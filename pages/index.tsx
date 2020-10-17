@@ -1,8 +1,10 @@
 
 import Head from 'next/head'
 import Link from 'next/link'
-import { fetchPostList} from '@/api'
+import { fetchPostList } from '@/api'
 import SltList from '@/components/List'
+import { useState} from 'react'
+import { Button } from 'antd'
 
 // import { useRouter } from 'next/router'
 import { NextPage, NextPageContext } from 'next';
@@ -14,21 +16,64 @@ interface HomeProps {
 }
 
 const Home: NextPage<HomeProps> = (props) => {
-  const { data, page } = props
+  const [ loadMore, setLoadMore] = useState(true)
+  const [ currentPage, setCurrentPage] = useState(props.page)
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState(props.data || [])
+
+  const addData = (newData: any[]) => {
+    setData([
+      ...data,
+      ...newData
+    ]);
+  };
+
+  const onLoadMore = async () => {
+    if (loading) {
+      return
+    }
+    try {
+      setLoading(true)
+      const page = currentPage + 1
+      const res = await fetchPostList({ page })
+
+      const { list = [], meta } = res.data
+      if (list.length) {
+        console.log(data)
+        setCurrentPage(page)
+        const scrollTop = document.documentElement.scrollTop
+        console.log(document.documentElement.scrollTop)
+        document.documentElement.scrollTop = 0
+        // this.data.push(...data)
+        addData(list)
+        if (data.length === meta.count) {
+          setLoadMore(false)
+        }
+        setLoading(false)
+        document.documentElement.scrollTop = scrollTop
+      } else {
+        setLoadMore(false)
+        setLoading(false)
+      }
+    } catch (error) {
+      setLoading(false)
+    }
+  }
+
   return (
     <div className="slt-layout-content">
       <div className="slt-container">
         <SltList dataSource={data}></SltList>
-        {/* <nav v-if="loadmore" class="slt-loadmore">
-          <a-button
+        {loadMore && <nav className="slt-loadmore">
+          <Button
             ghost
             type="primary"
-            :loading="loading"
-            @click.prevent="onLoadMore"
+            loading={loading}
+            onClick={onLoadMore}
           >
             加载更多
-          </a-button>
-        </nav> */}
+          </Button>
+        </nav>}
       </div>
     </div>
   )
@@ -40,7 +85,6 @@ Home.getInitialProps = async ({ query }: NextPageContext) => {
   return {
     data: res.list,
     page,
-    // slug: String(slug),
   };
 }
 
