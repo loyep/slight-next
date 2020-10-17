@@ -42,7 +42,7 @@ const Home: NextPage<HomeProps> = (props) => {
         const scrollTop = document.documentElement.scrollTop
         // document.documentElement.scrollTop = 0
         addData(list)
-        if (data.length === meta.count) {
+        if (data.length === meta.count || list.length < meta.pageSize) {
           setLoadMore(false)
         }
         setLoading(false)
