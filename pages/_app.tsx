@@ -7,11 +7,21 @@ import { generateTitle } from '@/utils'
 import "@/assets/styles/antd.less";
 import "@/assets/styles/index.less";
 import SltLayout from '@/components/Layout'
+import NProgress from 'nprogress'
+
+Router.events.on('routeChangeStart', () => {
+  NProgress.start()
+})
 
 Router.events.on('routeChangeComplete', () => {
   setTimeout(() => {
+    NProgress.done()
     window.scrollTo(0, 0);
   }, 0);
+})
+
+Router.events.on('routeChangeError', () => {
+  NProgress.done()
 })
 
 type NextContext = AppProps & Record<string, any>;
