@@ -2,7 +2,7 @@ import axios from 'axios';
 import { message } from 'antd';
 
 const instance = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://i.loyep.com/api',
   // baseURL: process.env.BASE_URL || 'http://localhost:3001',
   withCredentials: true,
   timeout: 10000
