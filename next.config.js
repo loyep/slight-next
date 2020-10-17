@@ -4,7 +4,9 @@ const fs = require('fs');
 const { DefinePlugin } = require('webpack');
 const path = require('path');
 const withCSS = require('@zeit/next-css');
-
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+	enabled: process.env.ANALYZE === 'true'
+});
 const { parsed } = require('dotenv').config();
 const { BASE_URL } = parsed;
 
@@ -31,8 +33,10 @@ if (typeof require !== 'undefined') {
   require.extensions['.less'] = file => {}
 }
 
-module.exports = withLess(withCSS({
+module.exports = withBundleAnalyzer(withLess(withCSS({
   hasStaticDir: true,
+  poweredByHeader: false,
+  generateEtags: false,
   lessLoaderOptions: {
     lessOptions: {
       javascriptEnabled: true,
@@ -78,4 +82,4 @@ module.exports = withLess(withCSS({
     staticFolder: '/static',
     isDev, // Pass through env variables
   },
-}));
+})));
