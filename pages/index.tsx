@@ -87,7 +87,6 @@ const Home: NextPage<HomeProps> = (props) => {
 Home.getInitialProps = async ({ query }: NextPageContext) => {
   const page = 1
   const res = await fetchPostList({ page })
-  console.log(res)
   return {
     data: res.list,
     page,
