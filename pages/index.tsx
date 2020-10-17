@@ -38,16 +38,16 @@ const Home: NextPage<HomeProps> = (props) => {
       const { list = [], meta } = res
       if (list.length) {
         setCurrentPage(page)
-        const scrollTop = document.documentElement.scrollTop
-        console.log(document.documentElement.scrollTop)
-        document.documentElement.scrollTop = 0
+        // const scrollTop = document.documentElement.scrollTop
+        // console.log(document.documentElement.scrollTop)
+        // document.documentElement.scrollTop = 0
         // this.data.push(...data)
         addData(list)
         if (data.length === meta.count) {
           setLoadMore(false)
         }
         setLoading(false)
-        document.documentElement.scrollTop = scrollTop
+        // document.documentElement.scrollTop = scrollTop
       } else {
         setLoadMore(false)
         setLoading(false)
