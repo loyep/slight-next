@@ -5,20 +5,48 @@ import Document, {
 	Main,
 	NextScript,
 } from 'next/document';
+import crypto from 'crypto'
+const cspHashOf = (text) => {
+  const hash = crypto.createHash('sha256')
+  hash.update(text)
+  return `'sha256-${hash.digest('base64')}'`
+}
 
 export default class SlightDocument extends Document {
     
-    render() {
-      return (
-        <Html>
-          <Head>
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-          <body>
-            <Main></Main>
-            <NextScript></NextScript>
-          </body>
-        </Html>
-      );
+  render() {
+    let csp = `default-src 'self'; script-src 'self' ${cspHashOf(
+      NextScript.getInlineScriptSource(this.props)
+    )}`
+    if (process.env.NODE_ENV !== 'production') {
+      csp = `style-src 'self' 'unsafe-inline'; font-src 'self' data:; default-src 'self'; script-src 'unsafe-eval' 'self' ${cspHashOf(
+        NextScript.getInlineScriptSource(this.props)
+      )}`
     }
+    return (
+      <Html>
+        <SltHead>
+          <link rel="icon" href="/favicon.ico" />
+        </SltHead>
+        <body>
+          <Main></Main>
+          <SltScript></SltScript>
+        </body>
+      </Html>
+    );
+  }
+}
+
+export class SltScript extends NextScript {
+  getScripts(files: any) {
+    const scripts = super.getScripts(files);
+    scripts.forEach(script => {
+      script.props.async = false;
+    })
+    return scripts;
+  }
+}
+
+export class SltHead extends Head {
+  
 }
