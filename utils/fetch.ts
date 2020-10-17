@@ -18,8 +18,7 @@ export default async function fetch(options: any): Promise<any> {
   return new Promise((resolve, reject) => {
     instance(options)
       .then(response => {
-        const { data } = response;
-        const { status } = data;
+        const { data, status } = response;
         const success = (status === 200 || status === 304) ? true : false;
         if (!success && typeof window !== 'undefined') {
           message.error(data.message);
