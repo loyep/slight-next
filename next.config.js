@@ -37,7 +37,7 @@ module.exports = withLess(withCSS({
     lessOptions: {
       javascriptEnabled: true,
       modifyVars: themeVariables, // make your antd custom effective
-      localIdentName: '[local]___[hash:base64:5]',
+      // localIdentName: '[local]___[hash:base64:5]',
     }
   },
   webpack: (config, {
