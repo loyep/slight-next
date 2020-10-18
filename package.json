@@ -7,7 +7,7 @@
     "prebuild": "rimraf .next",
     "build": "next build",
     "analyze": "ANALYZE=true yarn build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "lint:js": "eslint --ext .ts,.tsx,.js --ignore-path .eslintignore .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
     "lint": "yarn lint:js && yarn lint:style",
