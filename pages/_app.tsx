@@ -8,6 +8,7 @@ import "@/assets/styles/index.less";
 import SltLayout from '@/components/Layout'
 import NProgress from 'nprogress'
 import { useEffect } from 'react'
+import { withRouter } from 'next/router'
 
 Router.events.on('routeChangeStart', () => {
   NProgress.start()
@@ -66,4 +67,4 @@ const NextApp: NextPage<NextContext> = (props: NextContext) => {
 //   return { pageProps };
 // };
 
-export default NextApp;
+export default withRouter(NextApp);
