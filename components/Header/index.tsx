@@ -55,7 +55,6 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
             </Tooltip>
           </li>
           <li className="slt-nav-item">
-            <Tooltip placement="bottom" title="最近浏览记录">
               <Link
                 href="/history"
               >
@@ -63,10 +62,11 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
                   className="nav-link"
                   target="_blank"
                 >
+                <Tooltip placement="bottom" title="最近浏览记录">
                   <ClockCircleOutlined />
+                </Tooltip>
               </a>
               </Link>
-            </Tooltip>
           </li>
           <li className="slt-nav-item">
             <Button type="default">登录</Button>
