@@ -7,7 +7,7 @@
     "build": "rimraf .next && next build",
     "analyze": "ANALYZE=true yarn build",
     "start": "next start",
-    "lint:js": "eslint --ext .ts,.tsx,.js --ignore-path .gitignore .",
+    "lint:js": "eslint --ext .ts,.tsx,.js --ignore-path .eslintignore .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
     "lint": "yarn lint:js && yarn lint:style",
     "test": "jest"
