@@ -26,3 +26,11 @@ export const fetchCategory = (params: any) => {
     params: others
   })
 }
+
+export const fetchCategoryList = (params: any) => {
+  return fetch({
+    method: 'get',
+    url: '/category',
+    params,
+  });
+};
