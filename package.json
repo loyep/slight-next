@@ -23,6 +23,7 @@
     }
   },
   "dependencies": {
+    "@zeit/swr": "^0.1.2",
     "antd": "^4.7.0",
     "axios": "^0.20.0",
     "crypto": "^1.0.1",

@@ -23,8 +23,20 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
     fixed
   })
 
+  const onScroll = () => {
+    setScroll(document.body.scrollTop + document.documentElement.scrollTop > 30)
+  }
+
+  useEffect(() => {
+    onScroll()
+    document.addEventListener('scroll', onScroll, true)
+    return () => {
+      document.removeEventListener('scroll', onScroll)
+    }
+  }, [])
+
   const onSearch = () => {
-    // console.log('search')
+    console.log('search')
   }
 
   return (
