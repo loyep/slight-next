@@ -1,12 +1,14 @@
+'use strict';
+
 const express = require('express')
 const next = require('next')
 const { createProxyMiddleware } = require('http-proxy-middleware')
 
 const devProxy = {
-  '/api': {
-    target: 'https://i.loyep.com', // 端口自己配置合适的
+  '/api/**': {
+    target: 'http://127.0.0.1:3001', // 端口自己配置合适的
     pathRewrite: {
-      // '^/api': '/'
+      '^/api/': '/'
     },
     secure: false,
     changeOrigin: false,
@@ -23,13 +25,15 @@ app
   .then(() => {
     const server = express()
 
-    if (dev && devProxy) {
+    if (devProxy) {
       Object.keys(devProxy).forEach(function (context) {
-        server.use(
-          createProxyMiddleware(context, devProxy[context])
-        )
+        server.use(createProxyMiddleware(context, devProxy[context]))
       })
     }
+
+    server.all('*', (req, res) => {
+        return handle(req, res)
+      })
 
     server.all('*', (req, res) => {
       return handle(req, res)
