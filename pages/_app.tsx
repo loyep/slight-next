@@ -43,7 +43,7 @@ const NextApp: NextPage<NextContext> = (props: NextContext) => {
     }
     // })
     console.log('props', props)
-  }, [props.history])
+  }, [])
 
   return (
     <>
