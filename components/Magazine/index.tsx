@@ -1,5 +1,4 @@
 import { NextPage } from 'next'
-// import Router from 'next/router';
 import React, { useState, useEffect } from 'react'
 import { Carousel } from 'antd'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
