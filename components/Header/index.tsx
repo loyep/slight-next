@@ -1,8 +1,9 @@
 import { NextPage } from 'next';
-// import Router from 'next/router';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react'
 import { Layout, Button, Tooltip, Menu } from 'antd'
+import { ClockCircleOutlined, SearchOutlined } from '@ant-design/icons'
+
 import './index.less';
 import classnames from 'classnames'
 
@@ -49,18 +50,22 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
           <li className="slt-nav-item">
             <Tooltip placement="bottom" title="搜索">
               <a className="nav-link" onClick={onSearch}>
+                <SearchOutlined />
               </a>
             </Tooltip>
           </li>
           <li className="slt-nav-item">
             <Tooltip placement="bottom" title="最近浏览记录">
-              <a
+              <Link
                 href="/history"
-                className="nav-link"
-                target="_blank"
               >
-                {/* <a-icon type="clock-circle" /> */}
+                <a 
+                  className="nav-link"
+                  target="_blank"
+                >
+                  <ClockCircleOutlined />
               </a>
+              </Link>
             </Tooltip>
           </li>
           <li className="slt-nav-item">
