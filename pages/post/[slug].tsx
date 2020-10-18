@@ -1,22 +1,19 @@
 
-import Head from 'next/head'
-// import { useRouter } from 'next/router'
 import { NextPage, NextPageContext } from 'next';
+import "./[slug].less"
+import { fetchPost } from '@/api'
 
 interface PostProps {
   title?: string;
   slug?: string;
+  description?: string;
+  data: any;
 }
 
 const Post: NextPage<PostProps> = (props) => {
-  const { slug } = props
   return (
     <div className="container">
-      <Head>
-        <title>{slug}</title>
-      </Head>
       <main className="main">
-        {slug}
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
@@ -71,10 +68,16 @@ const Post: NextPage<PostProps> = (props) => {
   )
 }
 
-Post.getInitialProps = ({ query }: NextPageContext): PostProps => {
+Post.getInitialProps = async ({ query }: NextPageContext) => {
   const { slug } = query
+  const res = await fetchPost({ slug })
+  const { data } = res.data
+
   return {
     slug: String(slug),
+    title: data.title,
+    description: data.description,
+    data
   };
 }
 

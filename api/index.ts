@@ -8,3 +8,12 @@ export const fetchPostList = (params: any) => {
     params,
   });
 };
+
+export const fetchPost = (params: any) => {
+  const { slug, ...others } = params || {}
+  return fetch({
+    method: 'get',
+    url: `/post/${slug}`,
+    params: others
+  })
+}
