@@ -1,6 +1,6 @@
 import { NextPage, NextPageContext } from 'next'
 import { fetchPost } from '@/api'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import './[slug].less'
 
@@ -12,7 +12,7 @@ interface PostProps {
 
 const Post: NextPage<PostProps> = (props) => {
   const [content, setContent] = useState('')
-  
+
   useEffect(() => {
     setContent(decodeURIComponent(props.data.content))
     return () => {

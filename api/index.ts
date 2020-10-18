@@ -34,3 +34,10 @@ export const fetchCategoryList = (params: any) => {
     params,
   });
 };
+
+export const fetchRecommends = () => {
+  return fetch({
+    method: 'get',
+    url: '/recommends',
+  });
+};
