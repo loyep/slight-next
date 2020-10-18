@@ -26,7 +26,7 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
           <button slot="nextArrow" className="slt-magazine-arrow right">
             <RightOutlined />
           </button> */}
-          {dataSource.length && dataSource.map((item) => (
+          {/* {dataSource.length && dataSource.map((item) => (
             <Link key={item.id} href={`/post/${item.slug}`}>
               <a className="slt-magazine-item slt-media">
                 <div
@@ -37,7 +37,7 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
                 ></div>
               </a>
             </Link>
-          ))}
+          ))} */}
         </Carousel>
       </div>
     </div>
