@@ -71,7 +71,7 @@ const Post: NextPage<PostProps> = (props) => {
 Post.getInitialProps = async ({ query }: NextPageContext) => {
   const { slug } = query
   const res = await fetchPost({ slug })
-  const { data } = res.data
+  const { data } = res
 
   return {
     slug: String(slug),
