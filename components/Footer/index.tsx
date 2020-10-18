@@ -4,8 +4,8 @@ import {
   WeiboOutlined,
   GithubOutlined,
   MailOutlined,
-  
 } from '@ant-design/icons';
+import SltBackTop from '../BackTop'
 import './index.less';
 
 const {Footer} = Layout 
@@ -15,7 +15,6 @@ interface SltFooterProps {
 }
 
 const SltFooter: NextPage<SltFooterProps> = (props) => {
-
   return (
     <Footer className="slt-footer">
     <div className="slt-container">
@@ -89,8 +88,9 @@ const SltFooter: NextPage<SltFooterProps> = (props) => {
         <a href="https://www.jerryzone.cn/" target="_blank" rel="noreferrer"> JerryZone </a>
       </div>
     </div>
+    <SltBackTop></SltBackTop>
     {/* <slt-back-top></slt-back-top> */}
-  </Footer>
+    </Footer>
   );
 }
 
