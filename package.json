@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
+    "dev": "cross-env NODE_ENV=development node dist/index.js",
     "prebuild": "rimraf .next",
     "build": "next build && tsc --project tsconfig.server.json",
     "analyze": "cross-env ANALYZE=true yarn build",
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "lint:js": "eslint --ext .ts,.tsx,.js --ignore-path .eslintignore .",
-    "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
+    "lint:style": "stylelint **/*.{less,scss,css} --ignore-path .gitignore",
     "lint": "yarn lint:js && yarn lint:style",
     "test": "jest"
   },

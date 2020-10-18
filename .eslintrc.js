@@ -32,6 +32,7 @@ module.exports = {
     "react/react-in-jsx-scope": 0,
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "react/prop-types": 0,
+    'no-console': 0,
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-unused-vars": 0
   },
