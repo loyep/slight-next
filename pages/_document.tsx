@@ -27,7 +27,7 @@ export default class SlightDocument extends Document {
       <Html>
         <SltHead>
           <link rel="icon" href="/favicon.ico" />
-          <link href="/fonts/iconfont/iconfont.css"></link>
+          <link rel="stylesheet" href="/fonts/iconfont/iconfont.css" />
         </SltHead>
         <body>
           <Main></Main>
