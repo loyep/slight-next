@@ -1,11 +1,11 @@
-import { NextPage, NextPageContext } from 'next';
+import { NextPage, NextPageContext } from 'next'
 import { fetchPost } from '@/api'
-import "./[slug].less"
+import './[slug].less'
 
 interface PostProps {
-  title?: string;
-  description?: string;
-  data: any;
+  title?: string
+  description?: string
+  data: any
 }
 
 const Post: NextPage<PostProps> = (props) => {
@@ -75,8 +75,8 @@ Post.getInitialProps = async ({ query }: NextPageContext) => {
     slug: String(slug),
     title: data.title,
     description: data.description,
-    data
-  };
+    data,
+  }
 }
 
-export default Post;
+export default Post

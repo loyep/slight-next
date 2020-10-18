@@ -1,17 +1,15 @@
 // import { useRouter } from 'next/router'
-import { NextPage, NextPageContext } from 'next';
+import { NextPage, NextPageContext } from 'next'
 
 interface PostsProps {
-  title?: string;
+  title?: string
 }
 
 const Posts: NextPage<PostsProps> = (_props) => {
   return (
     <div className="container">
       <main className="main">
-        <h1 className="title">
-          Posts
-        </h1>
+        <h1 className="title">Posts</h1>
       </main>
 
       <footer className="footer">
@@ -33,4 +31,4 @@ const Posts: NextPage<PostsProps> = (_props) => {
 //   };
 // }
 
-export default Posts;
+export default Posts

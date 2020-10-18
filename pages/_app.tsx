@@ -1,10 +1,10 @@
-import { NextPage } from "next";
-import { AppProps } from "next/app";
-import Router from 'next/router';
-import Head from "next/head";
+import { NextPage } from 'next'
+import { AppProps } from 'next/app'
+import Router from 'next/router'
+import Head from 'next/head'
 import { generateTitle } from '@/utils'
-import "@/assets/styles/antd.less";
-import "@/assets/styles/index.less";
+import '@/assets/styles/antd.less'
+import '@/assets/styles/index.less'
 import SltLayout from '@/components/Layout'
 import NProgress from 'nprogress'
 import { useEffect } from 'react'
@@ -19,8 +19,8 @@ Router.events.on('routeChangeComplete', () => {
   console.log('routeChangeComplete')
   setTimeout(() => {
     NProgress.done()
-    window.scrollTo(0, 0);
-  }, 0);
+    window.scrollTo(0, 0)
+  }, 0)
 })
 
 Router.events.on('routeChangeError', () => {
@@ -28,10 +28,10 @@ Router.events.on('routeChangeError', () => {
   NProgress.done()
 })
 
-type NextContext = AppProps & Record<string, any>;
+type NextContext = AppProps & Record<string, any>
 
 const NextApp: NextPage<NextContext> = (props: NextContext) => {
-  const { Component, pageProps } = props;
+  const { Component, pageProps } = props
   const { title, description } = pageProps
 
   useEffect(() => {
@@ -62,4 +62,4 @@ const NextApp: NextPage<NextContext> = (props: NextContext) => {
 //   return { pageProps };
 // };
 
-export default withRouter(NextApp);
+export default withRouter(NextApp)

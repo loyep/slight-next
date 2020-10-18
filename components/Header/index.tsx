@@ -1,9 +1,9 @@
-import { NextPage } from 'next';
-import Link from 'next/link';
+import { NextPage } from 'next'
+import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import { Layout, Button, Tooltip, Menu } from 'antd'
 import { ClockCircleOutlined, SearchOutlined } from '@ant-design/icons'
-import './index.less';
+import './index.less'
 import classnames from 'classnames'
 
 const { Header } = Layout
@@ -19,7 +19,7 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
   const headerClasses = classnames({
     'slt-header': true,
     scroll,
-    fixed
+    fixed,
   })
 
   const onScroll = () => {
@@ -60,20 +60,20 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
         <div className="slt-header-nav slt-header-nav-right">
           <ul className="slt-header-menu">
             <li className="slt-nav-item">
-                <a className="nav-link" onClick={onSearch}>
-                  <Tooltip placement="bottom" title="搜索">
-                    <SearchOutlined />
-                  </Tooltip>
-                </a>
+              <a className="nav-link" onClick={onSearch}>
+                <Tooltip placement="bottom" title="搜索">
+                  <SearchOutlined />
+                </Tooltip>
+              </a>
             </li>
             <li className="slt-nav-item">
-                <Link href="/history">
-                  <a className="nav-link" target="_blank">
-                    <Tooltip placement="bottom" title="最近浏览记录">
-                      <ClockCircleOutlined />
-                    </Tooltip>
-                  </a>
-                </Link>
+              <Link href="/history">
+                <a className="nav-link" target="_blank">
+                  <Tooltip placement="bottom" title="最近浏览记录">
+                    <ClockCircleOutlined />
+                  </Tooltip>
+                </a>
+              </Link>
             </li>
             <li className="slt-nav-item">
               <Button type="default">登录</Button>
@@ -105,7 +105,7 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
         </div>
       </div>
     </Header>
-  );
+  )
 }
 
-export default SltHeader;
+export default SltHeader

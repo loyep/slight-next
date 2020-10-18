@@ -1,33 +1,33 @@
-import { NextPage } from 'next';
-import Link from 'next/link';
+import { NextPage } from 'next'
+import Link from 'next/link'
 import React, { useState, useEffect, useContext } from 'react'
 import { Col } from 'antd'
 import classnames from 'classnames'
 import { fromNow } from '@/utils/date'
 
 const defaultGrid = {
-    gutter: 0,
-    xs: 2,
-    sm: 2,
-    md: 3,
-    lg: 4,
-    xl: 4,
-    xxl: 4,
-  }
+  gutter: 0,
+  xs: 2,
+  sm: 2,
+  md: 3,
+  lg: 4,
+  xl: 4,
+  xxl: 4,
+}
 
 function getGrid(grid: any, t: string) {
   return grid[t] && Math.floor(24 / grid[t])
 }
 
 export interface ListGridType {
-    gutter?: number;
-    column?: number;
-    xs?: number;
-    sm?: number;
-    md?: number;
-    lg?: number;
-    xl?: number;
-    xxl?: number;
+  gutter?: number
+  column?: number
+  xs?: number
+  sm?: number
+  md?: number
+  lg?: number
+  xl?: number
+  xxl?: number
 }
 
 interface SltListItemProps {
@@ -73,7 +73,6 @@ const Item: NextPage<SltListItemProps> = (props) => {
     return null
   }
 
-
   const renderCategory = (cate: any) => {
     if (!cate) {
       return null
@@ -93,7 +92,7 @@ const Item: NextPage<SltListItemProps> = (props) => {
     )
   }
 
-  const linkUrl = () =>{
+  const linkUrl = () => {
     const { slug } = item
     return `/post/${slug}`
   }
@@ -109,14 +108,11 @@ const Item: NextPage<SltListItemProps> = (props) => {
       xl={getGrid(grid, 'xl')}
       xxl={getGrid(grid, 'xxl')}
     >
-      <div className={classnames({'slt-list-item': true, border: border })}>
+      <div className={classnames({ 'slt-list-item': true, border: border })}>
         <div className="slt-media">
           <Link href={linkUrl()}>
             <a className="slt-media-content" title={title}>
-              <img
-                src={image}
-                alt={title}
-              />
+              <img src={image} alt={title} />
               <span className="overlay"></span>
             </a>
           </Link>
@@ -159,7 +155,7 @@ const Item: NextPage<SltListItemProps> = (props) => {
         </div>
       </div>
     </Col>
-  );
+  )
 }
 
-export default Item;
+export default Item

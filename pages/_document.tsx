@@ -1,20 +1,13 @@
-import Document, {
-	Html,
-	Head,
-	Main,
-	NextScript,
-} from 'next/document';
-
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 import crypto from 'crypto'
 
-const cspHashOf = (text) => {
+const cspHashOf = (text: string) => {
   const hash = crypto.createHash('sha256')
   hash.update(text)
   return `'sha256-${hash.digest('base64')}'`
 }
 
 export default class SlightDocument extends Document {
-    
   render() {
     let csp = `default-src 'self'; script-src 'self' ${cspHashOf(
       NextScript.getInlineScriptSource(this.props)
@@ -34,7 +27,7 @@ export default class SlightDocument extends Document {
           <SltScript></SltScript>
         </body>
       </Html>
-    );
+    )
   }
 }
 
@@ -42,14 +35,12 @@ export class SltScript extends NextScript {
   getScripts(files: any) {
     const scripts = super.getScripts(files)
     if (process.env.NODE_ENV === 'production') {
-      scripts.forEach(script => {
-        script.props.async = false;
-      });
+      scripts.forEach((script) => {
+        script.props.async = false
+      })
     }
-    return scripts;
+    return scripts
   }
 }
 
-export class SltHead extends Head {
-  
-}
+export class SltHead extends Head {}

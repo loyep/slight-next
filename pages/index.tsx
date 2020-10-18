@@ -1,11 +1,8 @@
-
 import { fetchPostList } from '@/api'
 import SltList from '@/components/List'
-import { useState} from 'react'
+import { useState } from 'react'
 import { Button } from 'antd'
-
-// import { useRouter } from 'next/router'
-import { NextPage, NextPageContext } from 'next';
+import { NextPage, NextPageContext } from 'next'
 
 interface HomeProps {
   title?: string
@@ -14,17 +11,14 @@ interface HomeProps {
 }
 
 const Home: NextPage<HomeProps> = (props) => {
-  const [ loadMore, setLoadMore] = useState(true)
-  const [ currentPage, setCurrentPage] = useState(props.page)
+  const [loadMore, setLoadMore] = useState(true)
+  const [currentPage, setCurrentPage] = useState(props.page)
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState(props.data || [])
 
   const addData = (newData: any[]) => {
-    setData([
-      ...data,
-      ...newData
-    ]);
-  };
+    setData([...data, ...newData])
+  }
 
   const onLoadMore = async (e) => {
     e.preventDefault()
@@ -60,16 +54,13 @@ const Home: NextPage<HomeProps> = (props) => {
     <div className="slt-layout-content">
       <div className="slt-container">
         <SltList dataSource={data}></SltList>
-        {loadMore && <nav className="slt-loadmore">
-          <Button
-            ghost
-            type="primary"
-            loading={loading}
-            onClick={onLoadMore}
-          >
-            加载更多
-          </Button>
-        </nav>}
+        {loadMore && (
+          <nav className="slt-loadmore">
+            <Button ghost type="primary" loading={loading} onClick={onLoadMore}>
+              加载更多
+            </Button>
+          </nav>
+        )}
       </div>
     </div>
   )
@@ -81,7 +72,7 @@ Home.getInitialProps = async ({ query }: NextPageContext) => {
   return {
     data: res.list,
     page,
-  };
+  }
 }
 
-export default Home;
+export default Home
