@@ -5,14 +5,14 @@ import './index.less';
 
 const SltBackTop: NextPage = (props) => {
   return (
-    <BackTop className="slt-backtop">
-        <Tooltip placement="left" title="返回顶部">
+    <Tooltip placement="left" title="返回顶部">
+        <BackTop className="slt-backtop">
             <div className="slt-backtop-stack">
                 <CaretUpOutlined/>
                 <span className="slt-backtop-text">Top</span>
             </div>
-        </Tooltip>
-    </BackTop>
+        </BackTop>
+    </Tooltip>
   );
 }
 
