@@ -84,11 +84,11 @@ const Category: NextPage<CategoryProps> = (props) => {
 Category.getInitialProps = async ({ query, err }: NextPageContext) => {
   const { slug } = query
   const page = 1
-  const categoryRes = await fetchCategory(slug)
+  const categoryRes = await fetchCategory({ slug })
   console.log('res', categoryRes)
   const { data: category = {} } = categoryRes || {}
   const postsRes = await fetchPostList({ page, category: category.id })
-  const { list: data = [], meta } = postsRes
+  const { list: data = [] } = postsRes
   return {
     title: category.name,
     description: category.description,
