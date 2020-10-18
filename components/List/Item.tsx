@@ -100,31 +100,33 @@ const Item: NextPage<SltListItemProps> = (props) => {
 
   return (
     <Col
-        className="slt-list-col"
-        span={getGrid(grid, 'column')}
-        xs={getGrid(grid, 'xs')}
-        sm={getGrid(grid, 'sm')}
-        md={getGrid(grid, 'md')}
-        lg={getGrid(grid, 'lg')}
-        xl={getGrid(grid, 'xl')}
-        xxl={getGrid(grid, 'xxl')}
-      >
-        <div className={classnames({'slt-list-item': true, border: border })}>
-          <div className="slt-media">
-            <a className="slt-media-content" title={title} href={linkUrl()}>
+      className="slt-list-col"
+      span={getGrid(grid, 'column')}
+      xs={getGrid(grid, 'xs')}
+      sm={getGrid(grid, 'sm')}
+      md={getGrid(grid, 'md')}
+      lg={getGrid(grid, 'lg')}
+      xl={getGrid(grid, 'xl')}
+      xxl={getGrid(grid, 'xxl')}
+    >
+      <div className={classnames({'slt-list-item': true, border: border })}>
+        <div className="slt-media">
+          <Link href={linkUrl()}>
+            <a className="slt-media-content" title={title}>
               <img
                 src={image}
                 alt={title}
               />
               <span className="overlay"></span>
             </a>
-            {renderIcon(type)}
-          </div>
-          <div className="slt-list-item-content">
-            <div className="slt-list-item-body">
-              {renderCategory(category)}
+          </Link>
+          {renderIcon(type)}
+        </div>
+        <div className="slt-list-item-content">
+          <div className="slt-list-item-body">
+            {renderCategory(category)}
+            <Link href={linkUrl()}>
               <a
-                href={linkUrl()}
                 title={title}
                 className="slt-list-item-title"
                 target="_blank"
@@ -132,30 +134,31 @@ const Item: NextPage<SltListItemProps> = (props) => {
               >
                 {title}
               </a>
-            </div>
-            {showMeta && (
-              <div className="slt-list-item-footer">
-                <time>{fromNow(publishedAt)}</time>
-                <div className="flex-fill"></div>
-                <ul className="slt-list-item-footer-meta">
-                  <li className="meta-view">
-                    <i className="iconfont icon-view"></i>
-                    <span>{viewsCount}</span>
-                  </li>
-                  <li className="meta-comment">
-                    <i className="iconfont icon-Chat"></i>
-                    <span>{commentsCount}</span>
-                  </li>
-                  <li className="meta-like">
-                    <i className="iconfont icon-like-line"></i>
-                    <span>{likesCount}</span>
-                  </li>
-                </ul>
-              </div>
-            )}
+            </Link>
           </div>
+          {showMeta && (
+            <div className="slt-list-item-footer">
+              <time>{fromNow(publishedAt)}</time>
+              <div className="flex-fill"></div>
+              <ul className="slt-list-item-footer-meta">
+                <li className="meta-view">
+                  <i className="iconfont icon-view"></i>
+                  <span>{viewsCount}</span>
+                </li>
+                <li className="meta-comment">
+                  <i className="iconfont icon-Chat"></i>
+                  <span>{commentsCount}</span>
+                </li>
+                <li className="meta-like">
+                  <i className="iconfont icon-like-line"></i>
+                  <span>{likesCount}</span>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
-      </Col>
+      </div>
+    </Col>
   );
 }
 
