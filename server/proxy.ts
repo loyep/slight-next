@@ -1,6 +1,6 @@
 const devProxy: { [key: string]: any } = {
     "/api": {
-        target: "https://i.loyep.com",
+        target: "http://127.0.0.1:3001",
         pathRewrite: { "^/api": "" },
         changeOrigin: true,
     },

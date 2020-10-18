@@ -1,14 +1,12 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const withLess = require('@zeit/next-less');
 const lessToJS = require('less-vars-to-js')
 const fs = require('fs');
-const { DefinePlugin } = require('webpack');
 const path = require('path');
 const withCSS = require('@zeit/next-css');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: process.env.ANALYZE === 'true'
 });
-const { parsed } = require('dotenv').config();
-const { BASE_URL } = parsed;
 const isDev = process.env.NODE_ENV !== 'production';
 
 const themeVariables = lessToJS(
@@ -29,7 +27,9 @@ const themeVariables = lessToJS(
 
 // fix: prevents error when .css files are required by node
 if (typeof require !== 'undefined') {
-  require.extensions['.less'] = file => {}
+  require.extensions['.less'] = file => {
+    //
+  }
 }
 
 module.exports = withBundleAnalyzer(withLess(withCSS({
@@ -76,7 +76,12 @@ module.exports = withBundleAnalyzer(withLess(withCSS({
     };
     return config
   },
+  serverRuntimeConfig: {
+    isDev,
+    BASE_URL: 'http://127.0.0.1:3001',
+  },
   publicRuntimeConfig: {
+    BASE_URL: '/api',
     // Will be available on both server and client
     staticFolder: '/static',
     isDev, // Pass through env variables

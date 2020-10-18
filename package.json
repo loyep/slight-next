@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node dist/index.js",
-    "prebuild": "rimraf .next",
+    "dev": "next dev",
+    "start:dev": "nodemon",
+    "prebuild": "rimraf .next dist",
     "build": "next build && tsc --project tsconfig.server.json",
     "analyze": "cross-env ANALYZE=true yarn build",
-    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "start": "next start",
+    "start:prod": "cross-env NODE_ENV=production node dist/index.js",
     "lint:js": "eslint --ext .ts,.tsx,.js --ignore-path .eslintignore .",
     "lint:style": "stylelint **/*.{less,scss,css} --ignore-path .gitignore",
     "lint": "yarn lint:js && yarn lint:style",
@@ -35,6 +37,7 @@
     "next": "9.5.5",
     "next-redux-wrapper": "^6.0.2",
     "next-routes": "^1.4.2",
+    "nodemon": "^2.0.5",
     "nprogress": "^0.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -76,6 +79,7 @@
     "null-loader": "^4.0.1",
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
+    "ts-node": "^9.0.0",
     "typescript": "^4.0.3"
   }
 }
