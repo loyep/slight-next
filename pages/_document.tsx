@@ -1,11 +1,12 @@
-
 import Document, {
 	Html,
 	Head,
 	Main,
 	NextScript,
 } from 'next/document';
+
 import crypto from 'crypto'
+
 const cspHashOf = (text) => {
   const hash = crypto.createHash('sha256')
   hash.update(text)

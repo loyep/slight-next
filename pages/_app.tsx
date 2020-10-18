@@ -14,13 +14,15 @@ Router.events.on('routeChangeStart', () => {
 })
 
 Router.events.on('routeChangeComplete', () => {
+  console.log('routeChangeComplete')
   setTimeout(() => {
     NProgress.done()
     window.scrollTo(0, 0);
-  }, 0);
+  }, 1000);
 })
 
 Router.events.on('routeChangeError', () => {
+  console.log('routeChangeError')
   NProgress.done()
 })
 

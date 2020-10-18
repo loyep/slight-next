@@ -1,11 +1,9 @@
-
 import { NextPage, NextPageContext } from 'next';
-import "./[slug].less"
 import { fetchPost } from '@/api'
+import "./[slug].less"
 
 interface PostProps {
   title?: string;
-  slug?: string;
   description?: string;
   data: any;
 }

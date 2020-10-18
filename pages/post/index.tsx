@@ -1,5 +1,3 @@
-
-import Head from 'next/head'
 // import { useRouter } from 'next/router'
 import { NextPage, NextPageContext } from 'next';
 
@@ -10,9 +8,6 @@ interface PostsProps {
 const Posts: NextPage<PostsProps> = (_props) => {
   return (
     <div className="container">
-      <Head>
-        <title>Posts</title>
-      </Head>
       <main className="main">
         <h1 className="title">
           Posts
