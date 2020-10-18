@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "node server.js",
-    "build": "rimraf .next && next build",
+    "prebuild": "rimraf .next",
+    "build": "next build",
     "analyze": "ANALYZE=true yarn build",
     "start": "next start",
     "lint:js": "eslint --ext .ts,.tsx,.js --ignore-path .eslintignore .",
