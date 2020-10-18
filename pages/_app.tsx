@@ -18,14 +18,14 @@ Router.events.on('routeChangeStart', () => {
 Router.events.on('routeChangeComplete', () => {
   console.log('routeChangeComplete')
   setTimeout(() => {
-    // NProgress.done()
+    NProgress.done()
     // window.scrollTo(0, 0);
-  }, 1000);
+  }, 0);
 })
 
 Router.events.on('routeChangeError', () => {
   console.log('routeChangeError')
-  // NProgress.done()
+  NProgress.done()
 })
 
 type NextContext = AppProps & Record<string, any>;
@@ -39,7 +39,9 @@ const NextApp: NextPage<NextContext> = (props: NextContext) => {
     // props.history.listen(() => {
     //   /*页面回到顶部 */
     if (document.body.scrollTop || document.documentElement.scrollTop > 0) {
-      window.scrollTo(0, 0)
+      setTimeout(() => {
+        window.scrollTo(0, 0)
+      })
     }
     // })
     console.log('props', props)
