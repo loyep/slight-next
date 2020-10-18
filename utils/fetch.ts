@@ -8,16 +8,18 @@ const service = axios.create({
   timeout: 30000,
 })
 
+console.log('request init');
+
 // request interceptor
 service.interceptors.request.use(
   (config) => {
     // do something before request is sent
-    console.log('request=', JSON.stringify(config))
+    console.warn('request=', JSON.stringify(config))
     return config
   },
   (error) => {
     // do something with request error
-    console.log(error) // for debug
+    console.warn(error) // for debug
     return Promise.reject(error)
   }
 )
