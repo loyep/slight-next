@@ -41,7 +41,7 @@ const NextApp: NextPage<NextContext> = (props: NextContext) => {
     if (document.body.scrollTop || document.documentElement.scrollTop > 0) {
       setTimeout(() => {
         window.scrollTo(0, 0)
-      })
+      }, 50)
     }
     // })
     console.log('props', props)
