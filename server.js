@@ -8,7 +8,8 @@ const devProxy = {
     pathRewrite: {
       // '^/api': '/'
     },
-    changeOrigin: true,
+    secure: false,
+    changeOrigin: false,
   },
 }
 
