@@ -40,8 +40,9 @@ const NextApp: NextPage<NextContext> = (props: NextContext) => {
     //   /*页面回到顶部 */
     if (document.body.scrollTop || document.documentElement.scrollTop > 0) {
       setTimeout(() => {
+        console.log('scrollTop')
         window.scrollTo(0, 0)
-      }, 50)
+      }, 200)
     }
     // })
     console.log('props', props)
