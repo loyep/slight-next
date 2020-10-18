@@ -1,9 +1,11 @@
 import axios from 'axios'
 import { message } from 'antd'
+import { join } from 'path'
+
+const baseURL = process.env.BASE_URL;
+const pathJoin = (url: string ) => join(baseURL as string, url)
 
 const service = axios.create({
-  baseURL: '/api',
-  // baseURL: process.env.BASE_URL || 'http://localhost:3001',
   withCredentials: true,
   timeout: 30000,
 })
@@ -24,13 +26,13 @@ service.interceptors.request.use(
   }
 )
 export default async function fetch(options: any): Promise<any> {
-  if (options.useToken) {
-    options.headers = {
-      Authorization: 'Bearer ' + window.localStorage.getItem('Token'),
-    }
-  }
-
+  // if (options.useToken) {
+  //   options.headers = {
+  //     Authorization: 'Bearer ' + window.localStorage.getItem('Token'),
+  //   }
+  // }
   return new Promise((resolve, reject) => {
+    options.url = pathJoin(options.url)
     service(options)
       .then((response) => {
         const { data, status } = response
