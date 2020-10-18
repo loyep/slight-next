@@ -19,7 +19,7 @@ Router.events.on('routeChangeComplete', () => {
   console.log('routeChangeComplete')
   setTimeout(() => {
     // NProgress.done()
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }, 1000);
 })
 
@@ -36,12 +36,13 @@ const NextApp: NextPage<NextContext> = (props: NextContext) => {
 
   useEffect(() => {
     /* 监听路由的变化 */
-    props.history.listen(() => {
-      /*页面回到顶部 */
-      if (document.body.scrollTop || document.documentElement.scrollTop > 0) {
-        window.scrollTo(0, 0)
-      }
-    })
+    // props.history.listen(() => {
+    //   /*页面回到顶部 */
+    if (document.body.scrollTop || document.documentElement.scrollTop > 0) {
+      window.scrollTo(0, 0)
+    }
+    // })
+    console.log('props', props)
   }, [props.history])
 
   return (
