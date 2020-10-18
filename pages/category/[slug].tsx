@@ -60,9 +60,9 @@ const Category: NextPage<CategoryProps> = (props) => {
         image={category.image}
         description={category.description}
       />
-      <SltList dataSource={data}></SltList>
       <div className="slt-layout-content">
         <div className="slt-container">
+          <SltList dataSource={data}></SltList>
           {loadMore && (
             <nav className="slt-loadmore">
               <Button
