@@ -10,7 +10,7 @@ interface SltMagazineProps {
 }
 
 const SltMagazine: NextPage<SltMagazineProps> = (props) => {
-  const { dataSource } = props
+  const { dataSource = [] } = props
 
   const onCarsouselClick = () => {
     //
@@ -20,14 +20,14 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
     <div className="slt-magazine">
       <div className="slt-container">
         <Carousel effect="fade" arrows autoplay={true}>
-          <button slot="prevArrow" className="slt-magazine-arrow left">
+          {/* <button slot="prevArrow" className="slt-magazine-arrow left">
             <LeftOutlined />
           </button>
           <button slot="nextArrow" className="slt-magazine-arrow right">
             <RightOutlined />
-          </button>
-          {dataSource.slice(0, 5).map((item) => (
-            <Link key={item.slug} href={`/post/${item.slug}`}>
+          </button> */}
+          {dataSource.length && dataSource.map((item) => (
+            <Link key={item.id} href={`/post/${item.slug}`}>
               <a className="slt-magazine-item slt-media">
                 <div
                   className="slt-magazine-content slt-media-content"
