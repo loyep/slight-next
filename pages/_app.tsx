@@ -7,6 +7,7 @@ import "@/assets/styles/antd.less";
 import "@/assets/styles/index.less";
 import SltLayout from '@/components/Layout'
 import NProgress from 'nprogress'
+import { useEffect } from 'react'
 
 Router.events.on('routeChangeStart', () => {
   NProgress.start()
@@ -16,14 +17,14 @@ Router.events.on('routeChangeStart', () => {
 Router.events.on('routeChangeComplete', () => {
   console.log('routeChangeComplete')
   setTimeout(() => {
-    NProgress.done()
+    // NProgress.done()
     window.scrollTo(0, 0);
   }, 1000);
 })
 
 Router.events.on('routeChangeError', () => {
   console.log('routeChangeError')
-  NProgress.done()
+  // NProgress.done()
 })
 
 type NextContext = AppProps & Record<string, any>;
@@ -31,6 +32,16 @@ type NextContext = AppProps & Record<string, any>;
 const NextApp: NextPage<NextContext> = (props: NextContext) => {
   const { Component, pageProps } = props;
   const { title } = pageProps
+
+  useEffect(() => {
+    /* 监听路由的变化 */
+    props.history.listen(() => {
+      /*页面回到顶部 */
+      if (document.body.scrollTop || document.documentElement.scrollTop > 0) {
+        window.scrollTo(0, 0)
+      }
+    })
+  }, [props.history])
 
   return (
     <>
