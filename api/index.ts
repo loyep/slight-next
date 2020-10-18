@@ -13,7 +13,7 @@ export const fetchPost = (params: any) => {
   const { slug, ...others } = params || {}
   return fetch({
     method: 'get',
-    url: encodeURI(`/post/${slug}`),
+    url: `/post/${slug}`,
     params: others
   })
 }
@@ -22,7 +22,7 @@ export const fetchCategory = (params: any) => {
   const { slug, ...others } = params || {}
   return fetch({
     method: 'get',
-    url: encodeURI(`/category/${slug}`),
+    url: `/category/${slug}`,
     params: others
   })
 }
