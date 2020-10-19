@@ -39,6 +39,7 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
           loop
           autoplay={{ delay: 8000 }}
           // loopedSlides={0}
+          slidesPerView="auto"
           effect="fade"
           navigation
           // onSlideChange={onSlideChange}
