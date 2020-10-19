@@ -44,6 +44,7 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
           navigation
           onSlideChange={onSlideChange}
           onSwiper={onSwiper}
+          pagination={{ clickable: true }}
         >
           {dataSource.length &&
             dataSource.map((item) => (
