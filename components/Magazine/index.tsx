@@ -40,6 +40,7 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
       <div className="slt-container">
         <Swiper
           virtual
+          loop
           spaceBetween={0}
           slidesPerView={1}
           navigation
