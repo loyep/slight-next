@@ -8,12 +8,17 @@ import SwiperCore, {
   Autoplay,
   Navigation,
   Pagination,
-  Scrollbar,
-  A11y,
+  Virtual,
+  // Scrollbar,
+  // A11y,
 } from 'swiper'
+
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-SwiperCore.use([Autoplay, Navigation, Pagination, Scrollbar, A11y])
+SwiperCore.use([
+  Autoplay, Navigation, Pagination, Virtual,
+  // Scrollbar, A11y
+])
 
 interface SltMagazineProps {
   dataSource: any[]
@@ -34,6 +39,7 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
     <div className="slt-magazine">
       <div className="slt-container">
         <Swiper
+          virtual
           spaceBetween={0}
           slidesPerView={1}
           navigation
