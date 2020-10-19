@@ -3,12 +3,12 @@ import getConfig from 'next/config'
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 import { message } from 'antd'
 
-const baseURL = serverRuntimeConfig.BASE_URL || publicRuntimeConfig.BASE_URL
+// const baseURL = serverRuntimeConfig.BASE_URL || publicRuntimeConfig.BASE_URL
 
-console.log('baseURL=', baseURL)
+// console.log('baseURL=', baseURL)
 console.log('ffff')
 const service = axios.create({
-  // baseURL,
+  baseURL: 'https://i.loyep.com/api',
   withCredentials: true,
   timeout: 2000,
 })
@@ -16,36 +16,36 @@ const service = axios.create({
 console.log('request init')
 
 // request interceptor
-service.interceptors.request.use(
-  (config) => {
-    // do something before request is sent
-    // eslint-disable-next-line no-debugger
-    return config
-  },
-  (error) => {
-    // do something with request error
-    return Promise.reject(error)
-  }
-)
+// service.interceptors.request.use(
+//   (config) => {
+//     // do something before request is sent
+//     // eslint-disable-next-line no-debugger
+//     return config
+//   },
+//   (error) => {
+//     // do something with request error
+//     return Promise.reject(error)
+//   }
+// )
 
-service.interceptors.response.use(
-  /**
-   * If you want to get http information such as headers or status
-   * Please return  response => response
-   */
+// service.interceptors.response.use(
+//   /**
+//    * If you want to get http information such as headers or status
+//    * Please return  response => response
+//    */
 
-  /**
-   * Determine the request status by custom code
-   * Here is just an example
-   * You can also judge the status by HTTP Status Code
-   */
-  (response) => {
-    return response
-  },
-  (error) => {
-    return error
-  }
-)
+//   /**
+//    * Determine the request status by custom code
+//    * Here is just an example
+//    * You can also judge the status by HTTP Status Code
+//    */
+//   (response) => {
+//     return response
+//   },
+//   (error) => {
+//     return error
+//   }
+// )
 
 export default function fetch(options: AxiosRequestConfig): Promise<any> {
   // if (options.useToken) {
@@ -53,8 +53,8 @@ export default function fetch(options: AxiosRequestConfig): Promise<any> {
   //     Authorization: 'Bearer ' + window.localStorage.getItem('Token'),
   //   }
   // }
-  console.log('baseURL', baseURL)
-  console.log('url=', options.url)
+  // console.log('baseURL', baseURL)
+  // console.log('url=', options.url)
   // options.url = join(String(baseURL), String(options.url))
   return new Promise((resolve, reject) => {
     // options.url = pathJoin(options.url)

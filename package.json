@@ -7,7 +7,7 @@
     "start:dev": "nodemon",
     "prebuild": "rimraf .next dist",
     "build": "next build && tsc --project tsconfig.server.json",
-    "analyze": "cross-env ANALYZE=true yarn build",
+    "analyze": "cross-env BUNDLE_ANALYZE=true yarn build",
     "start": "next start",
     "start:prod": "cross-env NODE_ENV=production node dist/index.js",
     "lint:js": "eslint --ext .ts,.tsx,.js --ignore-path .eslintignore .",

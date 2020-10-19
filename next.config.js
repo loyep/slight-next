@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const withCSS = require('@zeit/next-css');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-	enabled: process.env.ANALYZE === 'true'
+	enabled: process.env.BUNDLE_ANALYZE === 'true'
 });
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -78,10 +78,10 @@ module.exports = withBundleAnalyzer(withLess(withCSS({
   },
   serverRuntimeConfig: {
     isDev,
-    BASE_URL: 'http://127.0.0.1:3001',
+    // BASE_URL: 'http://127.0.0.1:3001',
   },
   publicRuntimeConfig: {
-    BASE_URL: '/api',
+    // BASE_URL: '/api',
     // Will be available on both server and client
     staticFolder: '/static',
     isDev, // Pass through env variables
