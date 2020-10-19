@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import React, { useEffect } from 'react'
-import './index.less'
+import './CoverHeader.less'
 
 interface SltCoverHeaderProps {
   title?: string
