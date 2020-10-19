@@ -13,18 +13,22 @@ interface SltMagazineProps {
 const SltMagazine: NextPage<SltMagazineProps> = (props) => {
   const { dataSource = [] } = props
 
-  const onCarsouselClick = () => {
+  const onSlideChange = () => {
     //
+  }
+
+  const onSwiper = (swiper: any) => {
+    console.log(swiper)
   }
 
   return (
     <div className="slt-magazine">
       <div className="slt-container">
         <Swiper
-          spaceBetween={50}
-          slidesPerView={3}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
+          spaceBetween={0}
+          slidesPerView={1}
+          onSlideChange={onSlideChange}
+          onSwiper={onSwiper}
         >
           <SwiperSlide>Slide 1</SwiperSlide>
           <SwiperSlide>Slide 2</SwiperSlide>
