@@ -1,10 +1,19 @@
 import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
-import { Carousel } from 'antd'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import './index.less'
 import Link from 'next/link'
+
+import SwiperCore, {
+  Autoplay,
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
+
+SwiperCore.use([Autoplay, Navigation, Pagination, Scrollbar, A11y])
 
 interface SltMagazineProps {
   dataSource: any[]
@@ -27,34 +36,28 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
         <Swiper
           spaceBetween={0}
           slidesPerView={1}
+          navigation
           onSlideChange={onSlideChange}
           onSwiper={onSwiper}
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
         >
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
+          {dataSource.length &&
+            dataSource.map((item) => (
+              <SwiperSlide key={item.id}>
+                <Link key={item.id} href={`/post/${item.slug}`}>
+                  <a className="slt-magazine-item slt-media">
+                    <div
+                      className="slt-magazine-content slt-media-content"
+                      style={{
+                        backgroundImage: `url(${item.image})`,
+                      }}
+                    ></div>
+                  </a>
+                </Link>
+              </SwiperSlide>
+            ))}
         </Swiper>
-        {/* <Carousel effect="fade" arrows autoplay={true}> */}
-        {/* <button slot="prevArrow" className="slt-magazine-arrow left">
-            <LeftOutlined />
-          </button>
-          <button slot="nextArrow" className="slt-magazine-arrow right">
-            <RightOutlined />
-          </button> */}
-        {/* {dataSource.length && dataSource.map((item) => (
-            <Link key={item.id} href={`/post/${item.slug}`}>
-              <a className="slt-magazine-item slt-media">
-                <div
-                  className="slt-magazine-content slt-media-content"
-                  style={{
-                    backgroundImage: `url(${item.image})`,
-                  }}
-                ></div>
-              </a>
-            </Link>
-          ))} */}
-        {/* </Carousel> */}
       </div>
     </div>
   )
