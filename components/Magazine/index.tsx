@@ -15,10 +15,7 @@ import SwiperCore, {
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-SwiperCore.use([
-  Autoplay, Navigation, Pagination, EffectFade,
-  // Scrollbar, A11y
-])
+SwiperCore.use([Autoplay, Navigation, Pagination, EffectFade])
 
 interface SltMagazineProps {
   dataSource: any[]
@@ -40,6 +37,7 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
       <div className="slt-container">
         <Swiper
           loop
+          autoplay={{ delay: 8000 }}
           effect="fade"
           navigation
           onSlideChange={onSlideChange}
