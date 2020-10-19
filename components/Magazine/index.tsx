@@ -40,13 +40,10 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
       <div className="slt-container">
         <Swiper
           loop
-          spaceBetween={0}
-          slidesPerView={1}
           effect="fade"
           navigation
           onSlideChange={onSlideChange}
           onSwiper={onSwiper}
-          pagination={{ clickable: true }}
         >
           {dataSource.length &&
             dataSource.map((item) => (
