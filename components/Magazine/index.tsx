@@ -38,10 +38,11 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
         <Swiper
           loop
           autoplay={{ delay: 8000 }}
+          // loopedSlides={0}
           effect="fade"
           navigation
-          onSlideChange={onSlideChange}
-          onSwiper={onSwiper}
+          // onSlideChange={onSlideChange}
+          // onSwiper={onSwiper}
           pagination={{ clickable: true }}
         >
           {dataSource.length &&
