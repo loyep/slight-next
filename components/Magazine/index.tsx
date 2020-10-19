@@ -8,7 +8,7 @@ import SwiperCore, {
   Autoplay,
   Navigation,
   Pagination,
-  Virtual,
+  EffectFade,
   // Scrollbar,
   // A11y,
 } from 'swiper'
@@ -16,7 +16,7 @@ import SwiperCore, {
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 SwiperCore.use([
-  Autoplay, Navigation, Pagination, Virtual,
+  Autoplay, Navigation, Pagination, EffectFade,
   // Scrollbar, A11y
 ])
 
@@ -39,15 +39,14 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
     <div className="slt-magazine">
       <div className="slt-container">
         <Swiper
-          virtual
           loop
           spaceBetween={0}
           slidesPerView={1}
+          effect="fade"
           navigation
           onSlideChange={onSlideChange}
           onSwiper={onSwiper}
           pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
         >
           {dataSource.length &&
             dataSource.map((item) => (
