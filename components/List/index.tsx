@@ -23,16 +23,17 @@ interface SltListProps {
   rowKey?: string
 }
 
+const defaultProps: SltListProps = {
+  showMeta: true,
+  dataSource: [],
+}
+
 const SltList: NextPage<SltListProps> = (props) => {
-  const { dataSource, showMeta, grid, rowKey = 'id' } = props
+  const { dataSource, showMeta = true, grid, rowKey = 'id' } = { ...defaultProps, ...props }
 
   const renderListItem = (item: any) => {
     const key = item[rowKey]
     return <Item key={key} grid={grid} item={item} showMeta={showMeta}></Item>
-  }
-
-  const onSearch = () => {
-    // console.log('search')
   }
 
   return (
