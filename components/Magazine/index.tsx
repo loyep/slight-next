@@ -4,6 +4,7 @@ import { Carousel } from 'antd'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import './index.less'
 import Link from 'next/link'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 interface SltMagazineProps {
   dataSource: any[]
@@ -19,14 +20,25 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
   return (
     <div className="slt-magazine">
       <div className="slt-container">
-        <Carousel effect="fade" arrows autoplay={true}>
-          {/* <button slot="prevArrow" className="slt-magazine-arrow left">
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={3}
+          onSlideChange={() => console.log('slide change')}
+          onSwiper={(swiper) => console.log(swiper)}
+        >
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide>Slide 4</SwiperSlide>
+        </Swiper>
+        {/* <Carousel effect="fade" arrows autoplay={true}> */}
+        {/* <button slot="prevArrow" className="slt-magazine-arrow left">
             <LeftOutlined />
           </button>
           <button slot="nextArrow" className="slt-magazine-arrow right">
             <RightOutlined />
           </button> */}
-          {/* {dataSource.length && dataSource.map((item) => (
+        {/* {dataSource.length && dataSource.map((item) => (
             <Link key={item.id} href={`/post/${item.slug}`}>
               <a className="slt-magazine-item slt-media">
                 <div
@@ -38,7 +50,7 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
               </a>
             </Link>
           ))} */}
-        </Carousel>
+        {/* </Carousel> */}
       </div>
     </div>
   )

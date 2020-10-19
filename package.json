@@ -42,7 +42,8 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-lazyload": "^3.0.0",
-    "react-redux": "^7.2.1"
+    "react-redux": "^7.2.1",
+    "swiper": "^6.3.3"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^9.5.5",
