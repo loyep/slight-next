@@ -9,14 +9,13 @@ import SwiperCore, {
   Navigation,
   Pagination,
   EffectFade,
-  Virtual
   // Scrollbar,
   // A11y,
 } from 'swiper'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-SwiperCore.use([Autoplay, Navigation, Pagination, EffectFade, Virtual])
+SwiperCore.use([Autoplay, Navigation, Pagination, EffectFade])
 
 interface SltMagazineProps {
   dataSource: any[]
@@ -45,7 +44,6 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
           loop
           initialSlide={1}
           autoplay={{ delay: 8000 }}
-          virtual
           slidesPerView="auto"
           effect="fade"
           navigation
