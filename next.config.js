@@ -8,7 +8,7 @@ const withCSS = require('@zeit/next-css');
 const withOffline = require('next-offline')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-	enabled: process.env.BUNDLE_ANALYZE === 'true'
+  enabled: process.env.BUNDLE_ANALYZE === 'true'
 });
 
 const isDev = process.env.NODE_ENV !== 'production';
@@ -88,5 +88,26 @@ module.exports = withOffline(withBundleAnalyzer(withLess(withCSS({
     // Will be available on both server and client
     staticFolder: '/static',
     isDev, // Pass through env variables
+  },
+  workboxOpts: {
+    swDest: process.env.NEXT_EXPORT ?
+      'service-worker.js' :
+      'static/service-worker.js',
+    runtimeCaching: [{
+      urlPattern: /^https?.*/,
+      handler: 'NetworkFirst',
+      options: {
+        cacheName: 'offlineCache',
+        expiration: {
+          maxEntries: 200,
+        },
+      },
+    }, ],
+  },
+  async rewrites() {
+    return [{
+      source: '/service-worker.js',
+      destination: '/_next/static/service-worker.js',
+    }, ]
   },
 }))));

@@ -21,6 +21,7 @@ export default class SlightDocument extends Document {
       <Html>
         <SltHead>
           <link rel="stylesheet" href="/fonts/iconfont/iconfont.css" as="style" />
+          <link rel="manifest" href="/manifest.json" />
         </SltHead>
         <body>
           <Main></Main>
