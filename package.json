@@ -79,9 +79,17 @@
     "lint-staged": "^10.0.10",
     "next-compose-plugins": "^2.2.0",
     "null-loader": "^4.0.1",
+    "postcss-flexbugs-fixes": "^4.2.1",
+    "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.3"
-  }
+  },
+  "browserslist": [
+    ">0.3%",
+    "not ie 11",
+    "not dead",
+    "not op_mini all"
+  ]
 }
