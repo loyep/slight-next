@@ -48,7 +48,7 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
           pagination={{ clickable: true }}
         >
           {dataSource.length &&
-            dataSource.map((item) => (
+            dataSource.slice(0, 4).map((item) => (
               <SwiperSlide key={item.id}>
                 <Link key={item.id} href={`/post/${item.slug}`}>
                   <a className="slt-magazine-item slt-media">
