@@ -5,8 +5,9 @@
   background: #fff;
   transition: all 0.2s ease;
   position: fixed;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .06);
 
-  .ant-menu-item > a,
+  .ant-menu-item>a,
   .slt-nav-item a {
     color: rgba(0, 0, 0, 0.65);
   }
@@ -18,6 +19,7 @@
     margin-right: 0;
     float: left;
   }
+
   .logo {
     height: 40px;
   }
@@ -25,7 +27,8 @@
   &.fixed {
     background: transparent;
     color: #fff;
-    .ant-menu-item > a,
+
+    .ant-menu-item>a,
     .slt-nav-item a {
       color: #fff;
     }
@@ -33,7 +36,8 @@
 
   &.scroll {
     background: #fff;
-    .ant-menu-item > a,
+
+    .ant-menu-item>a,
     .slt-nav-item a {
       color: rgba(0, 0, 0, 0.65);
     }
@@ -69,18 +73,21 @@
   &.ant-menu-horizontal {
     border-bottom: 0;
     background-color: rgba(0, 0, 0, 0);
+
     .ant-menu-item {
       top: 0;
       border-bottom: 2px solid rgba(0, 0, 0, 0) !important;
       border-top: 3px solid rgba(0, 0, 0, 0) !important;
       padding: 0;
       margin: 0;
+
       a {
         line-height: 56px;
         padding: 0 14px;
       }
     }
-    .ant-menu-item > a::before {
+
+    .ant-menu-item>a::before {
       background: transparent;
     }
   }
