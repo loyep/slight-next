@@ -35,6 +35,7 @@ if (typeof require !== 'undefined') {
 module.exports = withBundleAnalyzer(withLess(withCSS({
   hasStaticDir: true,
   poweredByHeader: false,
+  assetPrefix: 'https://static.loyep.com/',
   generateEtags: false,
   lessLoaderOptions: {
     lessOptions: {
