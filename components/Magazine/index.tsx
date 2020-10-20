@@ -24,6 +24,12 @@ interface SltMagazineProps {
 const SltMagazine: NextPage<SltMagazineProps> = (props) => {
   const { dataSource = [] } = props
 
+  useEffect(() => {
+    console.log(dataSource)
+    return () => {
+      //
+    }
+  }, [])
   const onSlideChange = () => {
     //
   }
