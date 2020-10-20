@@ -81,7 +81,7 @@ Home.getInitialProps = async ({ query }: NextPageContext) => {
   const page = 1
   const res = await fetchPostList({ page })
   const recommendRes = await fetchRecommends()
-  const recommends =  Object.values(recommendRes || [])
+  const recommends =  recommendRes.data || []
 
   return {
     data: res.list,

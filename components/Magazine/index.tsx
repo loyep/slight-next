@@ -25,7 +25,6 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
   const { dataSource = [] } = props
 
   useEffect(() => {
-    console.log(dataSource)
     return () => {
       //
     }
@@ -42,7 +41,7 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
     <div className="slt-magazine">
       <div className="slt-container">
         <Swiper
-          loop={true}
+          loop
           initialSlide={1}
           autoplay={{ delay: 8000 }}
           // loopedSlides={0}
@@ -54,7 +53,7 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
           pagination={{ clickable: true }}
         >
           {dataSource.length &&
-            dataSource.slice(0, 4).map((item) => (
+            dataSource.map((item) => (
               <SwiperSlide key={item.id}>
                 <Link key={item.id} href={`/post/${item.slug}`}>
                   <a className="slt-magazine-item slt-media">
