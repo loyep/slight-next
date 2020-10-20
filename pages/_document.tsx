@@ -20,7 +20,7 @@ export default class SlightDocument extends Document {
     return (
       <Html>
         <SltHead>
-          <link rel="stylesheet" href="/fonts/iconfont/iconfont.css" />
+          <link rel="stylesheet" href="/fonts/iconfont/iconfont.css" as="style" />
         </SltHead>
         <body>
           <Main></Main>

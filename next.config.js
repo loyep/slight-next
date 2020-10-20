@@ -1,12 +1,16 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const withLess = require('@zeit/next-less');
-const lessToJS = require('less-vars-to-js')
 const fs = require('fs');
 const path = require('path');
+const lessToJS = require('less-vars-to-js')
+
+const withLess = require('@zeit/next-less');
 const withCSS = require('@zeit/next-css');
+const withOffline = require('next-offline')
+
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: process.env.BUNDLE_ANALYZE === 'true'
 });
+
 const isDev = process.env.NODE_ENV !== 'production';
 
 const themeVariables = lessToJS(
