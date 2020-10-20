@@ -36,7 +36,8 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
     <div className="slt-magazine">
       <div className="slt-container">
         <Swiper
-          loop
+          loop={true}
+          initialSlide={1}
           autoplay={{ delay: 8000 }}
           // loopedSlides={0}
           slidesPerView="auto"
