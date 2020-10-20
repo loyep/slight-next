@@ -87,4 +87,12 @@ module.exports = withBundleAnalyzer(withLess(withCSS({
     staticFolder: '/static',
     isDev, // Pass through env variables
   },
+  postcssLoaderOptions: {
+    parser: true,
+    config: {
+      ctx: {
+        theme: JSON.stringify(process.env.REACT_APP_THEME)
+      }
+    }
+  }
 })));
