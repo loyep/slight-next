@@ -35,7 +35,7 @@ if (typeof require !== 'undefined') {
 module.exports = withBundleAnalyzer(withLess(withCSS({
   hasStaticDir: true,
   poweredByHeader: false,
-  assetPrefix: 'https://static.loyep.com/',
+  // assetPrefix: 'https://static.loyep.com/',
   generateEtags: false,
   lessLoaderOptions: {
     lessOptions: {
@@ -79,10 +79,8 @@ module.exports = withBundleAnalyzer(withLess(withCSS({
   },
   serverRuntimeConfig: {
     isDev,
-    // BASE_URL: 'http://127.0.0.1:3001',
   },
   publicRuntimeConfig: {
-    // BASE_URL: '/api',
     // Will be available on both server and client
     staticFolder: '/static',
     isDev, // Pass through env variables
