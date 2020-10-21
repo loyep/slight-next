@@ -15,11 +15,13 @@ interface PostProps {
 }
 
 const Post: NextPage<PostProps> = (props) => {
-  const { title, data } = props
+  const { title = '', data } = props
   const [content, setContent] = useState('')
+  const [htmlContent, setHtmlContent] = useState('')
 
   useEffect(() => {
     setContent(decodeURIComponent(props.data.content))
+    setHtmlContent(data.content)
     return () => {
       //
     }
@@ -31,12 +33,12 @@ const Post: NextPage<PostProps> = (props) => {
 
   const renderContent = () => {
     switch (data.type) {
-      case 'image': return <ImageContent title={title || ''} content={data} related={relations()} />
-      case 'status': return <StatusContent title={title || ''} content={data} related={relations()} />
-      case 'video': return <VideoContent title={title || ''} content={data} related={relations()} />
+      case 'image': return <ImageContent title={title} htmlContent={htmlContent} content={data} related={relations()} />
+      case 'status': return <StatusContent title={title} htmlContent={htmlContent} content={data} related={relations()} />
+      case 'video': return <VideoContent title={title} htmlContent={htmlContent} content={data} related={relations()} />
       case 'default':
       default:
-        return <DefaultContent title={title || ''} content={data} related={relations()} />
+        return <DefaultContent title={title} htmlContent={htmlContent} content={data} related={relations()} />
     }
   }
 

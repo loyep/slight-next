@@ -7,7 +7,8 @@ import { fromNow } from '@/utils/date'
 
 interface ImageContentProps {
   content: any
-  title: string,
+  title: string
+  htmlContent?: React.ReactNode | string
   description?: string
   related?: React.ReactNode
   social?: React.ReactNode
@@ -70,6 +71,7 @@ const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContent
           <Row justify="center">
             <Col md={24} xs={24} sm={24} lg={20} xl={20} xxl={20}>
               <div className="post">
+                { props.htmlContent }
                 {/* <div ref="content" class="post-content"></div> */}
                 <div id="post-action" className="post-action mt-5 mt-lg-5">
                   <div className="d-md-flex flex-md-fill align-items-md-center">

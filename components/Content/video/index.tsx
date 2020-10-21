@@ -10,6 +10,7 @@ interface VideoContentProps {
   content: any
   title: string,
   description?: string
+  htmlContent?: React.ReactNode | string
   related?: React.ReactNode
   social?: React.ReactNode
   breadcrumbs?: React.ReactNode
@@ -140,6 +141,7 @@ const DefaultContent: NextPage<VideoContentProps> = (props: Partial<VideoContent
             </div>
             <div className="border-top py-2 py-md-2 py-xl-3"></div>
             {/* <div className="post-content" ref="content"></div> */}
+            { props.htmlContent }
             <div id="post-action" className="post-action mt-5 mt-lg-5">
               <div className="d-md-flex flex-md-fill align-items-md-center">
                 <div className="d-none d-md-block">

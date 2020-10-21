@@ -10,6 +10,7 @@ interface StatusContentProps {
   content: any
   title: string,
   description?: string
+  htmlContent?: React.ReactNode | string
   related?: React.ReactNode
   social?: React.ReactNode
   breadcrumbs?: React.ReactNode
@@ -122,6 +123,7 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                 </div>
               </div>
               <div className="border-top py-2 py-md-2 py-xl-3"></div>
+              { props.htmlContent }
               {/* <div className="post-content" ref="content"></div> */}
               <div id="post-action" className="post-action mt-5 mt-lg-5">
                 <div className="d-md-flex flex-md-fill align-items-md-center">
