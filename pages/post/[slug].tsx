@@ -5,6 +5,7 @@ import DefaultContent from '@/components/Content/default'
 import ImageContent from '@/components/Content/image'
 import StatusContent from '@/components/Content/status'
 import VideoContent from '@/components/Content/video'
+import Relations from '@/components/Relations'
 
 import './[slug].less'
 
@@ -25,8 +26,12 @@ const Post: NextPage<PostProps> = (props) => {
     }
   })
 
-  const relations = () => {
-    return <div>test</div>
+  const renderRelatedPost = () => {
+    const related = data.related
+    if (related && related.length) {
+      return <Relations dataSource={data.related}></Relations>
+    }
+    return null
   }
 
   const renderContent = () => {
@@ -34,7 +39,7 @@ const Post: NextPage<PostProps> = (props) => {
       title: title,
       htmlContent: (<div dangerouslySetInnerHTML={{ __html: htmlContent }}></div>),
       content: data,
-      related: relations()
+      related: renderRelatedPost()
     }
     switch (data.type) {
       case 'image': return <ImageContent {...contentProps} />
