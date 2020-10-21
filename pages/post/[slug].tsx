@@ -16,12 +16,10 @@ interface PostProps {
 
 const Post: NextPage<PostProps> = (props) => {
   const { title = '', data } = props
-  const [content, setContent] = useState('')
   const [htmlContent, setHtmlContent] = useState('')
 
   useEffect(() => {
-    setContent(decodeURIComponent(props.data.content))
-    setHtmlContent(data.content)
+    setHtmlContent(decodeURIComponent(data.content))
     return () => {
       //
     }
