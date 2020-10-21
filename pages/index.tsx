@@ -1,9 +1,9 @@
 import { fetchPostList, fetchRecommends } from '@/api'
-import SltList from '@/components/List'
+import Cards from '@/components/Cards'
 import { useState } from 'react'
 import { Button } from 'antd'
 import { NextPage, NextPageContext } from 'next'
-import SltMagazine from '@/components/Magazine'
+import Banner from '@/components/Banner'
 
 interface HomeProps {
   title?: string
@@ -13,7 +13,7 @@ interface HomeProps {
 }
 
 const Home: NextPage<HomeProps> = (props) => {
-  const {recommends = []} = props
+  const { recommends = [] } = props
   const [loadMore, setLoadMore] = useState(true)
   const [currentPage, setCurrentPage] = useState(props.page)
   const [loading, setLoading] = useState(false)
@@ -55,10 +55,10 @@ const Home: NextPage<HomeProps> = (props) => {
 
   return (
     <>
-      <SltMagazine dataSource={recommends}></SltMagazine>
+      <Banner dataSource={recommends}></Banner>
       <div className="slt-layout-content">
         <div className="slt-container">
-          <SltList dataSource={data}></SltList>
+          <Cards dataSource={data} />
           {loadMore && (
             <nav className="slt-loadmore">
               <Button
@@ -81,7 +81,7 @@ Home.getInitialProps = async ({ query }: NextPageContext) => {
   const page = 1
   const res = await fetchPostList({ page })
   const recommendRes = await fetchRecommends()
-  const recommends =  recommendRes.data || []
+  const recommends = recommendRes.data || []
 
   return {
     data: res.list,

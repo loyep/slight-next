@@ -17,11 +17,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 
 SwiperCore.use([Autoplay, Navigation, Pagination, Lazy])
 
-interface SltMagazineProps {
+interface SltBannerProps {
   dataSource: any[]
 }
 
-const SltMagazine: NextPage<SltMagazineProps> = (props) => {
+const SltBanner: NextPage<SltBannerProps> = (props) => {
   const { dataSource = [] } = props
 
   useEffect(() => {
@@ -29,6 +29,7 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
       //
     }
   }, [])
+  
   const onSlideChange = () => {
     //
   }
@@ -43,7 +44,7 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
         <Swiper
           loop
           lazy
-          initialSlide={1}
+          spaceBetween={30}
           autoplay={{ delay: 8000 }}
           slidesPerView="auto"
           navigation
@@ -70,4 +71,4 @@ const SltMagazine: NextPage<SltMagazineProps> = (props) => {
   )
 }
 
-export default SltMagazine
+export default SltBanner

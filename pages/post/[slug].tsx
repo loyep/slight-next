@@ -1,6 +1,10 @@
 import { NextPage, NextPageContext } from 'next'
 import { fetchPost } from '@/api'
 import { useState, useEffect } from 'react'
+import DefaultContent from '@/components/Content/default'
+import ImageContent from '@/components/Content/image'
+import StatusContent from '@/components/Content/status'
+import VideoContentProps from '@/components/Content/video'
 
 import './[slug].less'
 
@@ -11,6 +15,7 @@ interface PostProps {
 }
 
 const Post: NextPage<PostProps> = (props) => {
+  const { title, data } = props
   const [content, setContent] = useState('')
 
   useEffect(() => {
@@ -19,23 +24,14 @@ const Post: NextPage<PostProps> = (props) => {
       //
     }
   })
-  return (
-    <div className="slt-container">
-      <main className="main">
-        <div dangerouslySetInnerHTML={{ __html: content }}></div>
-      </main>
 
-      <footer className="footer">
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
-    </div>
+  const relations = () => {
+    return <div>test</div>
+  }
+
+  return (
+    <DefaultContent title={title || ''} content={data} related={relations()}>
+    </DefaultContent>
   )
 }
 
