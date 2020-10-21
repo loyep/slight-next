@@ -29,7 +29,7 @@ const SltBanner: NextPage<SltBannerProps> = (props) => {
       //
     }
   }, [])
-  
+
   const onSlideChange = () => {
     //
   }
