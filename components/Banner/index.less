@@ -100,8 +100,8 @@
     border-radius: 6px;
     color: #fff;
     font-weight: 400;
-    visibility: hidden;
-    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
     &::after {
       font-size: 16px;
     }
@@ -110,7 +110,7 @@
   .swiper-container {
     &:hover, &:focus {
       .swiper-button-prev, .swiper-button-next {
-        visibility: visible;
+        opacity: 0;
       }
     }
   }
