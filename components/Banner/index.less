@@ -100,8 +100,17 @@
     border-radius: 6px;
     color: #fff;
     font-weight: 400;
+    visibility: hidden;
     &::after {
       font-size: 16px;
+    }
+  }
+
+  .swiper-container {
+    &:hover, &:focus {
+      .swiper-button-prev, .swiper-button-next {
+        visibility: visible;
+      }
     }
   }
 }
