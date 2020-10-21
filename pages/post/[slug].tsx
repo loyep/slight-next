@@ -29,12 +29,10 @@ const Post: NextPage<PostProps> = (props) => {
     return <div>test</div>
   }
 
-  const htmlBody = (<div dangerouslySetInnerHTML={{ __html: htmlContent }}></div>)
-
   const renderContent = () => {
     const contentProps = {
       title: title,
-      htmlContent: htmlBody,
+      htmlContent: (<div dangerouslySetInnerHTML={{ __html: htmlContent }}></div>),
       content: data,
       related: relations()
     }
