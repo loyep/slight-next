@@ -29,16 +29,21 @@ const Post: NextPage<PostProps> = (props) => {
     return <div>test</div>
   }
 
-  const htmlBody = (<div dangerouslySetInnerHTML={{__html: htmlContent}}></div>)
+  const htmlBody = (<div dangerouslySetInnerHTML={{ __html: htmlContent }}></div>)
 
   const renderContent = () => {
+    const contentProps = {
+      title: title,
+      htmlContent: htmlBody,
+      content: data,
+      related: relations()
+    }
     switch (data.type) {
-      case 'image': return <ImageContent title={title} htmlContent={htmlBody} content={data} related={relations()} />
-      case 'status': return <StatusContent title={title} htmlContent={htmlBody} content={data} related={relations()} />
-      case 'video': return <VideoContent title={title} htmlContent={htmlBody} content={data} related={relations()} />
+      case 'image': return <ImageContent {...contentProps} />
+      case 'status': return <StatusContent {...contentProps} />
+      case 'video': return <VideoContent {...contentProps} />
       case 'default':
-      default:
-        return <DefaultContent title={title} htmlContent={htmlBody} content={data} related={relations()} />
+      default: return <DefaultContent {...contentProps} />
     }
   }
 

@@ -122,16 +122,20 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
     )
   }
 
+  const colPros = {
+    span: getGrid(grid, 'column'),
+    xs: getGrid(grid, 'xs'),
+    sm: getGrid(grid, 'sm'),
+    md: getGrid(grid, 'md'),
+    lg: getGrid(grid, 'lg'),
+    xl: getGrid(grid, 'xl'),
+    xxl: getGrid(grid, 'xxl')
+  }
+
   return (
     <Col
       className="slt-cards-col"
-      span={getGrid(grid, 'column')}
-      xs={getGrid(grid, 'xs')}
-      sm={getGrid(grid, 'sm')}
-      md={getGrid(grid, 'md')}
-      lg={getGrid(grid, 'lg')}
-      xl={getGrid(grid, 'xl')}
-      xxl={getGrid(grid, 'xxl')}
+      {...colPros}
     >
       <div className={classnames({ 'slt-cards-item': true, border: border })}>
         <div className="slt-media">
