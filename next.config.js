@@ -5,7 +5,7 @@ const lessToJS = require('less-vars-to-js')
 
 const withLess = require('@zeit/next-less');
 const withCSS = require('@zeit/next-css');
-const withOffline = require('next-offline')
+// const withOffline = require('next-offline')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.BUNDLE_ANALYZE === 'true'
@@ -36,7 +36,8 @@ if (typeof require !== 'undefined') {
   }
 }
 
-module.exports = withOffline(withBundleAnalyzer(withLess(withCSS({
+module.exports = //withOffline(
+  withBundleAnalyzer(withLess(withCSS({
   hasStaticDir: true,
   poweredByHeader: false,
   // assetPrefix: 'https://static.loyep.com/',
@@ -104,10 +105,10 @@ module.exports = withOffline(withBundleAnalyzer(withLess(withCSS({
       },
     }, ],
   },
-  async rewrites() {
-    return [{
-      source: '/service-worker.js',
-      destination: '/_next/static/service-worker.js',
-    }, ]
-  },
-}))));
+  // async rewrites() {
+  //   return [{
+  //     source: '/service-worker.js',
+  //     destination: '/_next/static/service-worker.js',
+  //   }, ]
+  // },
+})))//);
