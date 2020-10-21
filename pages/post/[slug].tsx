@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import DefaultContent from '@/components/Content/default'
 import ImageContent from '@/components/Content/image'
 import StatusContent from '@/components/Content/status'
-import VideoContentProps from '@/components/Content/video'
+import VideoContent from '@/components/Content/video'
 
 import './[slug].less'
 
@@ -29,9 +29,21 @@ const Post: NextPage<PostProps> = (props) => {
     return <div>test</div>
   }
 
+  const renderContent = () => {
+    switch (data.type) {
+      case 'image': return <ImageContent title={title || ''} content={data} related={relations()} />
+      case 'status': return <StatusContent title={title || ''} content={data} related={relations()} />
+      case 'video': return <VideoContent title={title || ''} content={data} related={relations()} />
+      case 'default':
+      default:
+        return <DefaultContent title={title || ''} content={data} related={relations()} />
+    }
+  }
+
   return (
-    <DefaultContent title={title || ''} content={data} related={relations()}>
-    </DefaultContent>
+    <>
+      {renderContent()}
+    </>
   )
 }
 
