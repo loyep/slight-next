@@ -89,24 +89,26 @@ module.exports = withOffline(withBundleAnalyzer(withLess(withCSS({
     staticFolder: '/static',
     isDev, // Pass through env variables
   },
+  transformManifest: manifest => ['/'].concat(manifest), // add the homepage to the cache
+  generateInDevMode: true,
   workboxOpts: {
-    swDest: process.env.NEXT_EXPORT ?
-      'service-worker.js' : 'static/service-worker.js',
-    runtimeCaching: [{
-      urlPattern: /^https?.*/,
-      handler: 'NetworkFirst',
-      options: {
-        cacheName: 'offlineCache',
-        expiration: {
-          maxEntries: 200,
+    swDest: 'static/service-worker.js',
+    runtimeCaching: [
+      {
+        urlPattern: /^https?.*/,
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'https-calls',
+          networkTimeoutSeconds: 15,
+          expiration: {
+            maxEntries: 150,
+            maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
+          },
+          cacheableResponse: {
+            statuses: [0, 200],
+          },
         },
       },
-    }, ],
-  },
-  async rewrites() {
-    return [{
-      source: '/service-worker.js',
-      destination: '/_next/static/service-worker.js',
-    }, ]
+    ],
   },
 }))));
