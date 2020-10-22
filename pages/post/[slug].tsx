@@ -65,7 +65,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     props: {
       slug: String(slug),
       title: data.title,
-      description: data.description,
+      description: data.description || '',
       data,
     },
   }
