@@ -12,18 +12,13 @@ interface SltFooterProps {
   backTop?: boolean,
   title?: string,
 }
-
-export const getServerSideProps = async (ctx: GetServerSidePropsContext<{ post: string }>): Promise<{ props: SltFooterProps }> => {
-  return {
-    props: {
-      title: config.title,
-      backTop: true,
-    },
-  }
+const defaultProps: SltFooterProps = {
+  backTop: true,
+  title: config.title,
 }
 
-const SltFooter = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { backTop, title } = props
+const SltFooter = (props: SltFooterProps) => {
+  const { backTop, title } = { ...defaultProps, ...props }
   return (
     <Footer className="slt-footer">
       <div className="slt-container">
