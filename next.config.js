@@ -36,7 +36,7 @@ if (typeof require !== 'undefined') {
   }
 }
 
-module.exports = withOffline(withBundleAnalyzer(withLess(withCSS({
+module.exports = withBundleAnalyzer(withLess(withCSS({
   hasStaticDir: true,
   poweredByHeader: false,
   // assetPrefix: 'https://static.loyep.com/',
@@ -89,5 +89,4 @@ module.exports = withOffline(withBundleAnalyzer(withLess(withCSS({
     staticFolder: '/static',
     isDev, // Pass through env variables
   },
-  dontAutoRegisterSw: true 
-}))));
+})));
