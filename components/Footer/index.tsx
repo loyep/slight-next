@@ -2,15 +2,23 @@ import { NextPage } from 'next'
 import { Layout, Button } from 'antd'
 import { WeiboOutlined, GithubOutlined, MailOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons'
 import SltBackTop from '../BackTop'
+import Link from 'next/link'
 import './index.less'
+
+const title = process.env.APP_NAME || ''
 
 const { Footer } = Layout
 
 interface SltFooterProps {
-  title?: string
+  backTop?: boolean
+}
+
+const defaultProps: SltFooterProps = {
+  backTop: true
 }
 
 const SltFooter: NextPage<SltFooterProps> = (props) => {
+  const { backTop } = { ...defaultProps, ...props }
   return (
     <Footer className="slt-footer">
       <div className="slt-container">
@@ -28,8 +36,10 @@ const SltFooter: NextPage<SltFooterProps> = (props) => {
             </ul>
             <div className="slt-footer-copyright">
               Copyright © 2020
-              <a href="https://www.mywpku.com" title="WP酷" rel="home">
-                WP酷
+              <Link href="/">
+                {title}
+              </Link>
+              <a href="" title="WP酷" rel="home">
               </a>
               . Designed by
               <a
@@ -60,7 +70,7 @@ const SltFooter: NextPage<SltFooterProps> = (props) => {
             <Button type="primary" className="qq" icon={<QqOutlined />} />
           </div>
         </div>
-        <div className="slt-footer-links footer-links border-top border-secondary pt-3 mt-3 text-xs">
+        <div className="slt-footer-links">
           <span className="slt-footer-links-title">合作伙伴：</span>
           <a href="http://www.farisl.com/" target="">
             Faris Lee
@@ -118,8 +128,7 @@ const SltFooter: NextPage<SltFooterProps> = (props) => {
           </a>
         </div>
       </div>
-      <SltBackTop></SltBackTop>
-      {/* <slt-back-top></slt-back-top> */}
+      { backTop && <SltBackTop />}
     </Footer>
   )
 }
