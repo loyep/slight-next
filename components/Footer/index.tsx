@@ -56,7 +56,7 @@ const SltFooter: NextPage<SltFooterProps> = (props) => {
             <Button type="primary" className="weibo" icon={<WeiboOutlined />} />
             <Button type="primary" className="mail" icon={<MailOutlined />} />
             <Button type="primary" className="github" icon={<GithubOutlined />} />
-            <Button type="primary" className="weichat" icon={<WechatOutlined />} />
+            <Button type="primary" className="wechat" icon={<WechatOutlined />} />
             <Button type="primary" className="qq" icon={<QqOutlined />} />
           </div>
         </div>
