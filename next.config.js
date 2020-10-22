@@ -5,7 +5,6 @@ const lessToJS = require('less-vars-to-js')
 
 const withLess = require('@zeit/next-less');
 const withCSS = require('@zeit/next-css');
-const withOffline = require('next-offline')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.BUNDLE_ANALYZE === 'true'
@@ -16,18 +15,6 @@ const isDev = process.env.NODE_ENV !== 'production';
 const themeVariables = lessToJS(
   fs.readFileSync(path.resolve(__dirname, './assets/styles/variable.less'), 'utf8')
 )
-
-// fix antd bug in dev development
-// const devAntd = '@import "~antd/dist/antd.less";\n';
-// const stylesData = fs.readFileSync(
-//     path.resolve(__dirname, './assets/_styles.less'),
-//     'utf-8',
-// );
-// fs.writeFileSync(
-//     path.resolve(__dirname, './assets/self-styles.less'),
-//     isDev ? `${devAntd}${stylesData}` : stylesData,
-//     'utf-8',
-// );
 
 // fix: prevents error when .css files are required by node
 if (typeof require !== 'undefined') {
