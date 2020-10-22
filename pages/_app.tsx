@@ -30,7 +30,7 @@ Router.events.on('routeChangeError', () => {
 
 type NextContext = AppProps & Record<string, any>
 
-const NextApp: NextPage<NextContext> = (props: NextContext) => {
+const NextApp: NextPage<NextContext> = (props) => {
   const { Component, pageProps } = props
   const { title, description } = pageProps
 
@@ -51,6 +51,7 @@ const NextApp: NextPage<NextContext> = (props: NextContext) => {
     </>
   )
 }
+
 // NextApp.getInitialProps = async (context: NextContext) => {
 //   const { ctx, Component } = context;
 //   const pageProps = Component.getInitialProps

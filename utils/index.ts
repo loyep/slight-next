@@ -1,8 +1,6 @@
-const appName = process.env.APP_NAME || '';
-console.log('appName=', appName)
+import config from '@/config'
+
 export function generateTitle(...titleSegments: string[]): string {
-  if (appName) {
-    titleSegments.push(appName)
-  }
+  titleSegments.push(config.title)
   return titleSegments.filter((t) => t).join(' · ')
 }

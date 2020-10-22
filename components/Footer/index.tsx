@@ -1,5 +1,4 @@
 import { NextPage } from 'next'
-import { useState } from 'react'
 import { Layout, Button } from 'antd'
 import { WeiboOutlined, GithubOutlined, MailOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons'
 import SltBackTop from '../BackTop'
@@ -7,20 +6,13 @@ import Link from 'next/link'
 import './index.less'
 const { Footer } = Layout
 
-const appName = process.env.APP_NAME || ''
-
 interface SltFooterProps {
   backTop?: boolean,
   title?: string,
 }
 
-const defaultProps: SltFooterProps = {
-  backTop: true,
-  title: appName
-}
-
 const SltFooter: NextPage<SltFooterProps> = (props) => {
-  const { backTop, title } = { ...defaultProps, ...props }
+  const { backTop, title } = props
   return (
     <Footer className="slt-footer">
       <div className="slt-container">
@@ -135,6 +127,14 @@ const SltFooter: NextPage<SltFooterProps> = (props) => {
       { backTop && <SltBackTop />}
     </Footer>
   )
+}
+
+SltFooter.getInitialProps = () => {
+  const title = process.env.APP_NAME || ''
+  return {
+    backTop: true,
+    title
+  }
 }
 
 export default SltFooter
