@@ -1,24 +1,26 @@
 import { NextPage } from 'next'
+import { useState } from 'react'
 import { Layout, Button } from 'antd'
 import { WeiboOutlined, GithubOutlined, MailOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons'
 import SltBackTop from '../BackTop'
 import Link from 'next/link'
 import './index.less'
-
-const title = process.env.APP_NAME || ''
-
 const { Footer } = Layout
 
+const appName = process.env.APP_NAME || ''
+
 interface SltFooterProps {
-  backTop?: boolean
+  backTop?: boolean,
+  title: string,
 }
 
 const defaultProps: SltFooterProps = {
-  backTop: true
+  backTop: true,
+  title: appName
 }
 
 const SltFooter: NextPage<SltFooterProps> = (props) => {
-  const { backTop } = { ...defaultProps, ...props }
+  const { backTop, title } = { ...defaultProps, ...props }
   return (
     <Footer className="slt-footer">
       <div className="slt-container">
@@ -36,8 +38,10 @@ const SltFooter: NextPage<SltFooterProps> = (props) => {
             </ul>
             <div className="slt-footer-copyright">
               Copyright © 2020
-              <Link href="/">
-                {title}
+              <Link href="/" >
+                <a title={title} rel="home">
+                  {title}
+                </a>
               </Link>
               <a href="" title="WP酷" rel="home">
               </a>
