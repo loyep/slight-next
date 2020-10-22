@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
 import { Layout, Button } from 'antd'
 import { WeiboOutlined, GithubOutlined, MailOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons'
 import SltBackTop from '../BackTop'
@@ -11,7 +11,18 @@ interface SltFooterProps {
   title?: string,
 }
 
-const SltFooter: NextPage<SltFooterProps> = (props) => {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext<{ post: string }>): Promise<{ props: SltFooterProps }> => {
+  const title = process.env.APP_NAME || ''
+  return {
+    props: {
+      title,
+      backTop: true,
+    },
+  }
+}
+
+
+const SltFooter = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { backTop, title } = props
   return (
     <Footer className="slt-footer">
@@ -127,14 +138,6 @@ const SltFooter: NextPage<SltFooterProps> = (props) => {
       { backTop && <SltBackTop />}
     </Footer>
   )
-}
-
-SltFooter.getInitialProps = () => {
-  const title = process.env.APP_NAME || ''
-  return {
-    backTop: true,
-    title
-  }
 }
 
 export default SltFooter
