@@ -6,7 +6,6 @@ import ImageContent from '@/components/Content/image'
 import StatusContent from '@/components/Content/status'
 import VideoContent from '@/components/Content/video'
 import Relations from '@/components/Relations'
-
 import './[slug].less'
 
 interface PostProps {
