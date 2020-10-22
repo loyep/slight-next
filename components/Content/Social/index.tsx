@@ -1,9 +1,6 @@
 import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
-import { Col, Row } from 'antd'
 import './index.less'
-import Link from 'next/link'
-import { fromNow } from '@/utils/date'
 
 interface SltSocialProps {
   socials: any[]

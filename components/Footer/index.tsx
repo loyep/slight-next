@@ -1,8 +1,7 @@
 import { NextPage } from 'next'
 import { Layout, Button } from 'antd'
-import { WeiboOutlined, GithubOutlined, MailOutlined } from '@ant-design/icons'
+import { WeiboOutlined, GithubOutlined, MailOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons'
 import SltBackTop from '../BackTop'
-
 import './index.less'
 
 const { Footer } = Layout
@@ -54,9 +53,11 @@ const SltFooter: NextPage<SltFooterProps> = (props) => {
           </div>
           <div className="flex-md-fill"></div>
           <div className="slt-footer-content-right">
-            <Button type="primary" icon={<WeiboOutlined />} />
-            <Button type="primary" icon={<MailOutlined />} />
-            <Button type="primary" icon={<GithubOutlined />} />
+            <Button type="primary" className="weibo" icon={<WeiboOutlined />} />
+            <Button type="primary" className="mail" icon={<MailOutlined />} />
+            <Button type="primary" className="github" icon={<GithubOutlined />} />
+            <Button type="primary" className="weichat" icon={<WechatOutlined />} />
+            <Button type="primary" className="qq" icon={<QqOutlined />} />
           </div>
         </div>
         <div className="slt-footer-links footer-links border-top border-secondary pt-3 mt-3 text-xs">
