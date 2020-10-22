@@ -11,7 +11,7 @@ const appName = process.env.APP_NAME || ''
 
 interface SltFooterProps {
   backTop?: boolean,
-  title: string,
+  title?: string,
 }
 
 const defaultProps: SltFooterProps = {
