@@ -41,11 +41,9 @@ const NextApp: NextPage<NextContext> = (props: NextContext) => {
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
         <title>{generateTitle(title)}</title>
         <meta name="description" content={description} />
-        <link rel="shortcut icon" href="/static/favicon.ico" type="image/ico" />
       </Head>
       <SltLayout>
         <Component {...pageProps}></Component>
