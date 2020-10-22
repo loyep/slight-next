@@ -1,8 +1,8 @@
+import { NextPage, GetServerSideProps } from 'next'
 import { fetchPostList, fetchCategory } from '@/api'
 import SltList from '@/components/List'
 import { useState } from 'react'
 import { Button } from 'antd'
-import { NextPage, NextPageContext } from 'next'
 import SltCoverHeader from '@/components/Header/CoverHeader'
 
 interface CategoryProps {
@@ -81,20 +81,21 @@ const Category: NextPage<CategoryProps> = (props) => {
   )
 }
 
-Category.getInitialProps = async ({ query, err }: NextPageContext) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { slug } = query
   const page = 1
   const categoryRes = await fetchCategory({ slug })
-  console.log('res', categoryRes)
   const { data: category = {} } = categoryRes || {}
   const postsRes = await fetchPostList({ page, category: category.id })
   const { list: data = [] } = postsRes
   return {
-    title: category.name,
-    description: category.description,
-    data,
-    category,
-    page,
+    props: {
+      title: category.name,
+      description: category.description,
+      data,
+      category,
+      page,
+    },
   }
 }
 

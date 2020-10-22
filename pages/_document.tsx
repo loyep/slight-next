@@ -20,9 +20,7 @@ export default class SlightDocument extends Document {
     return (
       <Html>
         <SltHead>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="stylesheet" href="/fonts/iconfont/iconfont.css" as="style" />
-          {/* <link rel="manifest" href="/manifest.json" /> */}
           <link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
         </SltHead>
         <body>

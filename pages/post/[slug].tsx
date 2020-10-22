@@ -1,4 +1,4 @@
-import { NextPage, NextPageContext } from 'next'
+import { NextPage, GetServerSideProps } from 'next'
 import { fetchPost } from '@/api'
 import { useState, useEffect } from 'react'
 import DefaultContent from '@/components/Content/default'
@@ -6,6 +6,7 @@ import ImageContent from '@/components/Content/image'
 import StatusContent from '@/components/Content/status'
 import VideoContent from '@/components/Content/video'
 import Relations from '@/components/Relations'
+
 import './[slug].less'
 
 interface PostProps {
@@ -56,16 +57,17 @@ const Post: NextPage<PostProps> = (props) => {
   )
 }
 
-Post.getInitialProps = async ({ query }: NextPageContext) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { slug } = query
   const res = await fetchPost({ slug })
   const { data } = res
-
   return {
-    slug: String(slug),
-    title: data.title,
-    description: data.description,
-    data,
+    props: {
+      slug: String(slug),
+      title: data.title,
+      description: data.description,
+      data,
+    },
   }
 }
 

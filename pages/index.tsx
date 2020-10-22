@@ -2,7 +2,7 @@ import { fetchPostList, fetchRecommends } from '@/api'
 import Cards from '@/components/Cards'
 import { useState } from 'react'
 import { Button } from 'antd'
-import { NextPage, NextPageContext } from 'next'
+import { NextPage, GetServerSideProps } from 'next'
 import Banner from '@/components/Banner'
 
 interface HomeProps {
@@ -77,16 +77,16 @@ const Home: NextPage<HomeProps> = (props) => {
   )
 }
 
-Home.getInitialProps = async ({ query }: NextPageContext) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const page = 1
-  const res = await fetchPostList({ page })
-  const recommendRes = await fetchRecommends()
-  const recommends = recommendRes.data || []
-
+  const { list: data = [] } = await fetchPostList({ page })
+  const { data: recommends = [] } = await fetchRecommends()
   return {
-    data: res.list,
-    recommends,
-    page,
+    props: {
+      data,
+      recommends,
+      page,
+    },
   }
 }
 

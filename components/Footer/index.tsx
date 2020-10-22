@@ -3,6 +3,8 @@ import { Layout, Button } from 'antd'
 import { WeiboOutlined, GithubOutlined, MailOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons'
 import SltBackTop from '../BackTop'
 import Link from 'next/link'
+import config from '@/config'
+
 import './index.less'
 const { Footer } = Layout
 
@@ -12,15 +14,13 @@ interface SltFooterProps {
 }
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext<{ post: string }>): Promise<{ props: SltFooterProps }> => {
-  const title = process.env.APP_NAME || ''
   return {
     props: {
-      title,
+      title: config.title,
       backTop: true,
     },
   }
 }
-
 
 const SltFooter = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { backTop, title } = props
