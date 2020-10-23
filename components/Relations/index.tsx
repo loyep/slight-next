@@ -18,21 +18,19 @@ const SltRelation: NextPage<SltRelationProps> = (props: SltRelationProps) => {
           <span>相关文章</span>
         </div>
         <div className="slt-relation-scroll">
-          <div className="list-scroll-x">
-            <Cards
-              grid={{
-                gutter: 0,
-                xs: 2,
-                sm: 2,
-                md: 4,
-                lg: 4,
-                xl: 4,
-                xxl: 4,
-              }}
-              dataSource={dataSource}
-              showMeta={false}
-            />
-          </div>
+          <Cards
+            grid={{
+              gutter: 0,
+              xs: 2,
+              sm: 2,
+              md: 4,
+              lg: 4,
+              xl: 4,
+              xxl: 4,
+            }}
+            dataSource={dataSource}
+            showMeta={false}
+          />
         </div>
       </div>
     </div>
