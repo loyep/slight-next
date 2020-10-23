@@ -1,6 +1,6 @@
 import { fetchPostList, fetchRecommends } from '@/api'
 import Cards from '@/components/Cards'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from 'antd'
 import { NextPage, GetServerSideProps } from 'next'
 import Banner from '@/components/Banner'
@@ -37,13 +37,12 @@ const Home: NextPage<HomeProps> = (props) => {
       if (list.length) {
         setCurrentPage(page)
         const scrollTop = document.documentElement.scrollTop
-        // document.documentElement.scrollTop = 0
         addData(list)
         if (data.length === meta.count || list.length < meta.pageSize) {
           setLoadMore(false)
         }
         setLoading(false)
-        document.documentElement.scrollTop = scrollTop
+        document.documentElement.scrollTop = scrollTop + 10
       } else {
         setLoadMore(false)
         setLoading(false)
