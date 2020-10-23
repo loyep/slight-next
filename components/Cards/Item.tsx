@@ -4,6 +4,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { Col } from 'antd'
 import classnames from 'classnames'
 import { fromNow } from '@/utils/date'
+import LazyLoad from 'react-lazyload';
 
 const defaultGrid = {
   gutter: 0,
@@ -132,16 +133,20 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
     xxl: getGrid(grid, 'xxl')
   }
 
+  const classes = classnames({ 'slt-cards-item': true, border: border })
+
   return (
     <Col
       className="slt-cards-col"
       {...colPros}
     >
-      <div className={classnames({ 'slt-cards-item': true, border: border })}>
+      <div className={classes}>
         <div className="slt-media">
           <Link href={linkUrl}>
             <a className="slt-media-content" title={title}>
-              <img src={image} alt={title} />
+              <LazyLoad>
+                <img src={image} alt={title} />
+              </LazyLoad>
               <span className="overlay"></span>
             </a>
           </Link>
