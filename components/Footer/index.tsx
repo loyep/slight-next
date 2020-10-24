@@ -1,4 +1,5 @@
 import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
+import { useRouter } from 'next/router'
 import { Layout, Button } from 'antd'
 import { WeiboOutlined, GithubOutlined, MailOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons'
 import SltBackTop from '../BackTop'
@@ -19,6 +20,8 @@ const defaultProps: SltFooterProps = {
 
 const SltFooter = (props: SltFooterProps) => {
   const { backTop, title } = { ...defaultProps, ...props }
+  const { pathname } = useRouter()
+  const isHome = pathname === '/'
   return (
     <Footer className="slt-footer">
       <div className="slt-container">
@@ -72,7 +75,7 @@ const SltFooter = (props: SltFooterProps) => {
             <Button type="primary" className="qq" icon={<QqOutlined />} />
           </div>
         </div>
-        <div className="slt-footer-links">
+        {isHome &&         <div className="slt-footer-links">
           <span className="slt-footer-links-title">合作伙伴：</span>
           <a href="http://www.farisl.com/" target="">
             Faris Lee
@@ -128,7 +131,7 @@ const SltFooter = (props: SltFooterProps) => {
           <a href="https://www.jerryzone.cn/" target="_blank" rel="noreferrer">
             JerryZone
           </a>
-        </div>
+        </div>}
       </div>
       { backTop && <SltBackTop />}
     </Footer>

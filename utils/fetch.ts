@@ -4,8 +4,8 @@ import { message } from 'antd'
 
 const service = axios.create({
   baseURL: 'https://i.loyep.com/api',
-  withCredentials: true,
-  timeout: 2000,
+  // withCredentials: true,
+  timeout: 3000,
 })
 
 
