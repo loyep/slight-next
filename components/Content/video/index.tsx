@@ -95,7 +95,7 @@ const DefaultContent: NextPage<VideoContentProps> = (props: Partial<VideoContent
                 </div>
                 <div className="author-name d-flex flex-wrap flex-column mx-2 mx-md-3">
                   <div className="text-md">
-                    <a href="javascript:" className="author-popup">
+                    <a href="#" className="author-popup">
                       {user.displayName}
                     </a>
                   </div>
@@ -130,7 +130,7 @@ const DefaultContent: NextPage<VideoContentProps> = (props: Partial<VideoContent
                   </a>
                 </span>
                 <span>
-                  <a className=" btn-action-like" href="javascript:;">
+                  <a className=" btn-action-like" href="#">
                     <i className="text-lg iconfont icon-like-line"></i>
                     <small className="like-count font-theme ml-1">
                       {content.likesCount || 0}
@@ -152,7 +152,7 @@ const DefaultContent: NextPage<VideoContentProps> = (props: Partial<VideoContent
                     </span>
                   </a>
                   <a
-                    href="javascript:;"
+                    href="#"
                     className="d-inline-block apollo-collection  mr-md-4"
                   >
                     <i className="text-xl iconfont icon-star-filled"></i>

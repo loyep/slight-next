@@ -77,7 +77,7 @@ const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContent
                   <div className="d-md-flex flex-md-fill align-items-md-center">
                     <div className="d-none d-md-block">
                       <a
-                        href="javascript:"
+                        href="#"
                         className="d-inline-block btn-action-like mr-md-4"
                       >
                         <i className="text-xl iconfont icon-like"></i>
@@ -190,7 +190,7 @@ const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContent
                               rel="nofollow"
                               style={{ display: "none" }}
                               className="btn btn-light mr-2"
-                              href="javascript:;"
+                              href="#"
                             >
                               再想想
                           </a>
