@@ -21,7 +21,7 @@
       "@/*": ["./*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["@types/node", "@types/less", "types/*"],
+    "types": ["@types/node", "@types/less"],
     "resolveJsonModule": true,
     "isolatedModules": true
   },
