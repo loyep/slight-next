@@ -144,9 +144,7 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
         <div className="slt-media">
           <Link href={linkUrl}>
             <a className="slt-media-content" title={title}>
-              <LazyLoad once>
-                <img src={image} alt={title} />
-              </LazyLoad>
+              <img src={image} alt={title} />
               <span className="overlay"></span>
             </a>
           </Link>
