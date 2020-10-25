@@ -6,6 +6,7 @@ import ImageContent from '@/components/Content/image'
 import StatusContent from '@/components/Content/status'
 import VideoContent from '@/components/Content/video'
 import Relations from '@/components/Relations'
+import Content from '@/components/Content/Content'
 
 import './[slug].less'
 
@@ -17,10 +18,8 @@ interface PostProps {
 
 const Post: NextPage<PostProps> = (props) => {
   const { title = '', data } = props
-  const [htmlContent, setHtmlContent] = useState('')
 
   useEffect(() => {
-    setHtmlContent(decodeURIComponent(data.content))
     return () => {
       //
     }
@@ -37,7 +36,7 @@ const Post: NextPage<PostProps> = (props) => {
   const renderContent = () => {
     const contentProps = {
       title: title,
-      htmlContent: (<div dangerouslySetInnerHTML={{ __html: htmlContent }}></div>),
+      htmlContent: (<Content content={data.content}></Content>),
       content: data,
       related: renderRelatedPost()
     }
