@@ -87,7 +87,6 @@ const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContent
                       </a>
                     </div>
                     <div className="flex-md-fill"></div>
-                    {/* <slt-social /> */}
                     {props.social}
                   </div>
                 </div>
@@ -110,9 +109,9 @@ const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContent
                   </span>
                 原创发布在 COSY 主题演示站。未经许可，禁止转载。
               </div>
-                <slot name="navigator"></slot>
+                {props.navigator}
               </div>
-              <div id="comments" className="comments mt-5">
+              {/* <div id="comments" className="comments mt-5">
                 <div className="h5 mb-4">
                   <i className="text-xl text-primary iconfont icon-Chat mr-1"></i>
                   <span className="d-inline-block align-middle">
@@ -220,7 +219,7 @@ const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContent
                   </form>
                 </div>
                 <ul className="comment-list"></ul>
-              </div>
+              </div> */}
             </Col>
           </Row>
         </div>
