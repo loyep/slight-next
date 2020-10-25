@@ -11,7 +11,7 @@ const Content: NextPage<ContentProps> = (props) => {
   const [html, setHtml] = useState('')
 
   useEffect(() => {
-    setHtml(content)
+    setHtml(encodeURI(content))
     return () => {
       //
     }
