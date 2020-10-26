@@ -5,8 +5,8 @@ import { WeiboOutlined, GithubOutlined, MailOutlined, WechatOutlined, QqOutlined
 import SltBackTop from '../BackTop'
 import Link from 'next/link'
 import config from '@/config'
+import styles from './index.module.scss'
 
-import './index.less'
 const { Footer } = Layout
 
 interface SltFooterProps {
@@ -23,11 +23,11 @@ const SltFooter = (props: SltFooterProps) => {
   const { pathname } = useRouter()
   const isHome = pathname === '/'
   return (
-    <Footer className="slt-footer">
+    <Footer className={styles.footer}>
       <div className="slt-container">
-        <div className="slt-footer-content">
-          <div className="slt-footer-content-left">
-            <ul className="slt-footer-menu">
+        <div className={styles.content}>
+          <div className={styles.left}>
+            <ul className={styles.menu}>
               <li className="menu-item">
                 <a href="https://www.mywpku.com/uncategorized">杂记</a>
               </li>
@@ -37,7 +37,7 @@ const SltFooter = (props: SltFooterProps) => {
                 </a>
               </li>
             </ul>
-            <div className="slt-footer-copyright">
+            <div className={styles.copyright}>
               Copyright © 2020
               <Link href="/" >
                 <a title={title} rel="home">
@@ -67,7 +67,7 @@ const SltFooter = (props: SltFooterProps) => {
             </div>
           </div>
           <div className="flex-md-fill"></div>
-          <div className="slt-footer-content-right">
+          <div className={styles.right}>
             <Button type="primary" className="weibo" icon={<WeiboOutlined />} />
             <Button type="primary" className="mail" icon={<MailOutlined />} />
             <Button type="primary" className="github" icon={<GithubOutlined />} />
@@ -75,8 +75,8 @@ const SltFooter = (props: SltFooterProps) => {
             <Button type="primary" className="qq" icon={<QqOutlined />} />
           </div>
         </div>
-        {isHome &&         <div className="slt-footer-links">
-          <span className="slt-footer-links-title">合作伙伴：</span>
+        {isHome && <div className={styles.links}>
+          <span className={styles.linksTitle}>合作伙伴：</span>
           <a href="http://www.farisl.com/" target="">
             Faris Lee
           </a>

@@ -1,0 +1,21 @@
+.social {
+  text-align: center;
+}
+
+:global {
+  .qq:hover {
+    background-color: #007ee5 !important;
+  }
+
+  .wechat:hover {
+    background-color: #51c332 !important;
+  }
+
+  .weibo:hover {
+    background-color: #e6162d !important;
+  }
+
+  .mail:hover {
+    background-color: #1f99df !important;
+  }
+}

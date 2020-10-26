@@ -4,7 +4,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { Col } from 'antd'
 import classnames from 'classnames'
 import { fromNow } from '@/utils/date'
-import LazyLoad from 'react-lazyload';
+import styles from './item.module.scss'
 
 const defaultGrid = {
   gutter: 0,
@@ -58,11 +58,11 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
     }
     let icon: JSX.Element | undefined
     if (type === 'image') {
-      icon = <i className="text-lg iconfont icon-picture1"></i>
+      icon = <i className="iconfont icon-picture1"></i>
     } else if (type === 'video') {
-      icon = <i className="text-lg iconfont icon-play1"></i>
+      icon = <i className="iconfont icon-play1"></i>
     } else if (type === 'audio') {
-      icon = <i className="text-lg iconfont icon-musical-note"></i>
+      icon = <i className="iconfont icon-musical-note"></i>
     }
 
     if (icon) {
@@ -102,10 +102,10 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
     }
 
     return (
-      <div className="slt-cards-item-footer">
+      <div className={styles.itemFooter}>
         <time>{fromNow(publishedAt)}</time>
         <div className="flex-fill"></div>
-        <ul className="slt-cards-item-footer-meta">
+        <ul className={styles.itemMeta}>
           <li className="meta-view">
             <i className="iconfont icon-view"></i>
             <span>{viewsCount}</span>
@@ -133,7 +133,7 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
     xxl: getGrid(grid, 'xxl')
   }
 
-  const classes = classnames({ 'slt-cards-item': true, border: border })
+  const classes = classnames([styles.item, { border: border }])
 
   return (
     <Col
@@ -150,13 +150,13 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
           </Link>
           {renderIcon(type)}
         </div>
-        <div className="slt-cards-item-content">
-          <div className="slt-cards-item-body">
+        <div className={styles.itemContent}>
+          <div className={styles.itemBody}>
             {renderCategory(category)}
             <Link href={linkUrl}>
               <a
                 title={title}
-                className="slt-cards-item-title"
+                className={styles.itemTitle}
                 target="_blank"
                 rel="noreferrer"
               >

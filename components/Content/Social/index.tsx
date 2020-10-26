@@ -1,13 +1,21 @@
 import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
-import './index.less'
+import styles from './index.module.scss'
+
+enum SocialType {
+  'qq', 'wechat', 'weibo', 'twitter', 'linkedin', 'facebook',
+}
 
 interface SltSocialProps {
-  socials: any[]
+  socials: SocialType[]
+}
+
+const defaultProps: SltSocialProps = {
+  socials: []
 }
 
 const SltSocial: NextPage<SltSocialProps> = (props: Partial<SltSocialProps>) => {
-  const { socials = [] } = props
+  const { socials = [] } = { ...defaultProps, ...props };
   const [url, setUrl] = useState('')
   const [title, setTitle] = useState('')
 
@@ -44,7 +52,7 @@ const SltSocial: NextPage<SltSocialProps> = (props: Partial<SltSocialProps>) => 
       <a
         href={url}
         target="_blank"
-        className={`btn btn-light btn-icon btn-${social} btn-rounded btn-md m-1`}
+        className={social}
         rel="nofollow noreferrer"
       >
         <span>
@@ -55,7 +63,7 @@ const SltSocial: NextPage<SltSocialProps> = (props: Partial<SltSocialProps>) => 
   }
 
   return (
-    <div className="post-social text-center">
+    <div className={styles.social}>
       {url && socials.map((social) => renderSocialBtn(social.toLowerCase()))}
     </div>
   )

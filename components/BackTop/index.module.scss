@@ -1,4 +1,4 @@
-.slt-backtop {
+.backtop {
   right: 20px;
   width: 46px;
   bottom: 42px;
@@ -7,15 +7,19 @@
   border-radius: 50%;
   background-color: #fff;
   color: #9fa0a7;
-  border-color: #eeeeef;
+  border-color: #eee;
   box-shadow: 0 1px 3px rgba(26, 26, 26, 0.2);
 
-  > * {
+  @media (max-width: 992px) {
+    display: none;
+  }
+
+  >* {
     height: 100%;
     width: 100%;
   }
 
-  .slt-backtop-stack {
+  &Stack {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,22 +29,22 @@
     height: 100%;
     align-items: center;
 
-    .anticon {
-      position: absolute;
-      top: 6px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 12px !important;
-      transition: 0.15s ease 50ms;
-    }
-
-    .slt-backtop-text {
+    &Text {
       display: inline-block;
       transform: translateY(5px);
       font-size: 12px;
       font-weight: 400;
       text-transform: uppercase;
       transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    :global(.anticon) {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px !important;
+      transition: 0.15s ease 0.05s;
     }
 
     &:hover {
@@ -52,9 +56,9 @@
         transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
       }
 
-      .slt-backtop-text {
+      &Text {
         transform: translateY(0);
-        transition: transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1) 50ms;
+        transition: transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1) 0.05s;
       }
     }
   }

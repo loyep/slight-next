@@ -3,6 +3,7 @@ import SltHeader from '../Header';
 import SltFooter from '../Footer';
 import { useState } from 'react'
 import { Layout, ConfigProvider } from 'antd'
+import styles from './index.module.scss'
 
 const { Content } = Layout
 
@@ -16,7 +17,7 @@ const SltLayout: NextPage<SltLayoutProps> = (props) => {
   const [fixed] = useState(false)
   return (
     <ConfigProvider autoInsertSpaceInButton={false}>
-      <Layout>
+      <Layout className={styles.layout}>
         {header && <SltHeader></SltHeader>}
         <Content style={{
           marginTop: fixed ? '0' : '64px',
