@@ -25,7 +25,7 @@ module.exports = withBundleAnalyzer(withCSS(withSass({
     generateEtags: false,
     cssLoaderOptions: {
       importLoaders: 1,
-      localIdentName: '[local]_[hash:base64:5]',
+      localIdentName: '[local]_[name]_[hash:base64:5]',
     },
     lessLoaderOptions: {
       lessOptions: {

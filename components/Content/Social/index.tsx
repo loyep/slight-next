@@ -45,10 +45,7 @@ const SltSocial: NextPage<SltSocialProps> = (props: Partial<SltSocialProps>) => 
 
   const renderSocialBtn = (social: SocialType) => {
     const url = getShareUrl(social)
-    if (!url) {
-      return null
-    }
-    return (
+    return url ? (
       <a
         href={url}
         target="_blank"
@@ -59,7 +56,7 @@ const SltSocial: NextPage<SltSocialProps> = (props: Partial<SltSocialProps>) => 
           <i className={`iconfont icon-${social}`}></i>
         </span>
       </a>
-    )
+    ) : null
   }
 
   return (
