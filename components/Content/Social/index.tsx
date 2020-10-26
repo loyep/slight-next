@@ -27,23 +27,23 @@ const SltSocial: NextPage<SltSocialProps> = (props: Partial<SltSocialProps>) => 
     }
   }, [])
 
-  const getShareUrl = (social: string) => {
+  const getShareUrl = (social: SocialType) => {
     switch (social) {
-      case 'qq':
+      case SocialType.qq:
         return `https://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${title}`
-      case 'weibo':
+      case SocialType.weibo:
         return `https://service.weibo.com/share/share.php?type=button&language=zh_cn&title=${title}&searchPic=true&url=${url}`
-      case 'twitter':
+      case SocialType.twitter:
         return `https://twitter.com/intent/tweet?url=${url}`
-      case 'facebook':
+      case SocialType.facebook:
         return `https://www.facebook.com/sharer.php?u=${url}`
-      case 'linkedin':
+      case SocialType.linkedin:
         return `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${title}`
     }
     return null
   }
 
-  const renderSocialBtn = (social: string) => {
+  const renderSocialBtn = (social: SocialType) => {
     const url = getShareUrl(social)
     if (!url) {
       return null
@@ -52,7 +52,7 @@ const SltSocial: NextPage<SltSocialProps> = (props: Partial<SltSocialProps>) => 
       <a
         href={url}
         target="_blank"
-        className={social}
+        className={String(social)}
         rel="nofollow noreferrer"
       >
         <span>
