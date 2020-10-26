@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
-import styles from './index.module.css'
+import styles from './index.module.scss'
 
 interface ContentProps {
   content: string
@@ -19,7 +19,7 @@ const Content: NextPage<ContentProps> = (props) => {
 
   return (
     <div
-      className="article-content"
+      className={styles.content}
       dangerouslySetInnerHTML={{ __html: html }}
     ></div>
   )
