@@ -1,0 +1,120 @@
+// .banner {
+//   position: relative;
+//   padding-top: 32px;
+
+//   &Item {
+//     position: relative;
+//     overflow: hidden;
+//     padding: 0;
+//     flex-shrink: 0;
+//     border-radius: 4px;
+//     align-items: flex-start;
+//     display: flex !important;
+
+//     &::after {
+//       content: '';
+//       display: block;
+//       padding-top: 40%;
+//     }
+
+//     :global(.slt-media-content) {
+//       transform: none;
+//     }
+//   }
+
+//   &Arrow {
+//     width: 36px !important;
+//     height: 36px !important;
+//     border-radius: 50%;
+//     cursor: pointer;
+//     z-index: 1;
+//     transition: 0.2s;
+//     background-color: rgba(31, 45, 61, 0.11) !important;
+//     transform: translateY(-50%);
+//     color: #fff !important;
+//     font-size: 14px !important;
+
+//     &::before {
+//       content: unset !important;
+//     }
+
+//     i,
+//     svg {
+//       // height: 14px;
+//       // width: 12px;
+//       color: inherit;
+//     }
+
+//     &:global(.right) {
+//       right: 16px;
+//     }
+
+//     &:global(.left) {
+//       left: 16px;
+//     }
+//   }
+
+//   &Content {
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     border: 0;
+//     border-radius: inherit;
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     background-position: 50% 50%;
+//     background-color: rgba(120, 120, 120, 0.1);
+//   }
+
+//   :global {
+//     .ant-carousel .slick-dots {
+//       height: 8px;
+//       li button {
+//         border-radius: 20px;
+//         background-color: #fff;
+//         opacity: 0.4;
+//         height: 8px;
+//         width: 8px;
+//       }
+
+//       li {
+//         margin: 0 5px;
+//         &.slick-active button {
+//           width: 35px;
+//           opacity: 1;
+//         }
+//       }
+//     }
+//     .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+//       background: #fff;
+//     }
+
+//     .swiper-button-prev,
+//     .swiper-button-next {
+//       background-color: rgba(0, 0, 0, 0.3);
+//       border-radius: 6px;
+//       color: #fff;
+//       font-weight: 400;
+//       opacity: 0;
+//       transition: opacity 0.3s ease-in-out;
+
+//       &::after {
+//         font-size: 16px;
+//       }
+//     }
+
+//     .swiper-container {
+
+//       &:hover,
+//       &:focus {
+
+//         .swiper-button-prev,
+//         .swiper-button-next {
+//           opacity: 1;
+//         }
+//       }
+//     }
+//   }
+// }

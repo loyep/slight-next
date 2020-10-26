@@ -1,17 +1,9 @@
 import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
-import { LeftOutlined, RightOutlined } from '@ant-design/icons'
-import './index.less'
 import Link from 'next/link'
+import './index.less'
 
-import SwiperCore, {
-  Autoplay,
-  Navigation,
-  Pagination,
-  Lazy
-  // Scrollbar,
-  // A11y,
-} from 'swiper'
+import SwiperCore, { Autoplay, Navigation, Pagination, Lazy } from 'swiper'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 
