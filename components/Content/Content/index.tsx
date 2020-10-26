@@ -11,7 +11,7 @@ const Content: NextPage<ContentProps> = (props) => {
   const [html, setHtml] = useState('')
 
   useEffect(() => {
-    setHtml(encodeURI(content))
+    setHtml(decodeURIComponent(content))
     return () => {
       //
     }
@@ -19,7 +19,7 @@ const Content: NextPage<ContentProps> = (props) => {
 
   return (
     <div
-      className={styles.content}
+      className="article-content"
       dangerouslySetInnerHTML={{ __html: html }}
     ></div>
   )
