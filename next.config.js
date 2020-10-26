@@ -43,12 +43,10 @@ module.exports = withBundleAnalyzer(withCSS(withSass({
       return config
     },
     serverRuntimeConfig: {
-      isDev,
     },
     publicRuntimeConfig: {
       // Will be available on both server and client
       staticFolder: '/static',
-      isDev, // Pass through env variables
     },
   })
 })));
