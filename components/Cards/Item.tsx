@@ -53,16 +53,16 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
   } = item
 
   const renderIcon = (type: string) => {
-    if (!type || type === 'default') {
+    if (!type) {
       return null
     }
-    let icon: JSX.Element | undefined
-    if (type === 'image') {
-      icon = <i className="iconfont icon-picture1"></i>
-    } else if (type === 'video') {
-      icon = <i className="iconfont icon-play1"></i>
-    } else if (type === 'audio') {
-      icon = <i className="iconfont icon-musical-note"></i>
+
+    let icon: JSX.Element | null = null
+    switch (type.toLowerCase()) {
+      case 'image': icon = <i className="iconfont icon-picture1"></i>; break;
+      case 'video': icon = <i className="iconfont icon-play1"></i>; break;
+      case 'audio': icon = <i className="iconfont icon-musical-note"></i>; break;
+      default: return null;
     }
 
     if (icon) {
@@ -79,17 +79,18 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
     if (!cate) {
       return null
     }
-    const cateUrl = `/category/${cate.slug}`
     const meta = cate.meta || {}
     return (
-      <div className="slt-list-cate">
+      <div className={styles.cate}>
         <i
-          className="slt-list-cate-dot"
+          className={styles.cateDot}
           style={{ backgroundColor: meta.color || '#ffc781' }}
-        ></i>
-        <a href={cateUrl} title={cate.name}>
-          {cate.name}
-        </a>
+        />
+        <Link href={`/category/${cate.slug}`} >
+          <a title={cate.name}>
+            {cate.name}
+          </a>
+        </Link>
       </div>
     )
   }
@@ -133,7 +134,7 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
     xxl: getGrid(grid, 'xxl')
   }
 
-  const classes = classnames([styles.item, { border: border }])
+  const classes = classnames([styles.item, border ? styles.itemBorder : ''])
 
   return (
     <Col
