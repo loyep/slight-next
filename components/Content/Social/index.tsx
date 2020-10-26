@@ -64,7 +64,7 @@ const SltSocial: NextPage<SltSocialProps> = (props: Partial<SltSocialProps>) => 
 
   return (
     <div className={styles.social}>
-      {url && socials.map((social) => renderSocialBtn(social.toLowerCase()))}
+      {url && socials.map((social) => renderSocialBtn(social))}
     </div>
   )
 }
