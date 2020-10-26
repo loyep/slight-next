@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import { Layout, Button, Tooltip, Menu } from 'antd'
-import { ClockCircleOutlined, SearchOutlined } from '@ant-design/icons'
+import { HistoryOutlined, SearchOutlined } from '@ant-design/icons'
 import './index.less'
 import classnames from 'classnames'
 
@@ -70,7 +70,7 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
               <Link href="/history">
                 <a className="nav-link" target="_blank">
                   <Tooltip placement="bottom" title="最近浏览记录">
-                    <ClockCircleOutlined />
+                    <HistoryOutlined />
                   </Tooltip>
                 </a>
               </Link>
