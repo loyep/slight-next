@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
-import { Col, Row } from 'antd'
+import { Col, Row, Card } from 'antd'
 import './index.less'
 import Link from 'next/link'
 import { fromNow } from '@/utils/date'
@@ -68,11 +68,10 @@ const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContent
       </div>
       <div className="py-3 py-md-4 py-lg-5">
         <div className="slt-container">
-          <Row justify="center">
-            <Col md={24} xs={24} sm={24} lg={20} xl={20} xxl={20}>
-              <div className="post">
+          <Row justify="center" gutter={20} className="post">
+            <Col md={24} xs={24} sm={24} lg={16} xl={16} xxl={16}>
+              <Card className="post-content">
                 { props.htmlContent }
-                {/* <div ref="content" class="post-content"></div> */}
                 <div id="post-action" className="post-action mt-5 mt-lg-5">
                   <div className="d-md-flex flex-md-fill align-items-md-center">
                     <div className="d-none d-md-block">
@@ -110,7 +109,7 @@ const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContent
                 原创发布在 COSY 主题演示站。未经许可，禁止转载。
               </div>
                 {props.navigator}
-              </div>
+              </Card>
               {/* <div id="comments" className="comments mt-5">
                 <div className="h5 mb-4">
                   <i className="text-xl text-primary iconfont icon-Chat mr-1"></i>
@@ -220,6 +219,11 @@ const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContent
                 </div>
                 <ul className="comment-list"></ul>
               </div> */}
+            </Col>
+            <Col md={0} xs={0} sm={0} lg={8} xl={8} xxl={8}>
+              <Card title="文章推荐">
+
+              </Card>
             </Col>
           </Row>
         </div>
