@@ -76,10 +76,9 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
               </Link>
             </li>
             <li className="slt-nav-item">
-              <Button type="default">登录</Button>
-            </li>
-            <li className="slt-nav-item">
-              <Button type="primary">注册</Button>
+              <Link href="/signin">
+                <Button type="default">登录</Button>
+              </Link>
             </li>
           </ul>
         </div>

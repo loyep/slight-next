@@ -110,118 +110,12 @@ const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContent
               </div>
                 {props.navigator}
               </Card>
-              {/* <div id="comments" className="comments mt-5">
-                <div className="h5 mb-4">
-                  <i className="text-xl text-primary iconfont icon-Chat mr-1"></i>
-                  <span className="d-inline-block align-middle">
-                    评论 <small className="font-theme text-sm">(0)</small>
-                  </span>
-                </div>
-                <div id="respond" className="comment-respond">
-                  <form
-                    id="commentform"
-                    method="post"
-                    action="https://cosy.demo.nicetheme.xyz/wp-comments-post.php"
-                    className="comment-form"
-                  >
-                    <div className="d-flex w-100">
-                      <div className="comment-avatar-author flex-avatar w-48 mr-2">
-                        <img
-                          src="https://cosy.demo.nicetheme.xyz/wp-content/themes/Cosy3.3.0/images/default-avatar.png"
-                          className="avatar w-48"
-                        />
-                      </div>
-                      <div className="flex-fill comment-from-author">
-                        <div className="comment-form-info">
-                          <div className="row row-sm mb-2 mb-lg-3">
-                            <div className="col py-1 py-lg-0">
-                              <div className="form-group comment-form-author m-0">
-                                <input
-                                  id="author"
-                                  className="form-control"
-                                  placeholder="昵称"
-                                  name="author"
-                                  type="text"
-                                  value=""
-                                  required
-                                />
-                              </div>
-                            </div>
-                            <div className="col-12 col-lg-4 py-1 py-lg-0">
-                              <div className="form-group comment-form-email m-0">
-                                <input
-                                  id="email"
-                                  className="form-control"
-                                  name="email"
-                                  placeholder="Email"
-                                  type="email"
-                                  value=""
-                                />
-                              </div>
-                            </div>
-                            <div className="col-12 col-lg-4 py-1 py-lg-0">
-                              <div className="form-group comment-form-url m-0">
-                                <input
-                                  id="url"
-                                  className="form-control"
-                                  placeholder="网站地址"
-                                  name="url"
-                                  type="url"
-                                  value=""
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="comment-form-text mb-2">
-                          <div className="form-group comment-textarea mb-3">
-                            <textarea
-                              id="comment"
-                              name="comment"
-                              className="form-control form-control-sm"
-                              rows={3}
-                            ></textarea>
-                          </div>
-                          <div className="form-submit text-right">
-                            <a
-                              id="cancel-comment-reply-link"
-                              rel="nofollow"
-                              style={{ display: "none" }}
-                              className="btn btn-light mr-2"
-                              href="#"
-                            >
-                              再想想
-                          </a>
-                            <input
-                              id="submit"
-                              name="submit"
-                              type="submit"
-                              className="btn btn-primary"
-                              value="发布评论"
-                            />
-                            <input
-                              id="comment_post_ID"
-                              type="hidden"
-                              name="comment_post_ID"
-                              value="105"
-                            />
-                            <input
-                              id="comment_parent"
-                              type="hidden"
-                              name="comment_parent"
-                              value="0"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <ul className="comment-list"></ul>
-              </div> */}
             </Col>
             <Col md={0} xs={0} sm={0} lg={8} xl={8} xxl={8}>
               <Card title="文章推荐">
+
+              </Card>
+              <Card title="随机推荐">
 
               </Card>
             </Col>

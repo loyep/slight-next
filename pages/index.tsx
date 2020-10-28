@@ -53,7 +53,7 @@ const Home: NextPage<HomeProps> = (props) => {
   }
 
   return (
-    <>
+    <div style={{ marginTop: '64px'}}>
       <Banner dataSource={recommends}></Banner>
       <div className="slt-layout-content">
         <div className="slt-container">
@@ -72,7 +72,7 @@ const Home: NextPage<HomeProps> = (props) => {
           )}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

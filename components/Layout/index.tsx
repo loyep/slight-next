@@ -19,8 +19,8 @@ const SltLayout: NextPage<SltLayoutProps> = (props) => {
     <ConfigProvider autoInsertSpaceInButton={false}>
       <Layout className={styles.layout}>
         {header && <SltHeader></SltHeader>}
-        <Content style={{
-          marginTop: fixed ? '0' : '64px',
+        <Content className={styles.content} style={{
+          // marginTop: fixed ? '0' : '64px',
         }}>
           {children}
         </Content>

@@ -34,11 +34,8 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
           <span>
             <Link href="/">
               <a className="home">
-                <span className="text-muted">
-                  首页
-            </span>
+                首页
               </a>
-
             </Link>
           </span>
           <span className="sep text-muted">›</span>
@@ -123,8 +120,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
                 </div>
               </div>
               <div className="border-top py-2 py-md-2 py-xl-3"></div>
-              { props.htmlContent }
-              {/* <div className="post-content" ref="content"></div> */}
+              {props.htmlContent}
               <div id="post-action" className="post-action mt-5 mt-lg-5">
                 <div className="d-md-flex flex-md-fill align-items-md-center">
                   <div className="d-none d-md-block">
