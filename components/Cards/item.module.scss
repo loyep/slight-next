@@ -64,13 +64,13 @@
     }
   }
 
-  @media (min-width: 992px) {
-    &:hover {
-      transform: scale(1.1, 1.1);
-      z-index: 1;
-      transition-delay: 0.35s;
-    }
-  }
+  // @media (min-width: 992px) {
+  // &:hover {
+  // transform: scale(1.1, 1.1);
+  // z-index: 1;
+  // transition-delay: 0.35s;
+  //   }
+  // }
 
   &Meta {
     list-style: none;
