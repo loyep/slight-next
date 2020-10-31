@@ -27,13 +27,13 @@
 
     & > * {
       color: inherit !important;
-      margin-right: 8px;
+      margin-right: 10px;
       &:last-child {
         margin-right: 0;
       }
 
       :global(.anticon) {
-        margin: 0 2px;
+        margin: 0 4px;
       }
     }
 
