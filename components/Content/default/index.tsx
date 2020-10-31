@@ -31,15 +31,15 @@ const DefaultContent: NextPage<DefaultContentProps> = (
       <>
         <span>
           <EyeOutlined />
-          <small>241</small>
+          <small>{content.viewsCount || 0}</small>
         </span>
         <a href="#comments">
           <MessageOutlined />
-          <small>0</small>
+          <small> {content.commentsCount || 0}</small>
         </a>
         <a href="javascript:;">
           <LikeOutlined />
-          <small className="like-count">4</small>
+          <small>{content.likesCount || 0}</small>
         </a>
       </>
     )
@@ -48,6 +48,10 @@ const DefaultContent: NextPage<DefaultContentProps> = (
       title,
       meta,
       date: fromNow(content.publishedAt),
+      category: {
+        href: `/category/${category.slug}`,
+        text: category.name,
+      },
     }
     return <Header {...headerProps} />
   }
@@ -60,60 +64,6 @@ const DefaultContent: NextPage<DefaultContentProps> = (
           <Col span={24} lg={18} md={24} xs={24} sm={24} xl={18} xxl={18}>
             <div className={styles.content}>
               {renderHeader()}
-              <h1 className="post-title h1">{title}</h1>
-              <div className="post-meta d-flex align-items-center flex-row text-muted mt-3 mt-md-3 mb-3 mb-lg-4">
-                <div className="d-flex flex-fill align-items-center">
-                  <div className="flex-avatar w-36">
-                    <img
-                      alt=""
-                      src={user.avatar}
-                      className="avatar avatar-36 photo"
-                      height="36"
-                      width="36"
-                    />
-                  </div>
-                  <div className="author-name d-flex flex-wrap flex-column mx-2 mx-md-3">
-                    <div className="text-md">
-                      <a href="#" className="author-popup">
-                        {user.displayName}
-                      </a>
-                    </div>
-                    <div className="text-xs text-muted">
-                      <time>{fromNow(content.publishedAt)}</time>
-                      <i className="iconfont icon-dot1 mx-1"></i>
-                      <Link href={`/category/${category.slug}`}>
-                        <a rel="category" target="_blank">
-                          {category.name}
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className="post-data d-none d-md-flex text-nowrap text-md ">
-                  <span className="mr-md-3 mr-xl-4">
-                    <i className="text-lg iconfont icon-view"></i>
-                    <small className="font-theme">
-                      {content.viewsCount || 0}
-                    </small>
-                  </span>
-                  <span className="mr-md-3 mr-xl-4">
-                    <a href="#comments">
-                      <i className="text-lg iconfont icon-Chat"></i>
-                      <small className="font-theme">
-                        {content.commentsCount || 0}
-                      </small>
-                    </a>
-                  </span>
-                  <span>
-                    <a className=" btn-action-like" href="#">
-                      <i className="text-lg iconfont icon-like-line"></i>
-                      <small className="like-count font-theme ml-1">
-                        {content.likesCount || 0}
-                      </small>
-                    </a>
-                  </span>
-                </div>
-              </div>
               <div className="border-top py-2 py-md-2 py-xl-3"></div>
               {props.htmlContent}
               <div id="post-action" className="post-action mt-5 mt-lg-5">
