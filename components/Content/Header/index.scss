@@ -14,11 +14,10 @@
 .meta {
   display: flex;
   align-items: center;
-  font-size: 12px;
+  font-size: 14px;
   color: #9ca0ad !important;
 
   &Left {
-    //   color:
     font-size: inherit;
   }
 
@@ -34,7 +33,7 @@
       }
 
       :global(.anticon) {
-        margin: 0 6px;
+        margin: 0 2px;
       }
     }
 

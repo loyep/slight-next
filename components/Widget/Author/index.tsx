@@ -38,10 +38,9 @@ export default function AuthorWidget(props) {
             <a
               href="https://pandapro.demo.nicetheme.xyz/author/suxing"
               target="_blank"
-              className="col"
             >
-              <span className="font-theme font-weight-bold text-md">29</span>
-              <small className="d-block text-xs text-muted">文章</small>
+              <span className={styles.rowTitle}>29</span>
+              <small className={styles.rowCount}>文章</small>
             </a>
           </Col>
 
@@ -49,10 +48,9 @@ export default function AuthorWidget(props) {
             <a
               href="https://pandapro.demo.nicetheme.xyz/author/suxing"
               target="_blank"
-              className="col"
             >
-              <span className="font-theme font-weight-bold text-md">29</span>
-              <small className="d-block text-xs text-muted">文章</small>
+              <span className={styles.rowTitle}>29</span>
+              <small className={styles.rowCount}>文章</small>
             </a>
           </Col>
 
@@ -60,10 +58,9 @@ export default function AuthorWidget(props) {
             <a
               href="https://pandapro.demo.nicetheme.xyz/author/suxing"
               target="_blank"
-              className="col"
             >
-              <span className="font-theme font-weight-bold text-md">29</span>
-              <small className="d-block text-xs text-muted">文章</small>
+              <span className={styles.rowTitle}>29</span>
+              <small className={styles.rowCount}>文章</small>
             </a>
           </Col>
         </Row>
