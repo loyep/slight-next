@@ -61,7 +61,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (
       <div className="slt-container">
         {props.breadcrumbs}
         <Row justify="center" gutter={20}>
-          <Col span={24} lg={18} md={24} xs={24} sm={24} xl={18} xxl={18}>
+          <Col span={24} md={24} xs={24} sm={24} xl={18} xxl={18}>
             <div className={styles.content}>
               {renderHeader()}
               <div className="border-top py-2 py-md-2 py-xl-3"></div>
