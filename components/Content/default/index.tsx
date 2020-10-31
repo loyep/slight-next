@@ -104,7 +104,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (
           </Col>
           <Col lg={6} md={0} xs={0} sm={0} xl={6} xxl={6}>
             <div className="theiaStickySidebar">
-              <AuthorWidget></AuthorWidget>
+              <AuthorWidget {...user} />
               <aside id="secondary" className="widget-area pt-5 pt-lg-0">
                 <div id="search-2" className="widget widget_search">
                   <form

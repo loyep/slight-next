@@ -56,7 +56,7 @@ export default function Header(props: HeaderProps) {
           </a> */}
         </div>
       </div>
-      <div className="border-theme bg-primary"></div>
+      <div className={styles.borderBottom}></div>
     </div>
   )
 }
