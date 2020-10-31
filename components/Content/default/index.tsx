@@ -43,10 +43,11 @@ const DefaultContent: NextPage<DefaultContentProps> = (
         </a>
       </>
     )
-    
+
     const headerProps = {
       title,
       meta,
+      date: fromNow(content.publishedAt),
     }
     return <Header {...headerProps} />
   }
@@ -56,7 +57,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (
       <div className="slt-container">
         {props.breadcrumbs}
         <Row justify="center" gutter={20}>
-          <Col lg={18} md={24} xs={24} sm={24} xl={18} xxl={24}>
+          <Col span={24} lg={18} md={24} xs={24} sm={24} xl={18} xxl={18}>
             <div className={styles.content}>
               {renderHeader()}
               <h1 className="post-title h1">{title}</h1>
