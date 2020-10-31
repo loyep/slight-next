@@ -8,8 +8,7 @@ import VideoContent from '@/components/Content/video'
 import Relations from '@/components/Relations'
 import Content from '@/components/Content/Content'
 import Breadcrumbs from '@/components/Breadcrumbs'
-
-import './[slug].less'
+import './[slug].scss'
 
 interface PostProps {
   title?: string
@@ -77,16 +76,24 @@ const Post: NextPage<PostProps> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { slug } = query
-  const res = await fetchPost({ slug })
-  const { data } = res
-  return {
-    props: {
-      slug: String(slug),
-      title: data.title,
-      description: data.description || '',
-      data,
-    },
+  try {
+    const { slug } = query
+    const res = await fetchPost({ slug })
+    const { data } = res
+    return {
+      props: {
+        slug: String(slug),
+        title: data.title,
+        description: data.description || '',
+        data,
+      },
+    }
+  } catch (error) {
+    return {
+      redirect: {
+        permanent: true,
+      }
+    }
   }
 }
 
