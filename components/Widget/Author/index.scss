@@ -32,13 +32,21 @@
   margin-top: 32px;
 }
 
+.user {
+    margin-bottom: 16px;
+
+    :global(.ant-tag) {
+        margin-right: 0;
+    }
+}
+
 .row {
   text-align: center;
   flex-wrap: wrap;
 
   a {
-    display: inline-grid;
-    vertical-align: middle;
+      display: flex;
+      flex-direction: column;
   }
 
   &Count {
