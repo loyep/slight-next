@@ -22,7 +22,9 @@
   background-color: #fff;
 
   img {
-    border-radius: 50%;
+    border-radius: inherit;
+    height: 80px;
+    width: 80px;
   }
 }
 

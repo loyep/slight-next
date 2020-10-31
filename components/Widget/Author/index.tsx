@@ -14,7 +14,7 @@ const defaultProps: AuthorProps = {
   cover:
     'https://pandapro.demo.nicetheme.xyz/wp-content/themes/PandaPRO-1.1.1/images/default-cover.jpg',
   avatar:
-    '//gravatar.loli.net/avatar/db0a42e95e32035a8bb677ece1186533?s=80&amp;d=mm&amp;r=g',
+    '//gravatar.loli.net/avatar/db0a42e95e32035a8bb677ece1186533?s=80&d=mm&r=g',
   displayName: 'Loren',
   title: '站长',
 }
@@ -33,7 +33,7 @@ export default function AuthorWidget(props: AuthorProps) {
           </div>
         </div>
         <div className={styles.avatar}>
-          <img src={avatar} className="avatar avatar-80 photo 80" />
+          <img src={avatar} />
         </div>
       </div>
       <div className={styles.meta}>
