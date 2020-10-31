@@ -90,8 +90,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     }
   } catch (error) {
     return {
-      redirect: {
+      unstable_redirect: {
         permanent: true,
+        destination: '文章未找到'
       }
     }
   }
