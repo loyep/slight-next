@@ -1,6 +1,6 @@
 import { NextPage, GetServerSideProps } from 'next'
 import { fetchPostList, fetchCategory } from '@/api'
-import SltList from '@/components/List'
+import Cards from '@/components/Cards'
 import { useState } from 'react'
 import { Button } from 'antd'
 import SltCoverHeader from '@/components/Header/CoverHeader'
@@ -62,7 +62,7 @@ const Category: NextPage<CategoryProps> = (props) => {
       />
       <div className="slt-layout-content">
         <div className="slt-container">
-          <SltList dataSource={data}></SltList>
+          <Cards dataSource={data}/>
           {loadMore && (
             <nav className="slt-loadmore">
               <Button
