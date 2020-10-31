@@ -18,6 +18,7 @@ export default function Cards<RecordType>(props: CardsProps<RecordType>) {
     (record as any)[rowKey as string] || index
 
   const renderItems = useMemo(() => {
+    console.log('renderItems')
     return (
       dataSource &&
       dataSource.map((item: any, index: number) => {

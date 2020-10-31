@@ -1,0 +1,25 @@
+.breadcrumbs {
+  margin-bottom: 8px;
+
+  :global {
+    .ant-breadcrumb-link {
+      a,
+      span {
+        font-size: 12px !important;
+      }
+
+      a {
+        color: #222831 !important;
+      }
+
+      span {
+        color: #9ca0ad !important;
+      }
+    }
+
+    .ant-breadcrumb-separator {
+        font-size: 12px;
+        color: #9ca0ad !important;
+    }
+  }
+}

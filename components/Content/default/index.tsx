@@ -1,14 +1,17 @@
 import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
-import { Button, Card } from 'antd'
-import './index.less'
+import { Button, Card, Col, Row, Breadcrumb } from 'antd'
+import styles from './index.scss'
 import Link from 'next/link'
 import { fromNow } from '@/utils/date'
+import AuthorWidget from '@/components/Widget/Author'
+import Header from '../Header'
+import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
 
 interface DefaultContentProps {
   content: any
-  title: string,
+  title: string
   description?: string
   htmlContent?: React.ReactNode | string
   related?: React.ReactNode
@@ -17,50 +20,45 @@ interface DefaultContentProps {
   navigator?: React.ReactNode
 }
 
-const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultContentProps>) => {
+const DefaultContent: NextPage<DefaultContentProps> = (
+  props: Partial<DefaultContentProps>
+) => {
   const { content } = props
   const { category, title, image, description, user } = content
 
-  useEffect(() => {
-    return () => {
-      //
+  const renderHeader = () => {
+    const meta = (
+      <>
+        <span>
+          <EyeOutlined />
+          <small>241</small>
+        </span>
+        <a href="#comments">
+          <MessageOutlined />
+          <small>0</small>
+        </a>
+        <a href="javascript:;">
+          <LikeOutlined />
+          <small className="like-count">4</small>
+        </a>
+      </>
+    )
+    
+    const headerProps = {
+      title,
+      meta,
     }
-  }, [])
+    return <Header {...headerProps} />
+  }
 
   return (
-    <div className="pt-4 pt-md-4 pt-lg-5">
+    <div className={styles.main}>
       <div className="slt-container">
-        <div className="d-none d-md-block breadcrumbs mb-2 mb-md-3">
-          <span>
-            <Link href="/">
-              <a className="home">
-                首页
-              </a>
-            </Link>
-          </span>
-          <span className="sep text-muted">›</span>
-          <span itemProp="itemListElement">
-            <Link href={`/category/${category.slug}`} >
-              <a>
-                <span className="text-muted">
-                  {category.name}
-                </span>
-              </a>
-            </Link>
-          </span>
-          <span className="sep text-muted">›</span>
-          <span className="current">{content.title}</span>
-        </div>
-        <div className="row no-gutters">
-          <div className="col-12 col-lg-9 pr-lg-5">
-            <div className="post">
-              <div className="post-poster rounded mb-4">
-                <div className="media media-3x1">
-                  <div className="media-content">
-                    <img src={image} alt={title} />
-                  </div>
-                </div>
-              </div>
+        {props.breadcrumbs}
+        <Row justify="center" gutter={20}>
+          <Col lg={18} md={24} xs={24} sm={24} xl={18} xxl={24}>
+            <div className={styles.content}>
+              {renderHeader()}
               <h1 className="post-title h1">{title}</h1>
               <div className="post-meta d-flex align-items-center flex-row text-muted mt-3 mt-md-3 mb-3 mb-lg-4">
                 <div className="d-flex flex-fill align-items-center">
@@ -82,12 +80,8 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
                     <div className="text-xs text-muted">
                       <time>{fromNow(content.publishedAt)}</time>
                       <i className="iconfont icon-dot1 mx-1"></i>
-                      <Link
-                        href={`/category/${category.slug}`}
-                      >
-                        <a
-                          rel="category"
-                          target="_blank">
+                      <Link href={`/category/${category.slug}`}>
+                        <a rel="category" target="_blank">
                           {category.name}
                         </a>
                       </Link>
@@ -144,118 +138,22 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
               </div>
               <div className="post-declare text-sm text-muted text-center text-md-left mt-5 mt-md-5">
                 本文系作者
-              <span className="mx-2">
+                <span className="mx-2">
                   @
-                <Link
-                    href={`user/${user.name}`}
-                  >
-                    <a
-                      title={`由${user.diaplayName}发布`}
-                      rel="author">
+                  <Link href={`user/${user.name}`}>
+                    <a title={`由${user.diaplayName}发布`} rel="author">
                       {user.displayName}
                     </a>
                   </Link>
                 </span>
-              原创发布在 COSY 主题演示站。未经许可，禁止转载。
-            </div>
+                原创发布在 COSY 主题演示站。未经许可，禁止转载。
+              </div>
               {props.navigator}
             </div>
-            <div id="comments" className="comments mt-5">
-              <div className="h5 mb-4">
-                <i className="text-xl text-primary iconfont icon-Chat mr-1"></i>
-                <span className="d-inline-block align-middle">
-                  评论
-                <small className="font-theme text-sm">
-                    ({content.commentsCount || 0})
-                </small>
-                </span>
-              </div>
-              <div id="respond" className="comment-respond">
-                <form
-                  method="post"
-                  action="https://cosy.demo.nicetheme.xyz/wp-comments-post.php"
-                  id="commentform"
-                  className="comment-form"
-                >
-                  <div className="d-flex w-100">
-                    <div className="comment-avatar-author flex-avatar w-48 mr-2">
-                      <img
-                        src="https://cosy.demo.nicetheme.xyz/wp-content/themes/Cosy3.3.0/images/default-avatar.png"
-                        className="avatar w-48"
-                      />
-                    </div>
-                    <div className="flex-fill comment-from-author">
-                      <div className="comment-form-info">
-                        <div className="row row-sm mb-2 mb-lg-3">
-                          <div className="col py-1 py-lg-0">
-                            <div className="form-group comment-form-author m-0">
-                              <input
-                                className="form-control"
-                                id="author"
-                                placeholder="昵称"
-                                name="author"
-                                type="text"
-                                value=""
-                                required
-                              />
-                            </div>
-                          </div>
-                          <div className="col-12 col-lg-4 py-1 py-lg-0">
-                            <div className="form-group comment-form-email m-0">
-                              <input
-                                id="email"
-                                className="form-control"
-                                name="email"
-                                placeholder="Email"
-                                type="email"
-                                value=""
-                              />
-                            </div>
-                          </div>
-                          <div className="col-12 col-lg-4 py-1 py-lg-0">
-                            <div className="form-group comment-form-url m-0">
-                              <input
-                                className="form-control"
-                                placeholder="网站地址"
-                                name="url"
-                                type="url"
-                                value=""
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="comment-form-text mb-2">
-                        <div className="form-group comment-textarea mb-3">
-                          <textarea
-                            id="comment"
-                            name="comment"
-                            className="form-control form-control-sm"
-                            rows={3}
-                          ></textarea>
-                        </div>
-                        <div className="form-submit text-right">
-                          <Button type="link" size="large" className="mr-2">
-                            再想想
-                        </Button>
-                          <Button type="primary" size="large">
-                            发布评论
-                        </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <ul className="comment-list"></ul>
-            </div>
-          </div>
-          <div
-            className="sidebar col-lg-3 d-none d-lg-block"
-          >
-            <div
-              className="theiaStickySidebar"
-            >
+          </Col>
+          <Col lg={6} md={0} xs={0} sm={0} xl={6} xxl={6}>
+            <div className="theiaStickySidebar">
+              <AuthorWidget></AuthorWidget>
               <aside id="secondary" className="widget-area pt-5 pt-lg-0">
                 <div id="search-2" className="widget widget_search">
                   <form
@@ -268,8 +166,8 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
                     <div className="search-input form-group m-0">
                       <label className="screen-reader-text" htmlFor="s">
                         Search for:
-                    </label>
-                      <input
+                      </label>
+                      {/* <input
                         type="text"
                         placeholder="说点什么吧…"
                         className="form-control"
@@ -277,7 +175,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
                         name="s"
                         id="s"
                         required
-                      />
+                      /> */}
                       <button className="btn" type="submit" id="searchsubmit">
                         <i className="iconfont icon-search"></i>
                       </button>
@@ -296,7 +194,8 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
                           title="Windows 10X延期发布，微软这次做系统能学乖吗？"
                           className="media-content"
                           style={{
-                            backgroundImage: "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618051678.jpg')"
+                            backgroundImage:
+                              "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618051678.jpg')",
                           }}
                         ></a>
                         <div className="media-action">
@@ -317,7 +216,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
                             className="list-title text-sm h-2x"
                           >
                             Windows 10X延期发布，微软这次做系统能学乖吗？
-                        </a>
+                          </a>
                         </div>
                         <div className="list-footer text-muted text-xs m-0">
                           <div>2周前</div>
@@ -333,7 +232,8 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
                           title="高端的LiFi可见光通信技术，古人早就用上了？"
                           className="media-content"
                           style={{
-                            backgroundImage: "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618051984.jpg')"
+                            backgroundImage:
+                              "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618051984.jpg')",
                           }}
                         ></a>
                       </div>
@@ -347,7 +247,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
                             className="list-title text-sm h-2x"
                           >
                             高端的LiFi可见光通信技术，古人早就用上了？
-                        </a>
+                          </a>
                         </div>
                         <div className="list-footer text-muted text-xs m-0">
                           <div>2周前</div>
@@ -363,7 +263,8 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
                           title="今天的我们怎么成了一种纯粹的“观看动物”？"
                           className="media-content"
                           style={{
-                            backgroundImage: "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618051895.jpg')"
+                            backgroundImage:
+                              "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618051895.jpg')",
                           }}
                         ></a>
                       </div>
@@ -377,7 +278,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
                             className="list-title text-sm h-2x"
                           >
                             今天的我们怎么成了一种纯粹的“观看动物”？
-                        </a>
+                          </a>
                         </div>
                         <div className="list-footer text-muted text-xs m-0">
                           <div>2周前</div>
@@ -393,7 +294,8 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
                           title="LP直言：规模10亿以下的GP就不要来找我们了"
                           className="media-content"
                           style={{
-                            backgroundImage: "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618052175.jpg')"
+                            backgroundImage:
+                              "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618052175.jpg')",
                           }}
                         ></a>
                         <div className="media-action">
@@ -414,7 +316,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
                             className="list-title text-sm h-2x"
                           >
                             LP直言：规模10亿以下的GP就不要来找我们了
-                        </a>
+                          </a>
                         </div>
                         <div className="list-footer text-muted text-xs m-0">
                           <div>2周前</div>
@@ -435,23 +337,15 @@ const DefaultContent: NextPage<DefaultContentProps> = (props: Partial<DefaultCon
                   </a>
                 </div>
               </aside>
-              <div
-                className="resize-sensor"
-              >
-                <div
-                  className="resize-sensor-expand"
-                >
-                </div>
-                <div
-                  className="resize-sensor-shrink"
-                >
-                </div>
+              <div className="resize-sensor">
+                <div className="resize-sensor-expand"></div>
+                <div className="resize-sensor-shrink"></div>
               </div>
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
       </div>
-      { props.related}
+      {props.related}
     </div>
   )
 }
