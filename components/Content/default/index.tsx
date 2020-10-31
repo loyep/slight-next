@@ -8,6 +8,7 @@ import { fromNow } from '@/utils/date'
 import AuthorWidget from '@/components/Widget/Author'
 import Header from '../Header'
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
+import SiderBar from '@/components/SiderBar'
 
 interface DefaultContentProps {
   content: any
@@ -103,7 +104,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (
             </div>
           </Col>
           <Col lg={6} md={0} xs={0} sm={0} xl={6} xxl={6}>
-            <div className="theiaStickySidebar">
+            <SiderBar>
               <AuthorWidget {...user} />
               <aside id="secondary" className="widget-area pt-5 pt-lg-0">
                 <div id="search-2" className="widget widget_search">
@@ -289,7 +290,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (
                 <div className="resize-sensor-expand"></div>
                 <div className="resize-sensor-shrink"></div>
               </div>
-            </div>
+            </SiderBar>
           </Col>
         </Row>
       </div>
