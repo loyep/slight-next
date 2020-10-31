@@ -33,11 +33,11 @@ const DefaultContent: NextPage<DefaultContentProps> = (
           <EyeOutlined />
           <small>{content.viewsCount || 0}</small>
         </span>
-        <a href="#comments">
+        <a>
           <MessageOutlined />
           <small> {content.commentsCount || 0}</small>
         </a>
-        <a href="javascript:;">
+        <a>
           <LikeOutlined />
           <small>{content.likesCount || 0}</small>
         </a>
