@@ -31,15 +31,15 @@ const DefaultContent: NextPage<DefaultContentProps> = (
       <>
         <span>
           <EyeOutlined />
-          <small>{content.viewsCount || 0}</small>
+          <span>{content.viewsCount || 0}</span>
         </span>
         <a>
           <MessageOutlined />
-          <small> {content.commentsCount || 0}</small>
+          <span> {content.commentsCount || 0}</span>
         </a>
         <a>
           <LikeOutlined />
-          <small>{content.likesCount || 0}</small>
+          <span>{content.likesCount || 0}</span>
         </a>
       </>
     )
@@ -279,11 +279,8 @@ const DefaultContent: NextPage<DefaultContentProps> = (
                 <div id="media_image-2" className="widget widget_media_image">
                   <a href="https://www.nicetheme.cn/store/cosy">
                     <img
-                      width="600"
-                      height="450"
                       src="https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618402284.png"
                       className="image wp-image-122  attachment-full size-full"
-                      alt=""
                     />
                   </a>
                 </div>
