@@ -1,6 +1,6 @@
 .notFound {
   // padding-bottom: 48px;
-  // padding-top: 48px;
+  padding-top: 48px;
 }
 
 .content {
@@ -17,8 +17,15 @@
   }
 }
 
+.title {
+  padding-bottom: 24px;
+  font-size: 24px;
+}
+
 .desc {
-    padding-bottom: 24px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #9ca0ad;
 }
 
 .svg404 {
