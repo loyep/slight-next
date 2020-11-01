@@ -31,6 +31,10 @@
       border: none;
       padding: 0;
       background: initial;
+
+      &:focus {
+          outline: none;
+      }
     }
 
     & > * {
