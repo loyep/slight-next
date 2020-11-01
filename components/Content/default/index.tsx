@@ -1,7 +1,6 @@
 import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
-import { LeftOutlined, RightOutlined } from '@ant-design/icons'
-import { Button, Card, Col, Row, Breadcrumb } from 'antd'
+import { Col, Row } from 'antd'
 import styles from './index.scss'
 import Link from 'next/link'
 import { fromNow } from '@/utils/date'
