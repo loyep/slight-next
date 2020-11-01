@@ -37,9 +37,11 @@
       }
     }
 
-    a {
+    button {
       color: #222831 !important;
       cursor: pointer;
+      border: none;
+      background: initial;
     }
   }
 }
@@ -52,5 +54,5 @@
   width: 8%;
   height: 3px;
   z-index: 2;
-  background-color: #448EF6 !important;
+  background-color: #448ef6 !important;
 }
