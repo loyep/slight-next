@@ -8,16 +8,23 @@ import VideoContent from '@/components/Content/video'
 import Relations from '@/components/Relations'
 import Content from '@/components/Content/Content'
 import Breadcrumbs from '@/components/Breadcrumbs'
+import NotoFoundPage from '@/components/Errors/NotFound'
 import './[slug].scss'
 
 interface PostProps {
   title?: string
   description?: string
   data: any
+  error?: string
 }
 
 const Post: NextPage<PostProps> = (props) => {
-  const { title = '', data } = props
+  const { title = '', data, error } = props
+  if (error) {
+    return (
+      <NotoFoundPage statusCode={404} title={error} />
+    )
+  }
   const { related, category, content } = data
 
   useEffect(() => {
@@ -75,7 +82,10 @@ const Post: NextPage<PostProps> = (props) => {
   return <>{renderContent()}</>
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  res,
+}) => {
   try {
     const { slug } = query
     const res = await fetchPost({ slug })
@@ -89,12 +99,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       },
     }
   } catch (error) {
-    return {
-      unstable_redirect: {
-        permanent: true,
-        destination: '文章未找到'
-      }
-    }
+    res.statusCode = 404
+    return { props: { error: '哎呀！该页面无法找到' } }
   }
 }
 
