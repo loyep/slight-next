@@ -61,7 +61,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (
       <div className="slt-container">
         {props.breadcrumbs}
         <Row justify="center">
-          <Col span={24} lg={18} md={24} xs={24} sm={24} xl={18} xxl={18}>
+          <Col span={24} lg={17} md={24} xs={24} sm={24} xl={18} xxl={18}>
             <div className={styles.content}>
               {renderHeader()}
               <div className="border-top py-2 py-md-2 py-xl-3"></div>
@@ -102,7 +102,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (
               {props.navigator}
             </div>
           </Col>
-          <Col lg={6} md={0} xs={0} sm={0} xl={6} xxl={6}>
+          <Col lg={7} md={0} xs={0} sm={0} xl={6} xxl={6}>
             <SiderBar>
               <AuthorWidget {...user} />
               <aside id="secondary" className="widget-area pt-5 pt-lg-0">

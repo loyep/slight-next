@@ -69,7 +69,7 @@ const DefaultContent: NextPage<ImageContentProps> = (
       <div className="py-3 py-md-4 py-lg-5">
         <div className="slt-container">
           <Row justify="center" className="post">
-            <Col md={24} xs={24} sm={24} lg={16} xl={16} xxl={16}>
+            <Col md={24} xs={24} sm={24} lg={17} xl={18} xxl={18}>
               <Card className="post-content">
                 {props.htmlContent}
                 <div id="post-action" className="post-action mt-5 mt-lg-5">
@@ -105,7 +105,7 @@ const DefaultContent: NextPage<ImageContentProps> = (
                 {props.navigator}
               </Card>
             </Col>
-            <Col md={0} xs={0} sm={0} lg={8} xl={8} xxl={8}>
+            <Col md={0} xs={0} sm={0} lg={7} xl={6} xxl={6}>
               <SiderBar>
                 <AuthorWidget {...user} />
                 <Card title="文章推荐"></Card>
