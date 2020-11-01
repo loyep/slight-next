@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext, useMemo } from 'react'
 import { Row } from 'antd'
-import './index.scss'
+import styles from './index.scss'
 import Item, { CardsGridType } from './Item'
 
 export interface CardsProps<RecordType> {
@@ -17,7 +17,6 @@ export default function Cards<RecordType>(props: CardsProps<RecordType>) {
     (record as any)[rowKey as string] || index
 
   const renderItems = useMemo(() => {
-    console.log('renderItems')
     return (
       dataSource &&
       dataSource.map((item: any, index: number) => {
@@ -35,7 +34,7 @@ export default function Cards<RecordType>(props: CardsProps<RecordType>) {
   }, [dataSource, showMeta, rowKey])
 
   return (
-    <div className="cards">
+    <div className={styles.card}>
       <Row justify="start">{renderItems}</Row>
     </div>
   )

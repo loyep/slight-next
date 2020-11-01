@@ -4,7 +4,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { Col } from 'antd'
 import classnames from 'classnames'
 import { fromNow } from '@/utils/date'
-import styles from './item.scss'
+import styles from './index.scss'
 
 const defaultGrid = {
   gutter: 0,
@@ -142,7 +142,7 @@ export default function Item(props) {
   const classes = classnames([styles.item, border ? styles.itemBorder : ''])
 
   return (
-    <Col className="slt-cards-col" {...colPros}>
+    <Col className={styles.cardWrapper} {...colPros}>
       <div className={classes}>
         <div className="slt-media">
           <Link href={linkUrl}>
