@@ -34,14 +34,14 @@ const DefaultContent: NextPage<DefaultContentProps> = (
           <EyeOutlined />
           <span>{content.viewsCount || 0}</span>
         </span>
-        <a>
+        <button>
           <MessageOutlined />
           <span> {content.commentsCount || 0}</span>
-        </a>
-        <a>
+        </button>
+        <button>
           <LikeOutlined />
           <span>{content.likesCount || 0}</span>
-        </a>
+        </button>
       </>
     )
 
