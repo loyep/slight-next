@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext, useMemo } from 'react'
 import { Row } from 'antd'
-import styles from './index.scss'
+import './index.scss'
 import Item, { CardsGridType } from './Item'
 
 export interface CardsProps<RecordType> {
@@ -35,7 +35,7 @@ export default function Cards<RecordType>(props: CardsProps<RecordType>) {
   }, [dataSource, showMeta, rowKey])
 
   return (
-    <div className={styles.cards}>
+    <div className="cards">
       <Row justify="start">{renderItems}</Row>
     </div>
   )
