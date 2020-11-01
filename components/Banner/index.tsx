@@ -53,6 +53,18 @@ const SltBanner: NextPage<SltBannerProps> = (props) => {
                         backgroundImage: `url(${item.image})`,
                       }}
                     ></div>
+                    <div className="list-content p-3 p-md-5 text-center">
+                      <div className="list-body">
+                        <a
+                          href="https://www.mywpku.com/tigermaterial-material-design.html"
+                          target="_blank"
+                          className="h4 text-white h-2x m-0"
+                        >
+                          TigerMaterial – Material Design 与 WordPress
+                          的巧妙碰撞
+                        </a>
+                      </div>
+                    </div>
                   </a>
                 </Link>
               </SwiperSlide>
