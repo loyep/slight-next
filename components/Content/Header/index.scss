@@ -25,6 +25,14 @@
     margin-left: auto;
     color: #9ca0ad !important;
 
+    button {
+      color: #222831 !important;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      background: initial;
+    }
+
     & > * {
       color: inherit !important;
       margin-right: 10px;
@@ -35,13 +43,6 @@
       :global(.anticon) {
         margin: 0 4px;
       }
-    }
-
-    button {
-      color: #222831 !important;
-      cursor: pointer;
-      border: none;
-      background: initial;
     }
   }
 }
