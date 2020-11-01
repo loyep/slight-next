@@ -1,29 +1,32 @@
-import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { Layout, Button } from 'antd'
-import { WeiboOutlined, GithubOutlined, MailOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons'
+import {
+  WeiboOutlined,
+  GithubOutlined,
+  MailOutlined,
+  WechatOutlined,
+  QqOutlined,
+} from '@ant-design/icons'
 import SltBackTop from '../BackTop'
 import Link from 'next/link'
 import config from '@/config'
 import styles from './index.module.scss'
 
-const { Footer } = Layout
-
 interface SltFooterProps {
-  backTop?: boolean,
-  title?: string,
+  backTop?: boolean
+  title?: string
 }
 const defaultProps: SltFooterProps = {
   backTop: true,
   title: config.title,
 }
 
-const SltFooter = (props: SltFooterProps) => {
+const Footer = (props: SltFooterProps) => {
   const { backTop, title } = { ...defaultProps, ...props }
   const { pathname } = useRouter()
   const isHome = pathname === '/'
   return (
-    <Footer className={styles.footer}>
+    <Layout.Footer className={styles.footer}>
       <div className="slt-container">
         <div className={styles.content}>
           <div className={styles.left}>
@@ -39,13 +42,11 @@ const SltFooter = (props: SltFooterProps) => {
             </ul>
             <div className={styles.copyright}>
               Copyright © 2020
-              <Link href="/" >
+              <Link href="/">
                 <a title={title} rel="home">
                   {title}
                 </a>
               </Link>
-              <a href="" title="WP酷" rel="home">
-              </a>
               . Designed by
               <a
                 href="https://www.nicetheme.cn"
@@ -70,72 +71,90 @@ const SltFooter = (props: SltFooterProps) => {
           <div className={styles.right}>
             <Button type="primary" className="weibo" icon={<WeiboOutlined />} />
             <Button type="primary" className="mail" icon={<MailOutlined />} />
-            <Button type="primary" className="github" icon={<GithubOutlined />} />
-            <Button type="primary" className="wechat" icon={<WechatOutlined />} />
+            <Button
+              type="primary"
+              className="github"
+              icon={<GithubOutlined />}
+            />
+            <Button
+              type="primary"
+              className="wechat"
+              icon={<WechatOutlined />}
+            />
             <Button type="primary" className="qq" icon={<QqOutlined />} />
           </div>
         </div>
-        {isHome && <div className={styles.links}>
-          <span className={styles.linksTitle}>合作伙伴：</span>
-          <a href="http://www.farisl.com/" target="">
-            Faris Lee
-          </a>
-          <a href="http://www.farisl.com/" target="">
-            Faris Lee
-          </a>
-          <a href="http://www.farisl.com/" target="">
-            Faris Lee
-          </a>
-          <a href="http://www.farisl.com/" target="">
-            Faris Lee
-          </a>
-          <a href="http://www.farisl.com/" target="">
-            Faris Lee
-          </a>
-          <a href="http://www.zhutihome.net" target="_blank" rel="noreferrer">
-            wordpress主题之家
-          </a>
-          <a
-            href="http://www.themepark.com.cn/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            WEB主题公园
-          </a>
-          <a href="http://www.iztwp.com/"> wordpress主题 </a>
-          <a href="http://blog.wpjam.com" target="_blank" rel="noreferrer">
-            我爱水煮鱼
-          </a>
-          <a href="http://www.zuifengyun.com/"> 醉风云 </a>
-          <a href="http://www.yunlu99.com" target="_blank" rel="noreferrer">
-            云路php解密
-          </a>
-          <a href="http://www.suxing.me" target="_blank" rel="noreferrer">
-            苏醒博客
-          </a>
-          <a href="http://ztmao.com/" target="_blank" rel="noreferrer">
-            wordpress主题
-          </a>
-          <a href="https://www.nicetheme.cn/" target="">
-            wordpress主题
-          </a>
-          <a href="http://www.xintheme.com/" target="">
-            WordPress企业主题
-          </a>
-          <a href="http://www.shejiwo.net/" target="_blank" rel="noreferrer">
-            WordPress企业网站建设
-          </a>
-          <a href="https://www.codecasts.com" target="_blank" rel="noreferrer">
-            CODECASTS
-          </a>
-          <a href="https://www.jerryzone.cn/" target="_blank" rel="noreferrer">
-            JerryZone
-          </a>
-        </div>}
+        {isHome && (
+          <div className={styles.links}>
+            <span className={styles.linksTitle}>合作伙伴：</span>
+            <a href="http://www.farisl.com/" target="">
+              Faris Lee
+            </a>
+            <a href="http://www.farisl.com/" target="">
+              Faris Lee
+            </a>
+            <a href="http://www.farisl.com/" target="">
+              Faris Lee
+            </a>
+            <a href="http://www.farisl.com/" target="">
+              Faris Lee
+            </a>
+            <a href="http://www.farisl.com/" target="">
+              Faris Lee
+            </a>
+            <a href="http://www.zhutihome.net" target="_blank" rel="noreferrer">
+              wordpress主题之家
+            </a>
+            <a
+              href="http://www.themepark.com.cn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              WEB主题公园
+            </a>
+            <a href="http://www.iztwp.com/"> wordpress主题 </a>
+            <a href="http://blog.wpjam.com" target="_blank" rel="noreferrer">
+              我爱水煮鱼
+            </a>
+            <a href="http://www.zuifengyun.com/"> 醉风云 </a>
+            <a href="http://www.yunlu99.com" target="_blank" rel="noreferrer">
+              云路php解密
+            </a>
+            <a href="http://www.suxing.me" target="_blank" rel="noreferrer">
+              苏醒博客
+            </a>
+            <a href="http://ztmao.com/" target="_blank" rel="noreferrer">
+              wordpress主题
+            </a>
+            <a href="https://www.nicetheme.cn/" target="">
+              wordpress主题
+            </a>
+            <a href="http://www.xintheme.com/" target="">
+              WordPress企业主题
+            </a>
+            <a href="http://www.shejiwo.net/" target="_blank" rel="noreferrer">
+              WordPress企业网站建设
+            </a>
+            <a
+              href="https://www.codecasts.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              CODECASTS
+            </a>
+            <a
+              href="https://www.jerryzone.cn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              JerryZone
+            </a>
+          </div>
+        )}
       </div>
-      { backTop && <SltBackTop />}
-    </Footer>
+      {backTop && <SltBackTop />}
+    </Layout.Footer>
   )
 }
 
-export default SltFooter
+export default Footer
