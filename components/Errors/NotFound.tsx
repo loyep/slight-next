@@ -14,7 +14,9 @@ export default function NotFoundPage(props: NotFoundProps) {
             <div className={styles.svg404}></div>
           </div>
           <h1>404</h1>
-          <h4 className={styles.title}>哎呀！ 该页面无法找到。</h4>
+          <h4 className={styles.title}>
+            {props.title || '哎呀！该页面无法找到'}
+          </h4>
           <p className={styles.desc}>看起来这里没有任何东西…</p>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { NextPage, GetServerSideProps } from 'next'
 import { fetchPost } from '@/api'
-import { useState, useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import DefaultContent from '@/components/Content/default'
 import ImageContent from '@/components/Content/image'
 import StatusContent from '@/components/Content/status'
