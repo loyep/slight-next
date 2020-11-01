@@ -4,7 +4,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { Col } from 'antd'
 import classnames from 'classnames'
 import { fromNow } from '@/utils/date'
-import styles from './item.module.scss'
+import styles from './item.scss'
 
 const defaultGrid = {
   gutter: 0,
@@ -38,7 +38,7 @@ interface SltCardsItemProps {
   grid?: CardsGridType
 }
 
-const Item: NextPage<SltCardsItemProps> = (props) => {
+export default function Item(props) {
   const { item, showMeta, grid = defaultGrid, border } = props
   const {
     title,
@@ -59,10 +59,17 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
 
     let icon: JSX.Element | null = null
     switch (type.toLowerCase()) {
-      case 'image': icon = <i className="iconfont icon-picture1"></i>; break;
-      case 'video': icon = <i className="iconfont icon-play1"></i>; break;
-      case 'audio': icon = <i className="iconfont icon-musical-note"></i>; break;
-      default: return null;
+      case 'image':
+        icon = <i className="iconfont icon-picture1"></i>
+        break
+      case 'video':
+        icon = <i className="iconfont icon-play1"></i>
+        break
+      case 'audio':
+        icon = <i className="iconfont icon-musical-note"></i>
+        break
+      default:
+        return null
     }
 
     if (icon) {
@@ -86,10 +93,8 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
           className={styles.cateDot}
           style={{ backgroundColor: meta.color || '#ffc781' }}
         />
-        <Link href={`/category/${cate.slug}`} >
-          <a title={cate.name}>
-            {cate.name}
-          </a>
+        <Link href={`/category/${cate.slug}`}>
+          <a title={cate.name}>{cate.name}</a>
         </Link>
       </div>
     )
@@ -131,16 +136,13 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
     md: getGrid(grid, 'md'),
     lg: getGrid(grid, 'lg'),
     xl: getGrid(grid, 'xl'),
-    xxl: getGrid(grid, 'xxl')
+    xxl: getGrid(grid, 'xxl'),
   }
 
   const classes = classnames([styles.item, border ? styles.itemBorder : ''])
 
   return (
-    <Col
-      className="slt-cards-col"
-      {...colPros}
-    >
+    <Col className="slt-cards-col" {...colPros}>
       <div className={classes}>
         <div className="slt-media">
           <Link href={linkUrl}>
@@ -171,5 +173,3 @@ const Item: NextPage<SltCardsItemProps> = (props) => {
     </Col>
   )
 }
-
-export default Item

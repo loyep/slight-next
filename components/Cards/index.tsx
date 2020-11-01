@@ -1,7 +1,6 @@
-import { NextPage } from 'next'
 import React, { useState, useEffect, createContext, useMemo } from 'react'
 import { Row } from 'antd'
-import './index.less'
+import styles from './index.scss'
 import Item, { CardsGridType } from './Item'
 
 export interface CardsProps<RecordType> {
@@ -36,7 +35,7 @@ export default function Cards<RecordType>(props: CardsProps<RecordType>) {
   }, [dataSource, showMeta, rowKey])
 
   return (
-    <div className="slt-list">
+    <div className={styles.cards}>
       <Row justify="start">{renderItems}</Row>
     </div>
   )
