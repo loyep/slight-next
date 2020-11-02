@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import React, { useState, useEffect } from 'react'
+import React, { useMemo, useEffect } from 'react'
 import { Col, Row, Card } from 'antd'
 import './index.less'
 import styles from './index.scss'
@@ -19,6 +19,9 @@ interface ImageContentProps {
   social?: React.ReactNode
   breadcrumbs?: React.ReactNode
   navigator?: React.ReactNode
+  onViewClick?: () => void
+  onCommentClick?: () => void
+  onLikeClick?: () => void
 }
 
 const DefaultContent: NextPage<ImageContentProps> = (
@@ -33,18 +36,18 @@ const DefaultContent: NextPage<ImageContentProps> = (
     }
   }, [])
 
-  const renderHeader = () => {
+  const renderHeader = useMemo(() => {
     const meta = (
       <>
-        <span>
+        <span onClick={props.onViewClick}>
           <EyeOutlined />
           <span>{content.viewsCount || 0}</span>
         </span>
-        <button>
+        <button onClick={props.onCommentClick}>
           <MessageOutlined />
           <span> {content.commentsCount || 0}</span>
         </button>
-        <button>
+        <button onClick={props.onLikeClick}>
           <LikeOutlined />
           <span>{content.likesCount || 0}</span>
         </button>
@@ -61,47 +64,13 @@ const DefaultContent: NextPage<ImageContentProps> = (
       },
     }
     return <Header {...headerProps} />
-  }
+  }, [content, category, title])
 
   return (
     <div className={styles.main}>
       <div className="slt-container">
         {props.breadcrumbs}
-        {renderHeader()}
-        {/* <div className="article-cover">
-        <div
-          className="article-cover-color"
-          style={{
-            background: `linear-gradient(to top, rgb(249, 183, 5) 10%, rgb(4, 179, 207) 200%)`,
-          }}
-        ></div>
-        <div className="article-cover-bg">
-          <img src={image} alt={title} />
-        </div>
-        <div className="slt-container">
-          <div className="slt-post-header">
-            <h1 className="h1 mt-4 mt-md-5">{title}</h1>
-            <div className="slt-post-header-meta text-sm text-muted text-center mt-3">
-              <span className="author-name author-popup">
-                {user.displayName}
-              </span>
-              <i className="text-light iconfont icon-dot1 mx-1 mx-md-2"></i>
-              <time>{fromNow(content.publishedAt)}</time>
-              <i className="text-light iconfont icon-dot1 mx-1 mx-md-2"></i>
-              <Link href={`/category/${category.slug}`}>
-                <a rel="category" target="_blank">
-                  {category.name}
-                </a>
-              </Link>
-            </div>
-          </div>
-          <div className="slt-media">
-            <div className="slt-media-content">
-              <img src={image} alt={title} />
-            </div>
-          </div>
-        </div>
-      </div> */}
+        {renderHeader}
         <Row justify="center" className="post">
           <Col md={24} xs={24} sm={24} lg={17} xl={18} xxl={18}>
             <Card className="post-content">

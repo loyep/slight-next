@@ -18,6 +18,9 @@ interface DefaultContentProps {
   social?: React.ReactNode
   breadcrumbs?: React.ReactNode
   navigator?: React.ReactNode
+  onViewClick?: () => void
+  onCommentClick?: () => void
+  onLikeClick?: () => void
 }
 
 const DefaultContent: NextPage<DefaultContentProps> = (
@@ -29,15 +32,15 @@ const DefaultContent: NextPage<DefaultContentProps> = (
   const renderHeader = () => {
     const meta = (
       <>
-        <span>
+        <span onClick={props.onViewClick}>
           <EyeOutlined />
           <span>{content.viewsCount || 0}</span>
         </span>
-        <button>
+        <button onClick={props.onCommentClick}>
           <MessageOutlined />
           <span> {content.commentsCount || 0}</span>
         </button>
-        <button>
+        <button onClick={props.onLikeClick}>
           <LikeOutlined />
           <span>{content.likesCount || 0}</span>
         </button>
