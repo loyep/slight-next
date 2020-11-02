@@ -19,29 +19,27 @@ interface HeaderProps {
 export default function Header(props: HeaderProps) {
   return (
     <div className={styles.header}>
-      <div className="slt-container">
-        <div className={styles.media}>
-          <div
-            className={styles.mediaContent}
-            style={{
-              backgroundImage: `url('https://pandapro.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618052175.jpg')`,
-            }}
-          >
-            <span className={styles.overlay}></span>
+      <div className={styles.media}>
+        <div
+          className={styles.mediaContent}
+          style={{
+            backgroundImage: `url('https://pandapro.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618052175.jpg')`,
+          }}
+        >
+          <span className={styles.overlay}></span>
+        </div>
+        <div className={styles.mediaOverlay}>
+          <div>
+            <Tag color={'#448EF6'}>
+              <Link href={'/'}>
+                <a target="_blank">#{'前沿科技'}#</a>
+              </Link>
+            </Tag>
           </div>
-          <div className={styles.mediaOverlay}>
-            <div>
-              <Tag color={'#448EF6'}>
-                <Link href={'/'}>
-                  <a target="_blank">#{'前沿科技'}#</a>
-                </Link>
-              </Tag>
-            </div>
-            <h1 className={styles.title}>{props.title}</h1>
-            <div className={styles.meta}>
-              <time>{props.date}</time>
-              <div className={styles.metaRight}>{props.meta}</div>
-            </div>
+          <h1 className={styles.title}>{props.title}</h1>
+          <div className={styles.meta}>
+            <time>{props.date}</time>
+            <div className={styles.metaRight}>{props.meta}</div>
           </div>
         </div>
       </div>
