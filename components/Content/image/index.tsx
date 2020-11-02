@@ -2,6 +2,7 @@ import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
 import { Col, Row, Card } from 'antd'
 import './index.less'
+import styles from './index.scss'
 import Link from 'next/link'
 import { fromNow } from '@/utils/date'
 import SiderBar from '@/components/SiderBar'
@@ -63,11 +64,11 @@ const DefaultContent: NextPage<ImageContentProps> = (
   }
 
   return (
-    
-    <div className="slt-article-image">
-      {props.breadcrumbs}
-      {renderHeader()}
-      {/* <div className="article-cover">
+    <div className={styles.main}>
+      <div className="slt-container">
+        {props.breadcrumbs}
+        {renderHeader()}
+        {/* <div className="article-cover">
         <div
           className="article-cover-color"
           style={{
@@ -101,54 +102,51 @@ const DefaultContent: NextPage<ImageContentProps> = (
           </div>
         </div>
       </div> */}
-      <div className="py-3 py-md-4 py-lg-5">
-        <div className="slt-container">
-          <Row justify="center" className="post">
-            <Col md={24} xs={24} sm={24} lg={17} xl={18} xxl={18}>
-              <Card className="post-content">
-                {props.htmlContent}
-                <div id="post-action" className="post-action mt-5 mt-lg-5">
-                  <div className="d-md-flex flex-md-fill align-items-md-center">
-                    <div className="d-none d-md-block">
-                      <a
-                        href="#"
-                        className="d-inline-block btn-action-like mr-md-4"
-                      >
-                        <i className="text-xl iconfont icon-like"></i>
-                        <span className="like-count font-theme align-middle ml-1">
-                          {content.likesCount || 0}
-                        </span>
-                      </a>
-                    </div>
-                    <div className="flex-md-fill"></div>
-                    {props.social}
+        <Row justify="center" className="post">
+          <Col md={24} xs={24} sm={24} lg={17} xl={18} xxl={18}>
+            <Card className="post-content">
+              {props.htmlContent}
+              <div id="post-action" className="post-action mt-5 mt-lg-5">
+                <div className="d-md-flex flex-md-fill align-items-md-center">
+                  <div className="d-none d-md-block">
+                    <a
+                      href="#"
+                      className="d-inline-block btn-action-like mr-md-4"
+                    >
+                      <i className="text-xl iconfont icon-like"></i>
+                      <span className="like-count font-theme align-middle ml-1">
+                        {content.likesCount || 0}
+                      </span>
+                    </a>
                   </div>
+                  <div className="flex-md-fill"></div>
+                  {props.social}
                 </div>
+              </div>
 
-                <div className="post-declare text-sm text-muted text-center text-md-left mt-5 mt-md-5">
-                  本文系作者
-                  <span className="mx-2">
-                    @
-                    <Link href={`user/${user.name}`}>
-                      <a title={`由${user.diaplayName}发布`} rel="author">
-                        {user.displayName}
-                      </a>
-                    </Link>
-                  </span>
-                  原创发布在 COSY 主题演示站。未经许可，禁止转载。
-                </div>
-                {props.navigator}
-              </Card>
-            </Col>
-            <Col md={0} xs={0} sm={0} lg={7} xl={6} xxl={6}>
-              <SiderBar>
-                <AuthorWidget {...user} />
-                <Card title="文章推荐"></Card>
-                <Card title="随机推荐"></Card>
-              </SiderBar>
-            </Col>
-          </Row>
-        </div>
+              <div className="post-declare text-sm text-muted text-center text-md-left mt-5 mt-md-5">
+                本文系作者
+                <span className="mx-2">
+                  @
+                  <Link href={`user/${user.name}`}>
+                    <a title={`由${user.diaplayName}发布`} rel="author">
+                      {user.displayName}
+                    </a>
+                  </Link>
+                </span>
+                原创发布在 COSY 主题演示站。未经许可，禁止转载。
+              </div>
+              {props.navigator}
+            </Card>
+          </Col>
+          <Col md={0} xs={0} sm={0} lg={7} xl={6} xxl={6}>
+            <SiderBar>
+              <AuthorWidget {...user} />
+              <Card title="文章推荐"></Card>
+              <Card title="随机推荐"></Card>
+            </SiderBar>
+          </Col>
+        </Row>
       </div>
       {props.related}
     </div>
