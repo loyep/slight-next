@@ -4,6 +4,8 @@ import { Col, Row, Card } from 'antd'
 import './index.less'
 import Link from 'next/link'
 import { fromNow } from '@/utils/date'
+import SiderBar from '@/components/SiderBar'
+import AuthorWidget from '@/components/Widget/Author'
 
 interface ImageContentProps {
   content: any
@@ -16,7 +18,9 @@ interface ImageContentProps {
   navigator?: React.ReactNode
 }
 
-const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContentProps>) => {
+const DefaultContent: NextPage<ImageContentProps> = (
+  props: Partial<ImageContentProps>
+) => {
   const { content } = props
   const { category, title, image, description, user } = content
 
@@ -48,12 +52,8 @@ const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContent
               <i className="text-light iconfont icon-dot1 mx-1 mx-md-2"></i>
               <time>{fromNow(content.publishedAt)}</time>
               <i className="text-light iconfont icon-dot1 mx-1 mx-md-2"></i>
-              <Link
-                href={`/category/${category.slug}`}
-              >
-                <a
-                  rel="category"
-                  target="_blank">
+              <Link href={`/category/${category.slug}`}>
+                <a rel="category" target="_blank">
                   {category.name}
                 </a>
               </Link>
@@ -68,10 +68,10 @@ const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContent
       </div>
       <div className="py-3 py-md-4 py-lg-5">
         <div className="slt-container">
-          <Row justify="center" gutter={20} className="post">
-            <Col md={24} xs={24} sm={24} lg={16} xl={16} xxl={16}>
+          <Row justify="center" className="post">
+            <Col md={24} xs={24} sm={24} lg={17} xl={18} xxl={18}>
               <Card className="post-content">
-                { props.htmlContent }
+                {props.htmlContent}
                 <div id="post-action" className="post-action mt-5 mt-lg-5">
                   <div className="d-md-flex flex-md-fill align-items-md-center">
                     <div className="d-none d-md-block">
@@ -90,39 +90,32 @@ const DefaultContent: NextPage<ImageContentProps> = (props: Partial<ImageContent
                   </div>
                 </div>
 
-                <div
-                  className="post-declare text-sm text-muted text-center text-md-left mt-5 mt-md-5"
-                >
+                <div className="post-declare text-sm text-muted text-center text-md-left mt-5 mt-md-5">
                   本文系作者
-                <span className="mx-2">
+                  <span className="mx-2">
                     @
-                  <Link
-                      href={`user/${user.name}`}
-                    >
-                      <a
-                        title={`由${user.diaplayName}发布`}
-                        rel="author">
+                    <Link href={`user/${user.name}`}>
+                      <a title={`由${user.diaplayName}发布`} rel="author">
                         {user.displayName}
                       </a>
                     </Link>
                   </span>
-                原创发布在 COSY 主题演示站。未经许可，禁止转载。
-              </div>
+                  原创发布在 COSY 主题演示站。未经许可，禁止转载。
+                </div>
                 {props.navigator}
               </Card>
             </Col>
-            <Col md={0} xs={0} sm={0} lg={8} xl={8} xxl={8}>
-              <Card title="文章推荐">
-
-              </Card>
-              <Card title="随机推荐">
-
-              </Card>
+            <Col md={0} xs={0} sm={0} lg={7} xl={6} xxl={6}>
+              <SiderBar>
+                <AuthorWidget {...user} />
+                <Card title="文章推荐"></Card>
+                <Card title="随机推荐"></Card>
+              </SiderBar>
             </Col>
           </Row>
         </div>
       </div>
-      { props.related}
+      {props.related}
     </div>
   )
 }

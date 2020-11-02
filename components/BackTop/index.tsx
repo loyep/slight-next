@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
-import { BackTop, Tooltip } from 'antd'
+import { BackTop } from 'antd'
 import { CaretUpOutlined } from '@ant-design/icons'
-import styles from './index.module.scss'
+import styles from './index.scss'
 
 const SltBackTop: NextPage = (props) => {
   return (

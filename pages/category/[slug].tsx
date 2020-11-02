@@ -1,6 +1,7 @@
 import { NextPage, GetServerSideProps } from 'next'
+import NotoFoundPage from '@/components/Errors/NotFound'
 import { fetchPostList, fetchCategory } from '@/api'
-import SltList from '@/components/List'
+import Cards from '@/components/Cards'
 import { useState } from 'react'
 import { Button } from 'antd'
 import SltCoverHeader from '@/components/Header/CoverHeader'
@@ -11,10 +12,17 @@ interface CategoryProps {
   data: any[]
   page: number
   category: any
+  error?: any
 }
 
 const Category: NextPage<CategoryProps> = (props) => {
-  const { category } = props
+  const { category, error } = props
+  if (error) {
+    return (
+      <NotoFoundPage statusCode={404} title={`Sorry. No user was found.`} />
+    )
+  }
+
   const [loadMore, setLoadMore] = useState(true)
   const [currentPage, setCurrentPage] = useState(props.page)
   const [loading, setLoading] = useState(false)
@@ -62,7 +70,7 @@ const Category: NextPage<CategoryProps> = (props) => {
       />
       <div className="slt-layout-content">
         <div className="slt-container">
-          <SltList dataSource={data}></SltList>
+          <Cards dataSource={data} />
           {loadMore && (
             <nav className="slt-loadmore">
               <Button
@@ -81,21 +89,29 @@ const Category: NextPage<CategoryProps> = (props) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { slug } = query
-  const page = 1
-  const categoryRes = await fetchCategory({ slug })
-  const { data: category = {} } = categoryRes || {}
-  const postsRes = await fetchPostList({ page, category: category.id })
-  const { list: data = [] } = postsRes
-  return {
-    props: {
-      title: category.name,
-      description: category.description,
-      data,
-      category,
-      page,
-    },
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  res,
+}) => {
+  try {
+    const { slug } = query
+    const page = 1
+    const categoryRes = await fetchCategory({ slug })
+    const { data: category = {} } = categoryRes || {}
+    const postsRes = await fetchPostList({ page, category: category.id })
+    const { list: data = [] } = postsRes
+    return {
+      props: {
+        title: category.name,
+        description: category.description,
+        data,
+        category,
+        page,
+      },
+    }
+  } catch (error) {
+    res.statusCode = 404
+    return { props: { error: '哎呀！该页面无法找到' } }
   }
 }
 

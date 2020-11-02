@@ -1,12 +1,11 @@
 {
-  "presets": ["next/babel"],
+  "presets": ["next/babel", "@zeit/next-typescript/babel"],
   "plugins": [
     [
       "import",
       {
         "libraryName": "antd",
-        "libraryDirectory": "lib",
-        "style": false
+        "style": "less"
       }
     ],
     [

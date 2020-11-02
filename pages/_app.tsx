@@ -6,27 +6,27 @@ import { generateTitle } from '@/utils'
 import '@/assets/styles/antd.less'
 import '@/assets/styles/index.less'
 import SltLayout from '@/components/Layout'
-import NProgress from 'nprogress'
+// import NProgress from 'nprogress'
 import { useEffect } from 'react'
 import { withRouter } from 'next/router'
 
-Router.events.on('routeChangeStart', () => {
-  NProgress.start()
-  console.log('routeChangeStart')
-})
+// Router.events.on('routeChangeStart', () => {
+//   NProgress.start()
+//   console.log('routeChangeStart')
+// })
 
-Router.events.on('routeChangeComplete', () => {
-  console.log('routeChangeComplete')
-  setTimeout(() => {
-    NProgress.done()
-    window.scrollTo(0, 0)
-  }, 0)
-})
+// Router.events.on('routeChangeComplete', () => {
+//   console.log('routeChangeComplete')
+//   setTimeout(() => {
+//     NProgress.done()
+//     window.scrollTo(0, 0)
+//   }, 0)
+// })
 
-Router.events.on('routeChangeError', () => {
-  console.log('routeChangeError')
-  NProgress.done()
-})
+// Router.events.on('routeChangeError', () => {
+//   console.log('routeChangeError')
+//   NProgress.done()
+// })
 
 type NextContext = AppProps & Record<string, any>
 
