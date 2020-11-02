@@ -71,4 +71,33 @@
     margin: 0 4px;
     font-size: 12px;
   }
+
+  &Right {
+    margin-left: auto;
+    color: #9ca0ad !important;
+
+    button {
+      color: #222831 !important;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      background: initial;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    & > * {
+      color: inherit !important;
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
+      }
+
+      :global(.anticon) {
+        margin: 0 4px;
+      }
+    }
+  }
 }

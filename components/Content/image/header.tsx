@@ -40,7 +40,7 @@ export default function Header(props: HeaderProps) {
             <h1 className={styles.title}>{props.title}</h1>
             <div className={styles.meta}>
               <time>{props.date}</time>
-              {props.meta}
+              <div className={styles.metaRight}>{props.meta}</div>
             </div>
           </div>
         </div>
