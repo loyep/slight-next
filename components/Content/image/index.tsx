@@ -63,7 +63,9 @@ const DefaultContent: NextPage<ImageContentProps> = (
   }
 
   return (
+    
     <div className="slt-article-image">
+      {props.breadcrumbs}
       {renderHeader()}
       {/* <div className="article-cover">
         <div
