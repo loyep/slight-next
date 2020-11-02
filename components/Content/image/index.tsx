@@ -65,7 +65,7 @@ const DefaultContent: NextPage<ImageContentProps> = (
   return (
     <div className="slt-article-image">
       {renderHeader()}
-      <div className="article-cover">
+      {/* <div className="article-cover">
         <div
           className="article-cover-color"
           style={{
@@ -98,7 +98,7 @@ const DefaultContent: NextPage<ImageContentProps> = (
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="py-3 py-md-4 py-lg-5">
         <div className="slt-container">
           <Row justify="center" className="post">
