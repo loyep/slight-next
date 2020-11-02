@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { fromNow } from '@/utils/date'
 import SiderBar from '@/components/SiderBar'
 import AuthorWidget from '@/components/Widget/Author'
+import Header from './header'
 
 interface ImageContentProps {
   content: any
@@ -32,6 +33,7 @@ const DefaultContent: NextPage<ImageContentProps> = (
 
   return (
     <div className="slt-article-image">
+      <Header></Header>
       <div className="article-cover">
         <div
           className="article-cover-color"
