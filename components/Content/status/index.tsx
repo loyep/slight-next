@@ -1,16 +1,49 @@
-import { NextPage } from 'next'
-import React, { useState, useEffect } from 'react'
-import { Button, Card } from 'antd'
-import './index.less'
-import Link from 'next/link'
+import React, { useMemo, useEffect } from 'react'
+import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
+import { Col, Row } from 'antd'
+import Header from '../Header'
+import styles from './index.scss'
 import { fromNow } from '@/utils/date'
+import AuthorWidget from '@/components/Widget/Author'
+import SiderBar from '@/components/SiderBar'
+import Link from 'next/link'
 import { ContentProps } from '@/components/Content'
+import Container from '../Container'
 
 type StatusContentProps = ContentProps
 
 export default function StatusContent(props: StatusContentProps) {
   const { content } = props
   const { category, title, image, description, user } = content
+  const renderHeader = useMemo(() => {
+    const meta = (
+      <>
+        <span onClick={props.onViewClick}>
+          <EyeOutlined />
+          <span>{content.viewsCount || 0}</span>
+        </span>
+        <button onClick={props.onCommentClick}>
+          <MessageOutlined />
+          <span> {content.commentsCount || 0}</span>
+        </button>
+        <button onClick={props.onLikeClick}>
+          <LikeOutlined />
+          <span>{content.likesCount || 0}</span>
+        </button>
+      </>
+    )
+
+    const headerProps = {
+      title,
+      meta,
+      date: fromNow(content.publishedAt),
+      category: {
+        href: `/category/${category.slug}`,
+        text: category.name,
+      },
+    }
+    return <Header {...headerProps} />
+  }, [title, category, content])
 
   useEffect(() => {
     return () => {
@@ -19,94 +52,14 @@ export default function StatusContent(props: StatusContentProps) {
   }, [])
 
   return (
-    <div className="pt-4 pt-md-4 pt-lg-5">
+    <div className={styles.main}>
       <div className="slt-container">
-        <div className="d-none d-md-block breadcrumbs mb-2 mb-md-3">
-          <span>
-            <Link href="/">
-              <a className="home">
-                <span className="text-muted">首页</span>
-              </a>
-            </Link>
-          </span>
-          <span className="sep text-muted">›</span>
-          <span itemProp="itemListElement">
-            <Link href={`/category/${category.slug}`}>
-              <a>
-                <span className="text-muted">{category.name}</span>
-              </a>
-            </Link>
-          </span>
-          <span className="sep text-muted">›</span>
-          <span className="current">{content.title}</span>
-        </div>
-        <div className="row no-gutters">
-          <div className="col-12 col-lg-9 pr-lg-5">
-            <div className="post">
-              <div className="post-poster rounded mb-4">
-                <div className="media media-3x1">
-                  <div className="media-content">
-                    <img src={image} alt={title} />
-                  </div>
-                </div>
-              </div>
-              <h1 className="post-title h1">{title}</h1>
-              <div className="post-meta d-flex align-items-center flex-row text-muted mt-3 mt-md-3 mb-3 mb-lg-4">
-                <div className="d-flex flex-fill align-items-center">
-                  <div className="flex-avatar w-36">
-                    <img
-                      alt=""
-                      src={user.avatar}
-                      className="avatar avatar-36 photo"
-                      height="36"
-                      width="36"
-                    />
-                  </div>
-                  <div className="author-name d-flex flex-wrap flex-column mx-2 mx-md-3">
-                    <div className="text-md">
-                      <a href="#" className="author-popup">
-                        {user.displayName}
-                      </a>
-                    </div>
-                    <div className="text-xs text-muted">
-                      <time>{fromNow(content.publishedAt)}</time>
-                      <i className="iconfont icon-dot1 mx-1"></i>
-                      <Link href={`/category/${category.slug}`}>
-                        <a rel="category" target="_blank">
-                          {category.name}
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className="post-data d-none d-md-flex text-nowrap text-md ">
-                  <span className="mr-md-3 mr-xl-4">
-                    <i className="text-lg iconfont icon-view"></i>
-                    <small className="font-theme">
-                      {content.viewsCount || 0}
-                    </small>
-                  </span>
-                  <span className="mr-md-3 mr-xl-4">
-                    <a href="#comments">
-                      <i className="text-lg iconfont icon-Chat"></i>
-                      <small className="font-theme">
-                        {content.commentsCount || 0}
-                      </small>
-                    </a>
-                  </span>
-                  <span>
-                    <a className=" btn-action-like" href="#">
-                      <i className="text-lg iconfont icon-like-line"></i>
-                      <small className="like-count font-theme ml-1">
-                        {content.likesCount || 0}
-                      </small>
-                    </a>
-                  </span>
-                </div>
-              </div>
+        <Row justify="center">
+          <Col span={24} lg={17} md={24} xs={24} sm={24} xl={18} xxl={18}>
+            <Container>
+              {renderHeader}
               <div className="border-top py-2 py-md-2 py-xl-3"></div>
               {props.htmlContent}
-              {/* <div className="post-content" ref="content"></div> */}
               <div id="post-action" className="post-action mt-5 mt-lg-5">
                 <div className="d-md-flex flex-md-fill align-items-md-center">
                   <div className="d-none d-md-block">
@@ -141,99 +94,11 @@ export default function StatusContent(props: StatusContentProps) {
                 原创发布在 COSY 主题演示站。未经许可，禁止转载。
               </div>
               {props.navigator}
-            </div>
-            <div id="comments" className="comments mt-5">
-              <div className="h5 mb-4">
-                <i className="text-xl text-primary iconfont icon-Chat mr-1"></i>
-                <span className="d-inline-block align-middle">
-                  评论
-                  <small className="font-theme text-sm">
-                    ({content.commentsCount || 0})
-                  </small>
-                </span>
-              </div>
-              <div id="respond" className="comment-respond">
-                <form
-                  method="post"
-                  action="https://cosy.demo.nicetheme.xyz/wp-comments-post.php"
-                  id="commentform"
-                  className="comment-form"
-                >
-                  <div className="d-flex w-100">
-                    <div className="comment-avatar-author flex-avatar w-48 mr-2">
-                      <img
-                        src="https://cosy.demo.nicetheme.xyz/wp-content/themes/Cosy3.3.0/images/default-avatar.png"
-                        className="avatar w-48"
-                      />
-                    </div>
-                    <div className="flex-fill comment-from-author">
-                      <div className="comment-form-info">
-                        <div className="row row-sm mb-2 mb-lg-3">
-                          <div className="col py-1 py-lg-0">
-                            <div className="form-group comment-form-author m-0">
-                              <input
-                                className="form-control"
-                                id="author"
-                                placeholder="昵称"
-                                name="author"
-                                type="text"
-                                value=""
-                                required
-                              />
-                            </div>
-                          </div>
-                          <div className="col-12 col-lg-4 py-1 py-lg-0">
-                            <div className="form-group comment-form-email m-0">
-                              <input
-                                id="email"
-                                className="form-control"
-                                name="email"
-                                placeholder="Email"
-                                type="email"
-                                value=""
-                              />
-                            </div>
-                          </div>
-                          <div className="col-12 col-lg-4 py-1 py-lg-0">
-                            <div className="form-group comment-form-url m-0">
-                              <input
-                                className="form-control"
-                                placeholder="网站地址"
-                                name="url"
-                                type="url"
-                                value=""
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="comment-form-text mb-2">
-                        <div className="form-group comment-textarea mb-3">
-                          <textarea
-                            id="comment"
-                            name="comment"
-                            className="form-control form-control-sm"
-                            rows={3}
-                          ></textarea>
-                        </div>
-                        <div className="form-submit text-right">
-                          <Button type="link" size="large" className="mr-2">
-                            再想想
-                          </Button>
-                          <Button type="primary" size="large">
-                            发布评论
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <ul className="comment-list"></ul>
-            </div>
-          </div>
-          <div className="sidebar col-lg-3 d-none d-lg-block">
-            <div className="theiaStickySidebar">
+            </Container>
+          </Col>
+          <Col lg={7} md={0} xs={0} sm={0} xl={6} xxl={6}>
+            <SiderBar>
+              <AuthorWidget {...user} />
               <aside id="secondary" className="widget-area pt-5 pt-lg-0">
                 <div id="search-2" className="widget widget_search">
                   <form
@@ -247,15 +112,15 @@ export default function StatusContent(props: StatusContentProps) {
                       <label className="screen-reader-text" htmlFor="s">
                         Search for:
                       </label>
-                      <input
-                        type="text"
-                        placeholder="说点什么吧…"
-                        className="form-control"
-                        value=""
-                        name="s"
-                        id="s"
-                        required
-                      />
+                      {/* <input
+                      type="text"
+                      placeholder="说点什么吧…"
+                      className="form-control"
+                      value=""
+                      name="s"
+                      id="s"
+                      required
+                    /> */}
                       <button className="btn" type="submit" id="searchsubmit">
                         <i className="iconfont icon-search"></i>
                       </button>
@@ -408,11 +273,8 @@ export default function StatusContent(props: StatusContentProps) {
                 <div id="media_image-2" className="widget widget_media_image">
                   <a href="https://www.nicetheme.cn/store/cosy">
                     <img
-                      width="600"
-                      height="450"
                       src="https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618402284.png"
                       className="image wp-image-122  attachment-full size-full"
-                      alt=""
                     />
                   </a>
                 </div>
@@ -421,9 +283,9 @@ export default function StatusContent(props: StatusContentProps) {
                 <div className="resize-sensor-expand"></div>
                 <div className="resize-sensor-shrink"></div>
               </div>
-            </div>
-          </div>
-        </div>
+            </SiderBar>
+          </Col>
+        </Row>
       </div>
       {props.related}
     </div>

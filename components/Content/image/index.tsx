@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import React, { useMemo, useEffect } from 'react'
-import { Col, Row, Card } from 'antd'
+import { Col, Row } from 'antd'
 import './index.less'
 import styles from './index.scss'
 import Link from 'next/link'
@@ -10,6 +10,7 @@ import AuthorWidget from '@/components/Widget/Author'
 import Header from './header'
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
 import { ContentProps } from '@/components/Content'
+import Container from '../Container'
 
 type ImageContentProps = ContentProps
 
@@ -60,7 +61,7 @@ export default function ImageContent(props: ImageContentProps) {
         {renderHeader}
         <Row justify="center" className="post">
           <Col md={24} xs={24} sm={24} lg={17} xl={18} xxl={18}>
-            <Card className="post-content">
+            <Container>
               {props.htmlContent}
               <div id="post-action" className="post-action mt-5 mt-lg-5">
                 <div className="d-md-flex flex-md-fill align-items-md-center">
@@ -93,13 +94,11 @@ export default function ImageContent(props: ImageContentProps) {
                 原创发布在 COSY 主题演示站。未经许可，禁止转载。
               </div>
               {props.navigator}
-            </Card>
+            </Container>
           </Col>
           <Col md={0} xs={0} sm={0} lg={7} xl={6} xxl={6}>
             <SiderBar>
               <AuthorWidget {...user} />
-              <Card title="文章推荐"></Card>
-              <Card title="随机推荐"></Card>
             </SiderBar>
           </Col>
         </Row>

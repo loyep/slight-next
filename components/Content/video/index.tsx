@@ -8,6 +8,7 @@ import { fromNow } from '@/utils/date'
 import AuthorWidget from '@/components/Widget/Author'
 import SiderBar from '@/components/SiderBar'
 import { ContentProps } from '@/components/Content'
+import Container from '../Container'
 
 type VideoContentProps = ContentProps
 
@@ -57,7 +58,7 @@ export default function VideotContent(props: VideoContentProps) {
         {props.breadcrumbs}
         <Row justify="center">
           <Col span={24} lg={17} md={24} xs={24} sm={24} xl={18} xxl={18}>
-            <div className={styles.content}>
+            <Container>
               {renderHeader}
               <div className="border-top py-2 py-md-2 py-xl-3"></div>
               {props.htmlContent}
@@ -95,7 +96,7 @@ export default function VideotContent(props: VideoContentProps) {
                 原创发布在 COSY 主题演示站。未经许可，禁止转载。
               </div>
               {props.navigator}
-            </div>
+            </Container>
           </Col>
           <Col lg={7} md={0} xs={0} sm={0} xl={6} xxl={6}>
             <SiderBar>
