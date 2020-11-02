@@ -7,6 +7,7 @@ import { fromNow } from '@/utils/date'
 import SiderBar from '@/components/SiderBar'
 import AuthorWidget from '@/components/Widget/Author'
 import Header from './header'
+import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
 
 interface ImageContentProps {
   content: any
@@ -31,9 +32,39 @@ const DefaultContent: NextPage<ImageContentProps> = (
     }
   }, [])
 
+  const renderHeader = () => {
+    const meta = (
+      <>
+        <span>
+          <EyeOutlined />
+          <span>{content.viewsCount || 0}</span>
+        </span>
+        <button>
+          <MessageOutlined />
+          <span> {content.commentsCount || 0}</span>
+        </button>
+        <button>
+          <LikeOutlined />
+          <span>{content.likesCount || 0}</span>
+        </button>
+      </>
+    )
+
+    const headerProps = {
+      title,
+      meta,
+      date: fromNow(content.publishedAt),
+      category: {
+        href: `/category/${category.slug}`,
+        text: category.name,
+      },
+    }
+    return <Header {...headerProps} />
+  }
+  
   return (
     <div className="slt-article-image">
-      <Header></Header>
+      {renderHeader()}
       <div className="article-cover">
         <div
           className="article-cover-color"

@@ -1,8 +1,22 @@
 import styles from './header.scss'
+import { ReactNode } from 'react'
 import Link from 'next/link'
 import { Tag } from 'antd'
 
-export default function Header() {
+interface HeaderCategoryProps {
+  href: string
+  text: string
+  color?: string
+}
+
+interface HeaderProps {
+  title: string
+  category?: HeaderCategoryProps
+  date?: string
+  meta?: ReactNode
+}
+
+export default function Header(props: HeaderProps) {
   return (
     <div className={styles.header}>
       <div className={styles.media}>
@@ -22,11 +36,9 @@ export default function Header() {
               </Link>
             </Tag>
           </div>
-          <h1 className={styles.title}>
-            LP直言：规模10亿以下的GP就不要来找我们了
-          </h1>
+          <h1 className={styles.title}>{props.title}</h1>
           <div className="meta text-xs text-muted">
-            <time className="d-inline-block mx-1">2月前</time>
+            <time className="d-inline-block mx-1">{props.date}</time>
             <span className="mx-1">
               <i className="text-md iconfont icon-eye-line mx-1"></i>
               <small>243</small>
