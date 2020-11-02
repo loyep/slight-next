@@ -13,7 +13,7 @@ import { ContentProps } from '@/components/Content'
 
 type ImageContentProps = ContentProps
 
-export function ImageContent(props: ImageContentProps) {
+export default function ImageContent(props: ImageContentProps) {
   const { content } = props
   const { category, title, image, description, user } = content
 
