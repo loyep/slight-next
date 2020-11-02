@@ -9,24 +9,11 @@ import SiderBar from '@/components/SiderBar'
 import AuthorWidget from '@/components/Widget/Author'
 import Header from './header'
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
+import { ContentProps } from '@/components/Content'
 
-interface ImageContentProps {
-  content: any
-  title: string
-  htmlContent?: React.ReactNode | string
-  description?: string
-  related?: React.ReactNode
-  social?: React.ReactNode
-  breadcrumbs?: React.ReactNode
-  navigator?: React.ReactNode
-  onViewClick?: () => void
-  onCommentClick?: () => void
-  onLikeClick?: () => void
-}
+type ImageContentProps = ContentProps
 
-const DefaultContent: NextPage<ImageContentProps> = (
-  props: Partial<ImageContentProps>
-) => {
+export function ImageContent(props: ImageContentProps) {
   const { content } = props
   const { category, title, image, description, user } = content
 
@@ -121,5 +108,3 @@ const DefaultContent: NextPage<ImageContentProps> = (
     </div>
   )
 }
-
-export default DefaultContent

@@ -8,24 +8,11 @@ import AuthorWidget from '@/components/Widget/Author'
 import Header from '../Header'
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
 import SiderBar from '@/components/SiderBar'
+import { ContentProps } from '@/components/Content'
 
-interface DefaultContentProps {
-  content: any
-  title: string
-  description?: string
-  htmlContent?: React.ReactNode | string
-  related?: React.ReactNode
-  social?: React.ReactNode
-  breadcrumbs?: React.ReactNode
-  navigator?: React.ReactNode
-  onViewClick?: () => void
-  onCommentClick?: () => void
-  onLikeClick?: () => void
-}
+type DefaultContentProps = ContentProps
 
-const DefaultContent: NextPage<DefaultContentProps> = (
-  props: Partial<DefaultContentProps>
-) => {
+export default function DefaultContent(props: DefaultContentProps) {
   const { content } = props
   const { category, title, image, description, user } = content
 
@@ -300,5 +287,3 @@ const DefaultContent: NextPage<DefaultContentProps> = (
     </div>
   )
 }
-
-export default DefaultContent

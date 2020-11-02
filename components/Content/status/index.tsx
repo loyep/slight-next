@@ -1,23 +1,14 @@
 import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
-import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { Button, Card } from 'antd'
 import './index.less'
 import Link from 'next/link'
 import { fromNow } from '@/utils/date'
+import { ContentProps } from '@/components/Content'
 
-interface StatusContentProps {
-  content: any
-  title: string,
-  description?: string
-  htmlContent?: React.ReactNode | string
-  related?: React.ReactNode
-  social?: React.ReactNode
-  breadcrumbs?: React.ReactNode
-  navigator?: React.ReactNode
-}
+type StatusContentProps = ContentProps
 
-const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusContentProps>) => {
+export default function StatusContent(props: StatusContentProps) {
   const { content } = props
   const { category, title, image, description, user } = content
 
@@ -34,20 +25,15 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
           <span>
             <Link href="/">
               <a className="home">
-                <span className="text-muted">
-                  首页
-            </span>
+                <span className="text-muted">首页</span>
               </a>
-
             </Link>
           </span>
           <span className="sep text-muted">›</span>
           <span itemProp="itemListElement">
-            <Link href={`/category/${category.slug}`} >
+            <Link href={`/category/${category.slug}`}>
               <a>
-                <span className="text-muted">
-                  {category.name}
-                </span>
+                <span className="text-muted">{category.name}</span>
               </a>
             </Link>
           </span>
@@ -85,12 +71,8 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                     <div className="text-xs text-muted">
                       <time>{fromNow(content.publishedAt)}</time>
                       <i className="iconfont icon-dot1 mx-1"></i>
-                      <Link
-                        href={`/category/${category.slug}`}
-                      >
-                        <a
-                          rel="category"
-                          target="_blank">
+                      <Link href={`/category/${category.slug}`}>
+                        <a rel="category" target="_blank">
                           {category.name}
                         </a>
                       </Link>
@@ -123,7 +105,7 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                 </div>
               </div>
               <div className="border-top py-2 py-md-2 py-xl-3"></div>
-              { props.htmlContent }
+              {props.htmlContent}
               {/* <div className="post-content" ref="content"></div> */}
               <div id="post-action" className="post-action mt-5 mt-lg-5">
                 <div className="d-md-flex flex-md-fill align-items-md-center">
@@ -148,20 +130,16 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
               </div>
               <div className="post-declare text-sm text-muted text-center text-md-left mt-5 mt-md-5">
                 本文系作者
-              <span className="mx-2">
+                <span className="mx-2">
                   @
-                <Link
-                    href={`user/${user.name}`}
-                  >
-                    <a
-                      title={`由${user.diaplayName}发布`}
-                      rel="author">
+                  <Link href={`user/${user.name}`}>
+                    <a title={`由${user.diaplayName}发布`} rel="author">
                       {user.displayName}
                     </a>
                   </Link>
                 </span>
-              原创发布在 COSY 主题演示站。未经许可，禁止转载。
-            </div>
+                原创发布在 COSY 主题演示站。未经许可，禁止转载。
+              </div>
               {props.navigator}
             </div>
             <div id="comments" className="comments mt-5">
@@ -169,9 +147,9 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                 <i className="text-xl text-primary iconfont icon-Chat mr-1"></i>
                 <span className="d-inline-block align-middle">
                   评论
-                <small className="font-theme text-sm">
+                  <small className="font-theme text-sm">
                     ({content.commentsCount || 0})
-                </small>
+                  </small>
                 </span>
               </div>
               <div id="respond" className="comment-respond">
@@ -241,10 +219,10 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                         <div className="form-submit text-right">
                           <Button type="link" size="large" className="mr-2">
                             再想想
-                        </Button>
+                          </Button>
                           <Button type="primary" size="large">
                             发布评论
-                        </Button>
+                          </Button>
                         </div>
                       </div>
                     </div>
@@ -254,12 +232,8 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
               <ul className="comment-list"></ul>
             </div>
           </div>
-          <div
-            className="sidebar col-lg-3 d-none d-lg-block"
-          >
-            <div
-              className="theiaStickySidebar"
-            >
+          <div className="sidebar col-lg-3 d-none d-lg-block">
+            <div className="theiaStickySidebar">
               <aside id="secondary" className="widget-area pt-5 pt-lg-0">
                 <div id="search-2" className="widget widget_search">
                   <form
@@ -272,7 +246,7 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                     <div className="search-input form-group m-0">
                       <label className="screen-reader-text" htmlFor="s">
                         Search for:
-                    </label>
+                      </label>
                       <input
                         type="text"
                         placeholder="说点什么吧…"
@@ -300,7 +274,8 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                           title="Windows 10X延期发布，微软这次做系统能学乖吗？"
                           className="media-content"
                           style={{
-                            backgroundImage: "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618051678.jpg')"
+                            backgroundImage:
+                              "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618051678.jpg')",
                           }}
                         ></a>
                         <div className="media-action">
@@ -321,7 +296,7 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                             className="list-title text-sm h-2x"
                           >
                             Windows 10X延期发布，微软这次做系统能学乖吗？
-                        </a>
+                          </a>
                         </div>
                         <div className="list-footer text-muted text-xs m-0">
                           <div>2周前</div>
@@ -337,7 +312,8 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                           title="高端的LiFi可见光通信技术，古人早就用上了？"
                           className="media-content"
                           style={{
-                            backgroundImage: "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618051984.jpg')"
+                            backgroundImage:
+                              "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618051984.jpg')",
                           }}
                         ></a>
                       </div>
@@ -351,7 +327,7 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                             className="list-title text-sm h-2x"
                           >
                             高端的LiFi可见光通信技术，古人早就用上了？
-                        </a>
+                          </a>
                         </div>
                         <div className="list-footer text-muted text-xs m-0">
                           <div>2周前</div>
@@ -367,7 +343,8 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                           title="今天的我们怎么成了一种纯粹的“观看动物”？"
                           className="media-content"
                           style={{
-                            backgroundImage: "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618051895.jpg')"
+                            backgroundImage:
+                              "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618051895.jpg')",
                           }}
                         ></a>
                       </div>
@@ -381,7 +358,7 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                             className="list-title text-sm h-2x"
                           >
                             今天的我们怎么成了一种纯粹的“观看动物”？
-                        </a>
+                          </a>
                         </div>
                         <div className="list-footer text-muted text-xs m-0">
                           <div>2周前</div>
@@ -397,7 +374,8 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                           title="LP直言：规模10亿以下的GP就不要来找我们了"
                           className="media-content"
                           style={{
-                            backgroundImage: "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618052175.jpg')"
+                            backgroundImage:
+                              "url('https://cosy.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618052175.jpg')",
                           }}
                         ></a>
                         <div className="media-action">
@@ -418,7 +396,7 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                             className="list-title text-sm h-2x"
                           >
                             LP直言：规模10亿以下的GP就不要来找我们了
-                        </a>
+                          </a>
                         </div>
                         <div className="list-footer text-muted text-xs m-0">
                           <div>2周前</div>
@@ -439,25 +417,15 @@ const DefaultContent: NextPage<StatusContentProps> = (props: Partial<StatusConte
                   </a>
                 </div>
               </aside>
-              <div
-                className="resize-sensor"
-              >
-                <div
-                  className="resize-sensor-expand"
-                >
-                </div>
-                <div
-                  className="resize-sensor-shrink"
-                >
-                </div>
+              <div className="resize-sensor">
+                <div className="resize-sensor-expand"></div>
+                <div className="resize-sensor-shrink"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      { props.related}
+      {props.related}
     </div>
   )
 }
-
-export default DefaultContent
