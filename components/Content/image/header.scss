@@ -1,5 +1,10 @@
 .header {
   margin-bottom: 24px;
+
+  time {
+margin: 4px 0;
+font-size: 12px;
+  }
 }
 
 .media {
@@ -61,7 +66,7 @@
 }
 
 .title {
-    line-height: 1.5;
-    color: #fff;
-    font-size: 28px;
+  line-height: 1.5;
+  color: #fff;
+  font-size: 28px;
 }
