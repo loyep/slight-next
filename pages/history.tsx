@@ -15,7 +15,6 @@ const History: NextPage<HistoryProps> = (props) => {
   const [currentPage, setCurrentPage] = useState(props.page)
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState(props.data || [])
-
   const addData = (newData: any[]) => {
     setData([...data, ...newData])
   }
@@ -29,7 +28,6 @@ const History: NextPage<HistoryProps> = (props) => {
       setLoading(true)
       const page = currentPage + 1
       const res = await fetchPostList({ page })
-
       const { list = [], meta } = res
       if (list.length) {
         setCurrentPage(page)

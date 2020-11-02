@@ -1,6 +1,4 @@
-import { NextPage } from 'next'
 import { AppProps } from 'next/app'
-import Router from 'next/router'
 import Head from 'next/head'
 import { generateTitle } from '@/utils'
 import '@/assets/styles/antd.less'
@@ -30,36 +28,24 @@ import { withRouter } from 'next/router'
 
 type NextContext = AppProps & Record<string, any>
 
-const NextApp: NextPage<NextContext> = (props) => {
+function NextApp(props: NextContext) {
   const { Component, pageProps } = props
   const { title, description } = pageProps
-
   useEffect(() => {
     //
   }, [])
 
   return (
-    <>
+    <SltLayout>
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{generateTitle(title)}</title>
         <meta name="description" content={description} />
       </Head>
-      <SltLayout>
-        <Component {...pageProps}></Component>
-      </SltLayout>
-    </>
+      <Component {...pageProps}></Component>
+    </SltLayout>
   )
 }
-
-// NextApp.getInitialProps = async (context: NextContext) => {
-//   const { ctx, Component } = context;
-//   const pageProps = Component.getInitialProps
-//     ? await Component.getInitialProps(ctx)
-//     : {};
-
-//   return { pageProps };
-// };
 
 export default withRouter(NextApp)
