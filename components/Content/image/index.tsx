@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { fromNow } from '@/utils/date'
 import SiderBar from '@/components/SiderBar'
 import AuthorWidget from '@/components/Widget/Author'
+import SinglePostWidget from '@/components/Widget/SinglePost'
 import Header from './header'
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
 import { ContentProps } from '@/components/Content'
@@ -99,6 +100,7 @@ export default function ImageContent(props: ImageContentProps) {
           <Col md={0} xs={0} sm={0} lg={7} xl={6} xxl={6}>
             <SiderBar>
               <AuthorWidget {...user} />
+              <SinglePostWidget {...user} />
             </SiderBar>
           </Col>
         </Row>
