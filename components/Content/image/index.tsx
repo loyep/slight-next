@@ -61,7 +61,7 @@ const DefaultContent: NextPage<ImageContentProps> = (
     }
     return <Header {...headerProps} />
   }
-  
+
   return (
     <div className="slt-article-image">
       {renderHeader()}
