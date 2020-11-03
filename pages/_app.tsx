@@ -1,4 +1,4 @@
-import { AppProps } from 'next/app'
+import { AppProps, Container } from 'next/app'
 import Head from 'next/head'
 import { generateTitle } from '@/utils'
 import '@/assets/styles/antd.less'
@@ -7,6 +7,7 @@ import SltLayout from '@/components/Layout'
 // import NProgress from 'nprogress'
 import { useEffect } from 'react'
 import { withRouter } from 'next/router'
+import { wrapper } from '@/store'
 
 // Router.events.on('routeChangeStart', () => {
 //   NProgress.start()
@@ -36,16 +37,18 @@ function NextApp(props: NextContext) {
   }, [])
 
   return (
-    <SltLayout>
+    <Container>
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{generateTitle(title)}</title>
         <meta name="description" content={description} />
       </Head>
-      <Component {...pageProps}></Component>
-    </SltLayout>
+      <SltLayout>
+        <Component {...pageProps}></Component>
+      </SltLayout>
+    </Container>
   )
 }
 
-export default withRouter(NextApp)
+export default wrapper.withRedux(withRouter(NextApp))
