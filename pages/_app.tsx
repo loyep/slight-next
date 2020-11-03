@@ -4,7 +4,7 @@ import { generateTitle } from '@/utils'
 import '@/assets/styles/antd.less'
 import '@/assets/styles/index.less'
 import SltLayout from '@/components/Layout'
-// import NProgress from 'nprogress'
+import NProgress from '@/components/NProgress'
 import { useEffect } from 'react'
 import { wrapper } from '@/store'
 
@@ -45,6 +45,7 @@ function App(props: NextContext) {
       </Head>
       <SltLayout>
         <Component {...pageProps}></Component>
+        <NProgress></NProgress>
       </SltLayout>
     </Container>
   )
