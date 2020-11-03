@@ -18,11 +18,11 @@ const SignIn: NextPage<SignInProps> = (props) => {
   };
 
   useEffect(() => {
-    dispatch(toggleHeaderVisible(false))
-    dispatch(toggleFooterVisible(false))
+    // dispatch(toggleHeaderVisible(false))
+    // dispatch(toggleFooterVisible(false))
     return () => {
-      dispatch(toggleHeaderVisible(true))
-      dispatch(toggleFooterVisible(true))
+      // dispatch(toggleHeaderVisible(true))
+      // dispatch(toggleFooterVisible(true))
     }
   }, [dispatch])
 

@@ -76,7 +76,7 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
               </Link>
             </li>
             <li className="slt-nav-item">
-              <Link href="/signin">
+              <Link href="/signin" replace>
                 <Button type="default">登录</Button>
               </Link>
             </li>
