@@ -1,17 +1,9 @@
-import { AnyAction } from 'redux';
+import { AnyAction, Reducer } from 'redux';
 import type { RootState } from './types'
 import { ActionTypes } from './actions'
 
-export const initialState: RootState = {
-  title: '',
-  layout: {
-    header: true,
-    footer: true
-  }
-}
-
 // create your reducer
-export const reducer = (state: RootState = initialState, action: AnyAction) => {
+export const reducer: Reducer<RootState, AnyAction> = (state, action) => {
   console.log(action)
   switch (action.type) {
     case ActionTypes.HYDRATE:

@@ -1,10 +1,9 @@
 import { fetchPostList, fetchRecommends } from '@/api'
 import Cards from '@/components/Cards'
-import { useDispatch } from 'react-redux'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Button } from 'antd'
 import { NextPage, GetServerSideProps } from 'next'
-import {wrapper} from '@/store'
+import { wrapper } from '@/store'
 import Banner from '@/components/Banner'
 
 interface HomeProps {
