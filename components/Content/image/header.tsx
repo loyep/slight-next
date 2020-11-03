@@ -13,6 +13,7 @@ interface HeaderProps {
   title: string
   category?: HeaderCategoryProps
   date?: string
+  image?: string
   meta?: ReactNode
 }
 
@@ -23,7 +24,7 @@ export default function Header(props: HeaderProps) {
         <div
           className={styles.mediaContent}
           style={{
-            backgroundImage: `url('https://pandapro.demo.nicetheme.xyz/wp-content/uploads/2020/08/2020082618052175.jpg')`,
+            backgroundImage: `url('${props.image}')`,
           }}
         >
           <span className={styles.overlay}></span>

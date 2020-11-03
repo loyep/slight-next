@@ -51,6 +51,7 @@ export default function ImageContent(props: ImageContentProps) {
         href: `/category/${category.slug}`,
         text: category.name,
       },
+      image: content.image
     }
     return <Header {...headerProps} />
   }, [content, category, title])
