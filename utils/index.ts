@@ -1,8 +1,6 @@
-import { useSelector } from 'react-redux'
-import { RootState, ConfigState } from '@/store/types'
-const { name } = useSelector<RootState, ConfigState>((state: RootState) => state.config)
+import config from '@/config'
 
 export function generateTitle(...titleSegments: string[]): string {
-  titleSegments.push(name)
+  titleSegments.push(config.title)
   return titleSegments.filter((t) => t).join(' · ')
 }
