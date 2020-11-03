@@ -8,36 +8,27 @@ import AuthorWidget from '@/components/Widget/Author'
 import Header from '../Header'
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
 import SiderBar from '@/components/SiderBar'
+import { ContentProps } from '@/components/Content'
+import Container from '../Container'
 
-interface DefaultContentProps {
-  content: any
-  title: string
-  description?: string
-  htmlContent?: React.ReactNode | string
-  related?: React.ReactNode
-  social?: React.ReactNode
-  breadcrumbs?: React.ReactNode
-  navigator?: React.ReactNode
-}
+type DefaultContentProps = ContentProps
 
-const DefaultContent: NextPage<DefaultContentProps> = (
-  props: Partial<DefaultContentProps>
-) => {
+export default function DefaultContent(props: DefaultContentProps) {
   const { content } = props
   const { category, title, image, description, user } = content
 
   const renderHeader = () => {
     const meta = (
       <>
-        <span>
+        <span onClick={props.onViewClick}>
           <EyeOutlined />
           <span>{content.viewsCount || 0}</span>
         </span>
-        <button>
+        <button onClick={props.onCommentClick}>
           <MessageOutlined />
           <span> {content.commentsCount || 0}</span>
         </button>
-        <button>
+        <button onClick={props.onLikeClick}>
           <LikeOutlined />
           <span>{content.likesCount || 0}</span>
         </button>
@@ -62,7 +53,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (
         {props.breadcrumbs}
         <Row justify="center">
           <Col span={24} lg={17} md={24} xs={24} sm={24} xl={18} xxl={18}>
-            <div className={styles.content}>
+            <Container>
               {renderHeader()}
               <div className="border-top py-2 py-md-2 py-xl-3"></div>
               {props.htmlContent}
@@ -100,7 +91,7 @@ const DefaultContent: NextPage<DefaultContentProps> = (
                 原创发布在 COSY 主题演示站。未经许可，禁止转载。
               </div>
               {props.navigator}
-            </div>
+            </Container>
           </Col>
           <Col lg={7} md={0} xs={0} sm={0} xl={6} xxl={6}>
             <SiderBar>
@@ -297,5 +288,3 @@ const DefaultContent: NextPage<DefaultContentProps> = (
     </div>
   )
 }
-
-export default DefaultContent

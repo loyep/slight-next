@@ -42,18 +42,6 @@ export default function Header(props: HeaderProps) {
         </div>
         <div className={styles.metaRight}>
           {props.meta}
-          {/* <span>
-            <EyeOutlined />
-            <small>241</small>
-          </span>
-          <a href="#comments">
-            <MessageOutlined />
-            <small>0</small>
-          </a>
-          <a href="javascript:;">
-            <LikeOutlined />
-            <small className="like-count">4</small>
-          </a> */}
         </div>
       </div>
       <div className={styles.borderBottom}></div>

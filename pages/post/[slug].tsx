@@ -21,9 +21,7 @@ interface PostProps {
 const Post: NextPage<PostProps> = (props) => {
   const { title = '', data, error } = props
   if (error) {
-    return (
-      <NotoFoundPage statusCode={404} title={error} />
-    )
+    return <NotoFoundPage statusCode={404} title={error} />
   }
   const { related, category, content } = data
 
@@ -58,6 +56,18 @@ const Post: NextPage<PostProps> = (props) => {
     return <Breadcrumbs items={items}></Breadcrumbs>
   }, [title, category])
 
+  const onViewClick = () => {
+    console.log('view')
+  }
+
+  const onCommentClick = () => {
+    console.log('comment')
+  }
+
+  const onLikeClick = () => {
+    console.log('like')
+  }
+
   const renderContent = () => {
     const contentProps = {
       title: title,
@@ -65,6 +75,9 @@ const Post: NextPage<PostProps> = (props) => {
       content: data,
       related: renderRelatedPost,
       breadcrumbs: renderBreadcrumb,
+      onLikeClick,
+      onViewClick,
+      onCommentClick,
     }
     switch (data.type) {
       case 'image':
