@@ -1,5 +1,4 @@
 import { AnyAction } from 'redux';
-import { HYDRATE } from 'next-redux-wrapper'
 import type { RootState } from './types'
 import { ActionTypes } from './actions'
 
@@ -15,7 +14,7 @@ export const initialState: RootState = {
 export const reducer = (state: RootState = initialState, action: AnyAction) => {
   console.log(action)
   switch (action.type) {
-    case HYDRATE:
+    case ActionTypes.HYDRATE:
       // Attention! This will overwrite client state! Real apps should use proper reconciliation.
       return { ...state, ...action.payload };
     case ActionTypes.LAYOUT:
