@@ -40,6 +40,6 @@ module.exports = withCSS(withSass({
         modifyVars: themeVariables, // make your antd custom effective
       }
     },
-    assetPrefix: 'https://static.loyep.com/',
+    // assetPrefix: 'https://static.loyep.com/',
   })
 }));
