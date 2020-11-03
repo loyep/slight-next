@@ -3,8 +3,9 @@ import { useEffect } from 'react'
 import styles from './index.scss'
 import { Form, Input, Button, Checkbox } from 'antd';
 import { useDispatch } from 'react-redux'
+import { END } from 'redux-saga'
 import { wrapper } from '@/store'
-import { toggleHeaderVisible, toggleFooterVisible } from '@/store/actions'
+import { updateLayout } from '@/store/actions'
 
 interface SignInProps {
   title?: string
@@ -13,16 +14,13 @@ interface SignInProps {
 const SignIn: NextPage<SignInProps> = (props) => {
   const { title } = props
   const dispatch = useDispatch()
-  const onFinish = values => {
+  const onFinish = (values: any) => {
     console.log('Success:', values);
   };
 
   useEffect(() => {
-    // dispatch(toggleHeaderVisible(false))
-    // dispatch(toggleFooterVisible(false))
     return () => {
-      dispatch(toggleHeaderVisible(true))
-      dispatch(toggleFooterVisible(true))
+      dispatch(updateLayout({ header: true, footer: true }))
     }
   }, [dispatch])
 
@@ -31,9 +29,8 @@ const SignIn: NextPage<SignInProps> = (props) => {
   };
   return (
     <div className={styles.main}>
-      Sing In
+      {title}
       <div className={styles.form}>
-
         <Form
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}>
@@ -65,8 +62,8 @@ const SignIn: NextPage<SignInProps> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
-  store.dispatch(toggleHeaderVisible(false))
-  store.dispatch(toggleFooterVisible(false))
+  store.dispatch(updateLayout({ header: false, footer: false }))
+  store.dispatch(END)
   return {
     props: {
       title: '登录|注册'

@@ -1,7 +1,7 @@
-export enum actionTypes {
-  HEADER = "HEADER",
-  FOOTER = "FOOTER",
-  INIT_LAYOUT ="INIT_LAYOUT"
+import { LayoutState } from './types'
+
+export enum ActionTypes {
+  LAYOUT = "LAYOUT",
 }
 
 export function toggleHeaderVisible(visible?: boolean) {
@@ -9,6 +9,13 @@ export function toggleHeaderVisible(visible?: boolean) {
   return {
     type: "HEADER",
     visible
+  }
+}
+
+export function updateLayout(layout: LayoutState) {
+  return {
+    type: ActionTypes.LAYOUT,
+    payload: layout
   }
 }
 

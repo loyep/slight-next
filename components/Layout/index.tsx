@@ -4,22 +4,15 @@ import SltHeader from '../Header';
 import SltFooter from '../Footer';
 import { Layout, ConfigProvider } from 'antd'
 import styles from './index.scss'
-import { RootState } from '@/store'
+import { RootState, LayoutState } from '@/store/types'
 
 interface SltLayoutProps {
-  // header?: boolean;
-  // footer?: boolean;
   children?: ReactNode
 }
 
 export default function SltLayout(props: SltLayoutProps) {
   const { children } = props;
-  const dispatch = useDispatch()
-  const header = useSelector((state: RootState) => {
-    console.log(state)
-    return state.header
-  })
-  const footer = useSelector((state: RootState) => state.footer)
+  const { header, footer } = useSelector<RootState, LayoutState>((state: RootState) => state.layout)
 
   return (
     <ConfigProvider autoInsertSpaceInButton={false}>

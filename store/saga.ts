@@ -24,6 +24,7 @@ import { actionTypes } from './actions'
 // }
 
 function* rootSaga() {
+  console.log('ff')
   // yield all([
     // takeLatest(actionTypes.INIT_LAYOUT)
     // takeLatest(actionTypes.LOAD_DATA, loadDataSaga),
