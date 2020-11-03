@@ -1,25 +1,19 @@
 import { actionTypes } from './actions'
 import { HYDRATE } from 'next-redux-wrapper'
+import { RootState } from './index'
 
-const initialState = {
-  count: 0,
-  error: false,
-  lastUpdate: 0,
-  light: false,
+export const initialState: RootState = {
   header: true,
-  placeholderData: null,
+  footer: true
 }
 
-function reducer(state, action) {
+function reducer(state: RootState, action: any) {
+  console.log('state', state)
   switch (action.type) {
-    case HYDRATE: {
-      return { ...state, ...action.payload }
-    }
-
-    case actionTypes.FAILURE:
+    case actionTypes.INIT_LAYOUT:
       return {
         ...state,
-        ...{ error: action.error },
+        ...initialState
       }
 
     case actionTypes.HEADER:
@@ -29,34 +23,11 @@ function reducer(state, action) {
         ...{ header: action.visible },
       }
 
-    case actionTypes.INCREMENT:
+    case actionTypes.FOOTER:
+      console.log(action)
       return {
         ...state,
-        ...{ count: state.count + 1 },
-      }
-
-    case actionTypes.DECREMENT:
-      return {
-        ...state,
-        ...{ count: state.count - 1 },
-      }
-
-    case actionTypes.RESET:
-      return {
-        ...state,
-        ...{ count: initialState.count },
-      }
-
-    case actionTypes.LOAD_DATA_SUCCESS:
-      return {
-        ...state,
-        ...{ placeholderData: action.data },
-      }
-
-    case actionTypes.TICK_CLOCK:
-      return {
-        ...state,
-        ...{ lastUpdate: action.ts, light: !!action.light },
+        ...{ footer: action.visible },
       }
 
     default:

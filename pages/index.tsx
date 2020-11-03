@@ -4,8 +4,7 @@ import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { Button } from 'antd'
 import { NextPage, GetServerSideProps } from 'next'
-import { loadData, startClock, toggleHeaderVisible } from '@/store/actions'
-import wrapper from '@/store'
+import {wrapper} from '@/store'
 import Banner from '@/components/Banner'
 
 interface HomeProps {
@@ -80,7 +79,6 @@ const Home: NextPage<HomeProps> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
-  store.dispatch(toggleHeaderVisible(false))
   const page = 1
   const { list: data = [] } = await fetchPostList({ page })
   const { data: recommends = [] } = await fetchRecommends()

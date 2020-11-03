@@ -1,31 +1,35 @@
-import { NextPage } from 'next';
+import { ReactNode } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import SltHeader from '../Header';
 import SltFooter from '../Footer';
-import { useState } from 'react'
 import { Layout, ConfigProvider } from 'antd'
-import styles from './index.module.scss'
-
-const { Content } = Layout
+import styles from './index.scss'
+import { RootState } from '@/store'
 
 interface SltLayoutProps {
-  header?: boolean;
-  footer?: boolean;
+  // header?: boolean;
+  // footer?: boolean;
+  children?: ReactNode
 }
 
-const SltLayout: NextPage<SltLayoutProps> = (props) => {
-  const { header = true, footer = true, children } = props
-  const [fixed] = useState(false)
+export default function SltLayout(props: SltLayoutProps) {
+  const { children } = props;
+  const dispatch = useDispatch()
+  const header = useSelector((state: RootState) => {
+    console.log(state)
+    return state.header
+  })
+  const footer = useSelector((state: RootState) => state.footer)
+
   return (
     <ConfigProvider autoInsertSpaceInButton={false}>
       <Layout className={styles.layout}>
         {header && <SltHeader></SltHeader>}
-        <Content className={styles.content}>
+        <Layout.Content className={styles.content}>
           {children}
-        </Content>
+        </Layout.Content>
         {footer && <SltFooter></SltFooter>}
       </Layout>
     </ConfigProvider>
   );
 }
-
-export default SltLayout;

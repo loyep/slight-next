@@ -6,7 +6,6 @@ import '@/assets/styles/index.less'
 import SltLayout from '@/components/Layout'
 // import NProgress from 'nprogress'
 import { useEffect } from 'react'
-import { withRouter } from 'next/router'
 import { wrapper } from '@/store'
 
 // Router.events.on('routeChangeStart', () => {
@@ -29,7 +28,7 @@ import { wrapper } from '@/store'
 
 type NextContext = AppProps & Record<string, any>
 
-function NextApp(props: NextContext) {
+function App(props: NextContext) {
   const { Component, pageProps } = props
   const { title, description } = pageProps
   useEffect(() => {
@@ -51,4 +50,4 @@ function NextApp(props: NextContext) {
   )
 }
 
-export default wrapper.withRedux(withRouter(NextApp))
+export default wrapper.withRedux(App)
