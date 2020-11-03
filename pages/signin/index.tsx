@@ -65,6 +65,8 @@ const SignIn: NextPage<SignInProps> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
+  store.dispatch(toggleHeaderVisible(false))
+  store.dispatch(toggleFooterVisible(false))
   return {
     props: {
       title: '登录|注册'
