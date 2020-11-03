@@ -24,7 +24,7 @@ const SignIn: NextPage<SignInProps> = (props) => {
       dispatch(toggleHeaderVisible(true))
       dispatch(toggleFooterVisible(true))
     }
-  }, [dispatch])
+  }, [])
 
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
