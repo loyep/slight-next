@@ -1,7 +1,7 @@
 import { NextPage, GetServerSideProps } from 'next'
 import { useEffect } from 'react'
 import styles from './index.scss'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { useDispatch } from 'react-redux'
 import { END } from 'redux-saga'
 import { wrapper } from '@/store'

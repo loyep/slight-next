@@ -19,9 +19,9 @@ import { ActionTypes } from './actions'
 //   }
 // }
 
-// function* initialState() {
-//   yield take(actionTypes.INIT_LAYOUT)
-// }
+function* initialState() {
+  yield take(ActionTypes.INIT_CONFIG)
+}
 
 function* rootSaga() {
   console.log('ff')

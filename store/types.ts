@@ -3,7 +3,14 @@ export interface LayoutState {
   header: boolean
 }
 
+export interface ConfigState {
+  name: string
+  description: string
+  year: string
+  url: string
+}
+
 export interface RootState {
-  title?: string
+  config: ConfigState
   layout: LayoutState
 }

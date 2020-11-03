@@ -7,27 +7,26 @@ import { MakeStore, createWrapper, Context } from 'next-redux-wrapper';
 import { reducer } from './reducer'
 import { RootState } from './types'
 import rootSaga from './saga';
+import config from '@/config'
 
 export interface SagaStore extends Store {
   sagaTask?: Task;
 }
 
 export const initialState: RootState = {
-  title: '',
+  config: { ...config },
   layout: {
     header: true,
     footer: true
   }
 }
 
-// create a makeStore function
 export const makeStore: MakeStore<RootState> = (context: Context) => {
-  const sagaMiddleware = createSagaMiddleware();
+  const sagaMiddleware = createSagaMiddleware()
   const logger = createLogger()
-  const store = createStore(reducer, initialState, applyMiddleware(sagaMiddleware, logger)) as SagaStore;
-  store.sagaTask = sagaMiddleware.run(rootSaga);
+  const store: SagaStore = createStore(reducer, initialState, applyMiddleware(sagaMiddleware, logger))
+  store.sagaTask = sagaMiddleware.run(rootSaga)
   return store;
 }
 
-// export an assembled wrapper
 export const wrapper = createWrapper<RootState>(makeStore, { debug: true });

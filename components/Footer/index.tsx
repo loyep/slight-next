@@ -9,20 +9,21 @@ import {
 } from '@ant-design/icons'
 import SltBackTop from '../BackTop'
 import Link from 'next/link'
-import config from '@/config'
-import styles from './index.module.scss'
+// import config from '@/config'
+import { useSelector } from 'react-redux'
+import styles from './index.scss'
+import { RootState, ConfigState } from '@/store/types'
 
 interface SltFooterProps {
   backTop?: boolean
   title?: string
 }
-const defaultProps: SltFooterProps = {
-  backTop: true,
-  title: config.title,
-}
+
+const { name, url } = useSelector<RootState, ConfigState>((state: RootState) => state.config)
 
 const Footer = (props: SltFooterProps) => {
-  const { backTop, title } = { ...defaultProps, ...props }
+  const { backTop = true } = props
+
   const { pathname } = useRouter()
   const isHome = pathname === '/'
   return (
@@ -43,18 +44,18 @@ const Footer = (props: SltFooterProps) => {
             <div className={styles.copyright}>
               Copyright © 2020
               <Link href="/">
-                <a title={title} rel="home">
-                  {title}
+                <a title={name}>
+                  {name}
                 </a>
               </Link>
               . Designed by
               <a
-                href="https://www.nicetheme.cn"
-                title="nicetheme奈思主题-资深的原创WordPress主题开发团队"
+                href={url}
+                title={name}
                 target="_blank"
                 rel="noreferrer"
               >
-                nicetheme
+                {name}
               </a>
               .
               <a

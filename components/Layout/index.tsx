@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import SltHeader from '../Header';
 import SltFooter from '../Footer';
 import { Layout, ConfigProvider } from 'antd'

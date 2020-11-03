@@ -4,6 +4,7 @@ import { HYDRATE } from 'next-redux-wrapper'
 
 export const ActionTypes = {
   HYDRATE: HYDRATE,
+  INIT_CONFIG: "INIT_CONFIG",
   LAYOUT: "LAYOUT",
 }
 
