@@ -18,11 +18,11 @@ const SignIn: NextPage<SignInProps> = (props) => {
   };
 
   useEffect(() => {
-    // dispatch(toggleHeaderVisible(false))
-    // dispatch(toggleFooterVisible(false))
+    dispatch(toggleHeaderVisible(false))
+    dispatch(toggleFooterVisible(false))
     return () => {
-      // dispatch(toggleHeaderVisible(true))
-      // dispatch(toggleFooterVisible(true))
+      dispatch(toggleHeaderVisible(true))
+      dispatch(toggleFooterVisible(true))
     }
   }, [dispatch])
 
@@ -65,8 +65,8 @@ const SignIn: NextPage<SignInProps> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
-  store.dispatch(toggleHeaderVisible(false))
-  store.dispatch(toggleFooterVisible(false))
+  // store.dispatch(toggleHeaderVisible(false))
+  // store.dispatch(toggleFooterVisible(false))
   return {
     props: {
       title: '登录|注册'
