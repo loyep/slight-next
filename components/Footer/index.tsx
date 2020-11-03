@@ -19,10 +19,9 @@ interface SltFooterProps {
   title?: string
 }
 
-const { name, url } = useSelector<RootState, ConfigState>((state: RootState) => state.config)
-
 const Footer = (props: SltFooterProps) => {
   const { backTop = true } = props
+  const { name, url } = useSelector<RootState, ConfigState>((state: RootState) => state.config)
 
   const { pathname } = useRouter()
   const isHome = pathname === '/'

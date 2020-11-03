@@ -84,6 +84,7 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   return {
     props: {
       data,
+      title: data.title,
       recommends,
       page,
     },
