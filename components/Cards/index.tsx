@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { Row } from 'antd'
 import styles from './index.scss'
 import Item, { CardsGridType } from './Item'

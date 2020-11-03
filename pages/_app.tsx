@@ -6,6 +6,7 @@ import '@/assets/styles/index.less'
 import SltLayout from '@/components/Layout'
 import NProgress from '@/components/NProgress'
 import { wrapper } from '@/store'
+import ErrorPage from '@/components/Errors/NotFound'
 
 type NextContext = AppProps & Record<string, any>
 
@@ -21,10 +22,12 @@ function App(props: NextContext) {
         <title>{generateTitle(title)}</title>
         <meta name="description" content={description} />
       </Head>
-      <SltLayout>
-        <Component {...pageProps}></Component>
-        <NProgress></NProgress>
-      </SltLayout>
+      <ErrorPage statusCode={props.statusCode}>
+        <SltLayout>
+          <Component {...pageProps}></Component>
+        </SltLayout>
+      </ErrorPage>
+      <NProgress></NProgress>
     </>
   )
 }
