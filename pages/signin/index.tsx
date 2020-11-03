@@ -1,6 +1,8 @@
 import { NextPage, GetServerSideProps } from 'next'
+import { useEffect } from 'react'
 import styles from './index.scss'
 import { Form, Input, Button, Checkbox } from 'antd';
+import { useDispatch } from 'react-redux'
 import { wrapper } from '@/store'
 import { toggleHeaderVisible, toggleFooterVisible } from '@/store/actions'
 
@@ -10,9 +12,19 @@ interface SignInProps {
 
 const SignIn: NextPage<SignInProps> = (props) => {
   const { title } = props
+  const dispatch = useDispatch()
   const onFinish = values => {
     console.log('Success:', values);
   };
+
+  useEffect(() => {
+    dispatch(toggleHeaderVisible(false))
+    dispatch(toggleFooterVisible(false))
+    return () => {
+      dispatch(toggleHeaderVisible(true))
+      dispatch(toggleFooterVisible(true))
+    }
+  }, [dispatch])
 
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
@@ -53,8 +65,6 @@ const SignIn: NextPage<SignInProps> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
-  store.dispatch(toggleHeaderVisible(false))
-  store.dispatch(toggleFooterVisible(false))
   return {
     props: {
       title: '登录|注册'
