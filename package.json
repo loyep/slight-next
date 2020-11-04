@@ -26,15 +26,13 @@
   "dependencies": {
     "@mdx-js/loader": "^1.6.19",
     "@mdx-js/react": "^1.6.19",
-    "@next/mdx": "^10.0.0",
-    "antd": "^4.7.3",
+    "@next/mdx": "^10.0.1",
+    "antd": "^4.8.0",
     "axios": "^0.21.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.2",
     "dayjs": "^1.9.4",
     "express": "^4.17.1",
-    "http-proxy-middleware": "^1.0.6",
-    "isomorphic-unfetch": "^3.1.0",
     "next": "^10.0.0",
     "next-offline": "^5.0.2",
     "next-redux-saga": "^4.1.2",
@@ -48,7 +46,7 @@
     "react-syntax-highlighter": "^15.2.1",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.1.3",
-    "swiper": "^6.3.4"
+    "swiper": "^6.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -89,7 +87,6 @@
     "jest-watch-typeahead": "^0.6.1",
     "less": "^3.12.2",
     "less-loader": "^7.0.2",
-    "less-vars-to-js": "^1.3.0",
     "lint-staged": "^10.4.2",
     "postcss-flexbugs-fixes": "^4.2.1",
     "postcss-preset-env": "^6.7.0",
