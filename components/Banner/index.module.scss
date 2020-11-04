@@ -1,3 +1,5 @@
+
+
 .banner {
   position: relative;
   padding-top: 32px;
@@ -69,7 +71,9 @@
   }
 
   :global {
-    .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+    .swiper-container-horizontal
+      > .swiper-pagination-bullets
+      .swiper-pagination-bullet {
       background: #fff;
     }
 
@@ -88,10 +92,8 @@
     }
 
     .swiper-container {
-
       &:hover,
       &:focus {
-
         .swiper-button-prev,
         .swiper-button-next {
           opacity: 1;

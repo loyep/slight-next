@@ -141,7 +141,7 @@ export default function Item(props) {
   const classes = classnames([styles.item, border ? styles.itemBorder : ''])
 
   return (
-    <Col className={styles.cardWrapper} {...colPros}>
+    <Col className={styles.itemWrapper} {...colPros}>
       <div className={classes}>
         <div className="slt-media">
           <Link href={linkUrl}>

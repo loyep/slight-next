@@ -5,7 +5,8 @@ import SltLayout from '~/components/Layout'
 import NProgress from '~/components/NProgress'
 import { wrapper } from '~/store'
 import ErrorPage from '~/components/Errors/NotFound'
-import '../styles/index.scss'
+import '~/styles/less/index.less'
+import '~/styles/sass/index.scss'
 
 type NextContext = AppProps & Record<string, any>
 

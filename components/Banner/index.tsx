@@ -39,7 +39,10 @@ const SltBanner: NextPage<SltBannerProps> = (props) => {
                 <Link key={item.id} href={`/post/${item.slug}`}>
                   <a className={classnames(styles.bannerItem, 'slt-media')}>
                     <div
-                      className={classnames(styles.bannerContent, 'slt-media-content')}
+                      className={classnames(
+                        styles.bannerContent,
+                        'slt-media-content'
+                      )}
                       style={{
                         backgroundImage: `url(${item.image})`,
                       }}
