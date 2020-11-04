@@ -7,7 +7,7 @@ import { MakeStore, createWrapper, Context } from 'next-redux-wrapper';
 import { reducer } from './reducer'
 import { RootState } from './types'
 import rootSaga from './saga';
-import config from '@/config'
+import config from '~/config'
 
 export interface SagaStore extends Store {
   sagaTask?: Task;

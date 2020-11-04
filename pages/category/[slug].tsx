@@ -1,10 +1,10 @@
 import { NextPage, GetServerSideProps } from 'next'
-import NotoFoundPage from '@/components/Errors/NotFound'
-import { fetchPostList, fetchCategory } from '@/api'
-import Cards from '@/components/Cards'
+import NotoFoundPage from '~/components/Errors/NotFound'
+import { fetchPostList, fetchCategory } from '~/api'
+import Cards from '~/components/Cards'
 import { useState } from 'react'
 import { Button } from 'antd'
-import SltCoverHeader from '@/components/Header/CoverHeader'
+import SltCoverHeader from '~/components/Header/CoverHeader'
 
 interface CategoryProps {
   title?: string

@@ -9,10 +9,10 @@ import {
 } from '@ant-design/icons'
 import SltBackTop from '../BackTop'
 import Link from 'next/link'
-// import config from '@/config'
+// import config from '~/config'
 import { useSelector } from 'react-redux'
-import styles from './index.scss'
-import { RootState, ConfigState } from '@/store/types'
+import styles from './index.module.scss'
+import { RootState, ConfigState } from '~/store/types'
 
 interface SltFooterProps {
   backTop?: boolean

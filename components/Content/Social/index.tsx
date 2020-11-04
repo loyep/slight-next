@@ -1,10 +1,9 @@
 import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import styles from './index.module.scss'
 
-enum SocialType {
-  'qq', 'wechat', 'weibo', 'twitter', 'linkedin', 'facebook',
-}
+type SocialType = 'qq' | 'wechat' | 'weibo' | 'twitter' | 'linkedin' | 'facebook';
 
 interface SltSocialProps {
   socials: SocialType[]
@@ -18,7 +17,9 @@ const SltSocial: NextPage<SltSocialProps> = (props: Partial<SltSocialProps>) => 
   const { socials = [] } = { ...defaultProps, ...props };
   const [url, setUrl] = useState('')
   const [title, setTitle] = useState('')
-
+  const router = useRouter()
+  console.log(router.pathname)
+  console.log(router.asPath)
   useEffect(() => {
     setUrl(encodeURIComponent(document.location.href))
     setTitle(encodeURIComponent(document.title))
@@ -29,15 +30,15 @@ const SltSocial: NextPage<SltSocialProps> = (props: Partial<SltSocialProps>) => 
 
   const getShareUrl = (social: SocialType) => {
     switch (social) {
-      case SocialType.qq:
+      case 'qq':
         return `https://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${title}`
-      case SocialType.weibo:
+      case 'weibo':
         return `https://service.weibo.com/share/share.php?type=button&language=zh_cn&title=${title}&searchPic=true&url=${url}`
-      case SocialType.twitter:
+      case 'twitter':
         return `https://twitter.com/intent/tweet?url=${url}`
-      case SocialType.facebook:
+      case 'facebook':
         return `https://www.facebook.com/sharer.php?u=${url}`
-      case SocialType.linkedin:
+      case 'linkedin':
         return `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${title}`
     }
     return null

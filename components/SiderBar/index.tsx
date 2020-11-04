@@ -1,5 +1,5 @@
 import { useState, ReactNode } from 'react'
-import styles from './index.scss'
+import styles from './index.module.scss'
 export interface SiderBarProps {
   children: ReactNode | ReactNode[]
 }

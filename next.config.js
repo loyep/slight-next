@@ -6,7 +6,6 @@ const lessToJS = require('less-vars-to-js')
 
 const withLess = require('@zeit/next-less');
 const withSass = require('@zeit/next-sass');
-const withCSS = require('@zeit/next-css');
 
 const themeVariables = lessToJS(
   fs.readFileSync(path.resolve(__dirname, './assets/styles/variable.less'), 'utf8')
@@ -17,11 +16,14 @@ if (typeof require !== 'undefined') {
   require.extensions['.less'] = file => {};
 }
 
-module.exports = withCSS(withSass({
+module.exports = withSass(withLess({
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
     localIdentName: '[local]__[hash:base64:5]',
+  },
+  sassOptions: {
+    includePaths: ['styles']
   },
   webpack: (config, {
     buildId,
@@ -29,17 +31,15 @@ module.exports = withCSS(withSass({
     isServer,
     defaultLoaders
   }) => {
-    config.resolve.alias['@'] = __dirname
+    config.resolve.alias['~'] = __dirname
     config.devtool = 'cheap-module-inline-source-map';
     return config
   },
-  ...withLess({
-    lessLoaderOptions: {
-      lessOptions: {
-        javascriptEnabled: true,
-        modifyVars: themeVariables, // make your antd custom effective
-      }
-    },
-    // assetPrefix: 'https://static.loyep.com/',
-  })
+  lessLoaderOptions: {
+    lessOptions: {
+      javascriptEnabled: true,
+      modifyVars: themeVariables, // make your antd custom effective
+    }
+  },
+  // assetPrefix: 'https://static.loyep.com/',
 }));

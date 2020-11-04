@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux'
 import SltHeader from '../Header';
 import SltFooter from '../Footer';
 import { Layout, ConfigProvider } from 'antd'
-import styles from './index.scss'
-import { RootState, LayoutState } from '@/store/types'
+import styles from './index.module.scss'
+import { RootState, LayoutState } from '~/store/types'
 
 interface SltLayoutProps {
   children?: ReactNode

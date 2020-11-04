@@ -1,10 +1,9 @@
-import { NextPage } from 'next'
 import Link from 'next/link'
-import React, { useState, useEffect, useContext } from 'react'
+import React from 'react'
 import { Col } from 'antd'
 import classnames from 'classnames'
-import { fromNow } from '@/utils/date'
-import styles from './index.scss'
+import { fromNow } from '~/utils/date'
+import styles from './item.module.scss'
 
 const defaultGrid = {
   gutter: 0,

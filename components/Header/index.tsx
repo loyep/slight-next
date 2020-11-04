@@ -3,7 +3,8 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import { Layout, Button, Tooltip, Menu } from 'antd'
 import { HistoryOutlined, SearchOutlined } from '@ant-design/icons'
-import './index.less'
+// import './index.less'
+import styles from './index.module.scss'
 import classnames from 'classnames'
 
 const { Header } = Layout
@@ -16,11 +17,13 @@ interface SltHeaderProps {
 const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
   const [fixed, setFixed] = useState(false)
   const [scroll, setScroll] = useState(false)
-  const headerClasses = classnames({
-    'slt-header': true,
-    scroll,
-    fixed,
-  })
+  const headerClasses = classnames([
+    styles.header,
+    {
+      scroll,
+      fixed,
+    }
+  ])
 
   const onScroll = () => {
     setScroll(document.body.scrollTop + document.documentElement.scrollTop > 30)
@@ -42,7 +45,7 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
   return (
     <Header className={headerClasses}>
       <div className="slt-container">
-        <div className="slt-header-logo">
+        <div className={styles.headerLogo}>
           <Link href="/">
             <a rel="home">
               <img
@@ -57,16 +60,16 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
             </a>
           </Link>
         </div>
-        <div className="slt-header-nav slt-header-nav-right">
-          <ul className="slt-header-menu">
-            <li className="slt-nav-item">
+        <div className={classnames(styles.headerNav, 'right')}>
+          <ul className={styles.headerMenu}>
+            <li className={styles.navItem}>
               <a className="nav-link" onClick={onSearch}>
                 <Tooltip placement="bottom" title="搜索">
                   <SearchOutlined />
                 </Tooltip>
               </a>
             </li>
-            <li className="slt-nav-item">
+            <li className={styles.navItem}>
               <Link href="/history">
                 <a className="nav-link" target="_blank">
                   <Tooltip placement="bottom" title="最近浏览记录">
@@ -75,7 +78,7 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
                 </a>
               </Link>
             </li>
-            <li className="slt-nav-item">
+            <li className={styles.navItem}>
               <Link href="/signin">
                 <Button type="default">登录</Button>
               </Link>
@@ -83,8 +86,8 @@ const SltHeader: NextPage<SltHeaderProps> = (props: SltHeaderProps) => {
           </ul>
         </div>
 
-        <div className="slt-header-nav slt-header-nav-left">
-          <Menu className="slt-header-menu" mode="horizontal">
+        <div className={classnames(styles.headerNav, 'left')}>
+          <Menu className={styles.headerMenu} mode="horizontal">
             <MenuItem>
               <Link href="/category/picture">图片</Link>
             </MenuItem>

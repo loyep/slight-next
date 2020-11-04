@@ -1,7 +1,7 @@
 import React from 'react'
 import { Breadcrumb } from 'antd'
 import Link from 'next/link'
-import styles from './index.scss'
+import styles from './index.module.scss'
 
 export interface BreadcrumbItem {
   text: string

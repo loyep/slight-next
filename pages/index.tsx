@@ -1,15 +1,15 @@
-import { fetchPostList, fetchRecommends } from '@/api'
-import Cards from '@/components/Cards'
+import { fetchPostList, fetchRecommends } from '~/api'
+import Cards from '~/components/Cards'
 import { useState } from 'react'
 import { Button } from 'antd'
 import { NextPage, GetServerSideProps } from 'next'
-import Banner from '@/components/Banner'
+import Banner from '~/components/Banner'
 import { useDispatch } from 'react-redux'
 import { END } from 'redux-saga'
-import { wrapper } from '@/store'
-import { RootState } from '@/store/types'
+import { wrapper } from '~/store'
+import { RootState } from '~/store/types'
 import { connect } from 'react-redux'
-import { updateLayout } from '@/store/actions'
+import { updateLayout } from '~/store/actions'
 
 interface HomeProps {
   title?: string

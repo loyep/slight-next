@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import React, { useEffect } from 'react'
-import './CoverHeader.less'
-import styles from './cover.module.scss'
+// import './CoverHeader.less'
+// import styles from './cover.module.scss'
 
 interface SltCoverHeaderProps {
   title?: string

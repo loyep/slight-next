@@ -1,4 +1,4 @@
-import { fetchCategoryList } from '@/api'
+import { fetchCategoryList } from '~/api'
 import { useState } from 'react'
 import { NextPage, NextPageContext } from 'next'
 

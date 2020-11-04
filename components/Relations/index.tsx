@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
 import Cards from '../Cards'
-import './index.less'
+import styles from'./index.module.scss'
 
 interface SltRelationProps {
   dataSource: any[]

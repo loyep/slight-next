@@ -1,6 +1,6 @@
 import { CaretUpOutlined } from '@ant-design/icons'
 import { Row, Col, Tag } from 'antd'
-import styles from './index.scss'
+import styles from './index.module.scss'
 
 export interface SinglePostProps {
   avatar?: string

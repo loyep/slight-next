@@ -1,4 +1,4 @@
-import type { ConfigState } from '@/store/types'
+import type { ConfigState } from '~/store/types'
 const config: ConfigState = {
   name: '轻言',
   description:

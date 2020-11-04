@@ -1,13 +1,13 @@
 import { NextPage, GetServerSideProps } from 'next'
 import { useEffect } from 'react'
-import styles from './index.scss'
+import styles from './index.module.scss'
 import { Form, Input, Button } from 'antd'
 import { useDispatch } from 'react-redux'
 import { END } from 'redux-saga'
-import { wrapper } from '@/store'
-import { RootState } from '@/store/types'
+import { wrapper } from '~/store'
+import { RootState } from '~/store/types'
 import { connect } from 'react-redux'
-import { updateLayout } from '@/store/actions'
+import { updateLayout } from '~/store/actions'
 
 interface SignInProps {
   title?: string

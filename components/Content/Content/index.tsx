@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
-import styles from './index.scss'
+import styles from './index.module.scss'
 
 interface ContentProps {
   content: string

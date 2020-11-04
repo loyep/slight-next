@@ -1,0 +1,11 @@
+.main {
+  padding-top: 32px;
+
+  :global(.breadcrumb) {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
+}

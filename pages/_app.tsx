@@ -1,12 +1,11 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { generateTitle } from '@/utils'
-import '@/assets/styles/antd.less'
-import '@/assets/styles/index.less'
-import SltLayout from '@/components/Layout'
-import NProgress from '@/components/NProgress'
-import { wrapper } from '@/store'
-import ErrorPage from '@/components/Errors/NotFound'
+import { generateTitle } from '~/utils'
+import SltLayout from '~/components/Layout'
+import NProgress from '~/components/NProgress'
+import { wrapper } from '~/store'
+import ErrorPage from '~/components/Errors/NotFound'
+import '../styles/index.scss'
 
 type NextContext = AppProps & Record<string, any>
 

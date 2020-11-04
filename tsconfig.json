@@ -18,7 +18,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "~/*": ["./*"],
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "types": ["@types/node", "@types/less"],

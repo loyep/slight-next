@@ -1,16 +1,14 @@
-import { NextPage } from 'next'
 import React, { useMemo, useEffect } from 'react'
 import { Col, Row } from 'antd'
-import './index.less'
-import styles from './index.scss'
+import styles from './index.module.scss'
 import Link from 'next/link'
-import { fromNow } from '@/utils/date'
-import SiderBar from '@/components/SiderBar'
-import AuthorWidget from '@/components/Widget/Author'
-import SinglePostWidget from '@/components/Widget/SinglePost'
+import { fromNow } from '~/utils/date'
+import SiderBar from '~/components/SiderBar'
+import AuthorWidget from '~/components/Widget/Author'
+import SinglePostWidget from '~/components/Widget/SinglePost'
 import Header from './header'
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
-import { ContentProps } from '@/components/Content'
+import { ContentProps } from '~/components/Content'
 import Container from '../Container'
 
 type ImageContentProps = ContentProps
@@ -59,30 +57,14 @@ export default function ImageContent(props: ImageContentProps) {
   return (
     <div className={styles.main}>
       <div className="slt-container">
-        {props.breadcrumbs}
+        {props.breadcrumbs && <div className="breadcrumb">
+          {props.breadcrumbs}
+        </div>}
         {renderHeader}
-        <Row justify="center" className="post">
+        <Row justify="center">
           <Col md={24} xs={24} sm={24} lg={17} xl={18} xxl={18}>
             <Container>
               {props.htmlContent}
-              <div id="post-action" className="post-action mt-5 mt-lg-5">
-                <div className="d-md-flex flex-md-fill align-items-md-center">
-                  <div className="d-none d-md-block">
-                    <a
-                      href="#"
-                      className="d-inline-block btn-action-like mr-md-4"
-                    >
-                      <i className="text-xl iconfont icon-like"></i>
-                      <span className="like-count font-theme align-middle ml-1">
-                        {content.likesCount || 0}
-                      </span>
-                    </a>
-                  </div>
-                  <div className="flex-md-fill"></div>
-                  {props.social}
-                </div>
-              </div>
-
               <div className="post-declare text-sm text-muted text-center text-md-left mt-5 mt-md-5">
                 本文系作者
                 <span className="mx-2">

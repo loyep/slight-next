@@ -1,4 +1,4 @@
-import styles from './header.scss'
+import styles from './header.module.scss'
 import { ReactNode } from 'react'
 import Link from 'next/link'
 import { Tag } from 'antd'

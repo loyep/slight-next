@@ -1,0 +1,123 @@
+.item {
+  background-color: #fff;
+  box-shadow: 0 5px 40px 5px rgba(2, 10, 18, 0.1);
+  margin-bottom: 0;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  flex: 1 1 auto;
+  overflow: hidden;
+  transition: all 0.3s ease-in;
+  width: 100%;
+  height: 100%;
+
+  &Title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #212529;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    white-space: normal;
+
+    &:hover {
+      color: #212529;
+    }
+  }
+
+  &Border {
+    box-shadow: none;
+    border: 1px solid #f1f1f1;
+    background-color: #fff;
+  }
+
+  :global(.slt-media) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &Body {
+    flex: 1 1 auto;
+  }
+
+  &Content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 12px 14px;
+  }
+
+  &Footer {
+    align-items: center;
+    display: flex;
+    margin-top: 8px;
+    justify-content: space-between;
+
+    time {
+      font-size: 12px;
+      color: #9fa0a7;
+    }
+  }
+
+  &Meta {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 14px;
+    padding-left: 0;
+    padding-right: 0;
+
+    &>* {
+      margin-left: 8px;
+    }
+
+    i {
+      font-size: 12px;
+      margin-right: 2px;
+    }
+
+    :global {
+      .meta-view {
+        color: #67c23a;
+      }
+
+      .meta-like {
+        color: #ff4949;
+      }
+
+      .meta-comment {
+        color: #20a0ff;
+      }
+    }
+  }
+}
+
+.cate {
+  font-size: 12px;
+  margin-bottom: 4px;
+  margin-left: 16px;
+  position: relative;
+
+  a,
+  a::after {
+    color: #9fa0a7;
+  }
+
+  &Dot {
+    position: absolute;
+    border-radius: 20px;
+    width: 10px;
+    height: 10px;
+    display: block;
+    content: '';
+    left: -16px;
+    top: 50%;
+    transform: translate(0%, -50%);
+  }
+}

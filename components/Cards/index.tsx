@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { Row } from 'antd'
-import styles from './index.scss'
+import styles from './index.module.scss'
 import Item, { CardsGridType } from './Item'
 
 export interface CardsProps<RecordType> {

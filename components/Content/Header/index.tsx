@@ -1,7 +1,7 @@
 import { ReactNode, useMemo } from 'react'
 import Link from 'next/link'
 import { Tag } from 'antd'
-import styles from './index.scss'
+import styles from './index.module.scss'
 
 interface HeaderCategoryProps {
   href: string

@@ -1,5 +1,5 @@
-import { fetchPostList, fetchRecommends } from '@/api'
-import Cards from '@/components/Cards'
+import { fetchPostList, fetchRecommends } from '~/api'
+import Cards from '~/components/Cards'
 import { useState, useEffect } from 'react'
 import { Button } from 'antd'
 import { NextPage, GetServerSideProps } from 'next'
