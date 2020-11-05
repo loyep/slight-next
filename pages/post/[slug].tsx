@@ -11,9 +11,7 @@ import Breadcrumbs from '~/components/Breadcrumbs'
 import NotoFoundPage from '~/components/Errors/NotFound'
 import './[slug].scss'
 
-interface PostProps {
-  title?: string
-  description?: string
+interface PostProps extends PageProps {
   data: any
   error?: string
 }
@@ -95,10 +93,7 @@ const Post: NextPage<PostProps> = (props) => {
   return <>{renderContent()}</>
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
-  query,
-  res,
-}) => {
+export const getServerSideProps: GetServerSideProps<PostProps> = async ({ query, res }) => {
   try {
     const { slug } = query
     const res = await fetchPost({ slug })
@@ -113,7 +108,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     }
   } catch (error) {
     res.statusCode = 404
-    return { props: { error: '哎呀！该页面无法找到' } }
+    return { props: { error: '哎呀！该页面无法找到', data: null } }
   }
 }
 

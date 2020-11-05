@@ -69,7 +69,7 @@ const History: NextPage<HistoryProps> = (props) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<HistoryProps> = async () => {
   const page = 1
   const { list: data = [] } = await fetchPostList({ page })
   return {

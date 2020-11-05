@@ -15,17 +15,22 @@ const SignIn: NextPage<SignInProps> = (props) => {
   const { title } = props
   const router = useRouter()
   const dispatch = useDispatch()
+
   const onFinish = (values: any) => {
     console.log('Success:', values)
     router.push('/admin')
   }
 
   useEffect(() => {
+    if (router.query.redirect) {
+      router.replace('/')
+      return
+    }
     dispatch(updateLayout({ header: false, footer: false }))
     return () => {
       dispatch(updateLayout({ header: true, footer: true }))
     }
-  }, [dispatch])
+  }, [])
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo)
@@ -62,10 +67,12 @@ const SignIn: NextPage<SignInProps> = (props) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps<SignInProps> = async ({ res }) => {
   return {
     props: {
       title: '登录|注册',
+      socials: [],
+      layout: 'login'
     },
   }
 }

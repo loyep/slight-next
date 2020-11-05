@@ -26,9 +26,4 @@ const Posts: NextPage<PostsProps> = (_props) => {
   )
 }
 
-// Posts.getInitialProps = ({ query: _query }: NextPageContext): PostsProps => {
-//   return {
-//   };
-// }
-
 export default Posts

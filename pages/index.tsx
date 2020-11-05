@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { Button } from 'antd'
 import { NextPage, GetServerSideProps } from 'next'
 import Banner from '~/components/Banner'
-import { wrapper } from '~/store'
 
 interface HomeProps extends PageProps {
   data: any[]
@@ -76,7 +75,7 @@ const Home: NextPage<HomeProps> = (props) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
   const page = 1
   const { list: data = [] } = await fetchPostList({ page })
   const { data: recommends = [] } = await fetchRecommends()

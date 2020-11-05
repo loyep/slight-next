@@ -5,7 +5,6 @@ import { Button } from 'antd'
 import { NextPage, GetServerSideProps } from 'next'
 
 interface SearchProps extends PageProps {
-  title?: string
   data: any[]
   page: number
 }
@@ -72,7 +71,7 @@ const Search: NextPage<SearchProps> = (props) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps<SearchProps> = async ({ query }) => {
   const page = 1
   const { q: keyword = '' } = query
   const { list: data = [] } = await fetchPostList({ page, keyword })

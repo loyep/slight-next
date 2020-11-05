@@ -6,12 +6,12 @@ import { useState } from 'react'
 import { Button } from 'antd'
 import SltCoverHeader from '~/components/Header/CoverHeader'
 
-interface CategoryProps {
+interface CategoryProps extends PageProps {
   title?: string
   description?: string
   data: any[]
-  page: number
-  category: any
+  page?: number
+  category?: any
   error?: any
 }
 
@@ -24,7 +24,7 @@ const Category: NextPage<CategoryProps> = (props) => {
   }
 
   const [loadMore, setLoadMore] = useState(true)
-  const [currentPage, setCurrentPage] = useState(props.page)
+  const [currentPage, setCurrentPage] = useState(props.page || 1)
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState(props.data || [])
 
@@ -89,7 +89,7 @@ const Category: NextPage<CategoryProps> = (props) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
+export const getServerSideProps: GetServerSideProps<CategoryProps> = async ({
   query,
   res,
 }) => {
@@ -111,7 +111,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     }
   } catch (error) {
     res.statusCode = 404
-    return { props: { error: '哎呀！该页面无法找到' } }
+    return { props: { error: '哎呀！该页面无法找到', data: [] } }
   }
 }
 
