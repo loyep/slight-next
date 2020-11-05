@@ -11,8 +11,8 @@ if (typeof require !== 'undefined') {
 module.exports = withSass({
   cssModules: true,
   cssLoaderOptions: {
-    importLoaders: 1,
-    localIdentName: '[local]_[name]__[hash:base64:4]',
+    importLoaders: 2,
+    localIdentName: '[local]_[name]__[hash:5]',
   },
   webpack: (config, {
     buildId,
