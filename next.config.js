@@ -4,6 +4,8 @@ const withLess = require('@zeit/next-less')
 const withSass = require('@zeit/next-sass')
 const getLocalIdent = require('@zeit/next-css/node_modules/css-loader/lib/getLocalIdent')
 
+const _path = require('path')
+
 // fix: prevents error when .css files are required by node
 if (typeof require !== 'undefined') {
   require.extensions['.less'] = (file) => {}
@@ -13,6 +15,7 @@ module.exports = withSass({
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
+    camelCase: true,
     localIdentName: '[path][name]_[local]__[hash:5]',
     getLocalIdent: (loaderContext, localIdentName, localName, options) => {
       const fileName = _path.basename(loaderContext.resourcePath)
