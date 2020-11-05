@@ -2,6 +2,7 @@ import styles from './header.module.scss'
 import { ReactNode } from 'react'
 import Link from 'next/link'
 import { Tag } from 'antd'
+import Tags from '../common/Tags'
 
 interface HeaderCategoryProps {
   href: string
@@ -30,13 +31,7 @@ export default function Header(props: HeaderProps) {
           <span className={styles.overlay}></span>
         </div>
         <div className={styles.mediaOverlay}>
-          <div>
-            <Tag color={'#448EF6'}>
-              <Link href={'/'}>
-                <a target="_blank">#{'前沿科技'}#</a>
-              </Link>
-            </Tag>
-          </div>
+          <Tags tags={[{ color: '#448EF6', href: '/category/test001', text: '前沿科技' }]}></Tags>
           <h1 className={styles.title}>{props.title}</h1>
           <div className={styles.meta}>
             <time>{props.date}</time>
