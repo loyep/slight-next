@@ -25,16 +25,11 @@ export function Tag(props: TagProps) {
     </AntTag>
   )
 
-
   if (props.popover) {
     const content = <div>{props.text}</div>
 
     return (
-      <AntPopover
-        trigger="hover"
-        arrowPointAtCenter
-        content={content}
-      >
+      <AntPopover trigger="hover" arrowPointAtCenter content={content}>
         {defaultCtx}
       </AntPopover>
     )
@@ -45,11 +40,10 @@ export function Tag(props: TagProps) {
 export default function Tags(props: TagsProps) {
   const { tags = [], popover = true } = props
   return (
-    <div
-      className={styles.tags}
-    >
-      {tags.map(_tag => (<Tag {...{ popover }} {..._tag}></Tag>))}
-    </div >
+    <div className={styles.tags}>
+      {tags.map((_tag) => (
+        <Tag key={_tag.text} {...{ popover }} {..._tag}></Tag>
+      ))}
+    </div>
   )
 }
-
