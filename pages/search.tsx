@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { Button } from 'antd'
 import { NextPage, GetServerSideProps } from 'next'
 
-interface SearchProps {
+interface SearchProps extends PageProps {
   title?: string
   data: any[]
   page: number

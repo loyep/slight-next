@@ -1,38 +1,6 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-import crypto from 'crypto'
+import Document, { Html, Head, Main, NextScript as BaseScript } from 'next/document'
 
-const cspHashOf = (text: string) => {
-  const hash = crypto.createHash('sha256')
-  hash.update(text)
-  return `'sha256-${hash.digest('base64')}'`
-}
-
-export default class SlightDocument extends Document {
-  render() {
-    let csp = `default-src 'self'; script-src 'self' ${cspHashOf(
-      NextScript.getInlineScriptSource(this.props)
-    )}`
-    if (process.env.NODE_ENV !== 'production') {
-      csp = `style-src 'self' 'unsafe-inline'; font-src 'self' data:; default-src 'self'; script-src 'unsafe-eval' 'self' ${cspHashOf(
-        NextScript.getInlineScriptSource(this.props)
-      )}`
-    }
-    return (
-      <Html>
-        <SltHead>
-          <link rel="stylesheet" href="/fonts/iconfont/iconfont.css" as="style" />
-          <link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
-        </SltHead>
-        <body>
-          <Main></Main>
-          <SltScript></SltScript>
-        </body>
-      </Html>
-    )
-  }
-}
-
-export class SltScript extends NextScript {
+export class NextScript extends BaseScript {
   getScripts(files: any) {
     const scripts = super.getScripts(files)
     if (process.env.NODE_ENV === 'production') {
@@ -44,4 +12,19 @@ export class SltScript extends NextScript {
   }
 }
 
-export class SltHead extends Head {}
+export default class SlightDocument extends Document {
+  render() {
+    return (
+      <Html>
+        <Head>
+          <link rel="stylesheet" href="/fonts/iconfont/iconfont.css" as="style" />
+          <link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
+        </Head>
+        <body>
+          <Main></Main>
+          <NextScript></NextScript>
+        </body>
+      </Html>
+    )
+  }
+}

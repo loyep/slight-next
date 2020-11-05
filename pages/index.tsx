@@ -4,15 +4,9 @@ import { useState } from 'react'
 import { Button } from 'antd'
 import { NextPage, GetServerSideProps } from 'next'
 import Banner from '~/components/Banner'
-import { useDispatch } from 'react-redux'
-import { END } from 'redux-saga'
 import { wrapper } from '~/store'
-import { RootState } from '~/store/types'
-import { connect } from 'react-redux'
-import { updateLayout } from '~/store/actions'
 
-interface HomeProps {
-  title?: string
+interface HomeProps extends PageProps {
   data: any[]
   recommends: any[]
   page: number
@@ -82,19 +76,17 @@ const Home: NextPage<HomeProps> = (props) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
-  async ({ store }) => {
-    const page = 1
-    const { list: data = [] } = await fetchPostList({ page })
-    const { data: recommends = [] } = await fetchRecommends()
-    return {
-      props: {
-        data,
-        recommends,
-        page,
-      },
-    }
+export const getServerSideProps: GetServerSideProps = async () => {
+  const page = 1
+  const { list: data = [] } = await fetchPostList({ page })
+  const { data: recommends = [] } = await fetchRecommends()
+  return {
+    props: {
+      data,
+      recommends,
+      page,
+    },
   }
-)
+}
 
-export default connect((state: RootState) => state)(Home)
+export default Home

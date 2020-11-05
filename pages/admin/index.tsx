@@ -3,21 +3,19 @@ import { useEffect } from 'react'
 import styles from './index.module.scss'
 import { Form, Input, Button } from 'antd'
 import { useDispatch } from 'react-redux'
+import { END } from 'redux-saga'
+import { wrapper } from '~/store'
 import { updateLayout } from '~/store/actions'
-import { useRouter } from 'next/router'
 
-interface SignInProps extends PageProps {
-  socials: any[]
+interface DashboardProps extends PageProps {
   redirect?: string
 }
 
-const SignIn: NextPage<SignInProps> = (props) => {
+const Dashboard: NextPage<DashboardProps> = (props) => {
   const { title } = props
-  const router = useRouter()
   const dispatch = useDispatch()
   const onFinish = (values: any) => {
     console.log('Success:', values)
-    router.push('/admin')
   }
 
   useEffect(() => {
@@ -30,6 +28,7 @@ const SignIn: NextPage<SignInProps> = (props) => {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo)
   }
+
   return (
     <div className={styles.main}>
       {title}
@@ -63,11 +62,13 @@ const SignIn: NextPage<SignInProps> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  res.writeHead(302, { Location: '/signin' });
+  res.end();
   return {
     props: {
-      title: '登录|注册',
+      title: '控制台',
     },
   }
 }
 
-export default SignIn
+export default Dashboard

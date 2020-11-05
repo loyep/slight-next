@@ -1,16 +1,27 @@
 import { AnyAction, Reducer } from 'redux';
 import type { RootState } from './types'
-import { ActionTypes } from './actions'
+import config from '~/config'
+import { actionTypes } from './actions'
+import { HYDRATE } from 'next-redux-wrapper'
+
+export const initialState: RootState = {
+  config: { ...config },
+  layout: {
+    header: true,
+    footer: true
+  }
+}
 
 // create your reducer
 export const reducer: Reducer<RootState, AnyAction> = (state, action) => {
   console.log(action)
   switch (action.type) {
-    case ActionTypes.HYDRATE:
-      // Attention! This will overwrite client state! Real apps should use proper reconciliation.
+    case HYDRATE:
       return { ...state, ...action.payload };
-    case ActionTypes.LAYOUT:
+    case actionTypes.LAYOUT:
       return { ...state, layout: { ...action.payload } }
+    case actionTypes.INIT_CONFIG:
+      return { ...state, config: { ...action.payload } }
     default:
       return state;
   }

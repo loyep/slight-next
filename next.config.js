@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-var-requires */
-
 const withLess = require('@zeit/next-less')
 const withSass = require('@zeit/next-sass')
 
@@ -15,7 +14,12 @@ module.exports = withSass({
     importLoaders: 1,
     localIdentName: '[local]__[hash:base64:5]',
   },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders }) => {
+  webpack: (config, {
+    buildId,
+    dev,
+    isServer,
+    defaultLoaders
+  }) => {
     config.resolve.alias['~'] = __dirname
     config.devtool = 'cheap-module-inline-source-map'
     return config

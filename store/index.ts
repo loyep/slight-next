@@ -1,30 +1,37 @@
 
 
-import { createStore, applyMiddleware, Store, AnyAction, Reducer } from 'redux';
-import { createLogger } from 'redux-logger';
+import { createStore, applyMiddleware, Middleware, AnyAction } from 'redux';
 import createSagaMiddleware, { Task } from 'redux-saga';
 import { MakeStore, createWrapper, Context } from 'next-redux-wrapper';
-import { reducer } from './reducer'
+import { reducer, initialState } from './reducer'
 import { RootState } from './types'
 import rootSaga from './saga';
-import config from '~/config'
 
-export interface SagaStore extends Store {
-  sagaTask?: Task;
-}
+const sagaMiddleware = createSagaMiddleware()
 
-export const initialState: RootState = {
-  config: { ...config },
-  layout: {
-    header: true,
-    footer: true
+const bindMiddleware = (middleware: Middleware<any, any, any>[] = []) => {
+  console.log(process.env.NODE_ENV)
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { composeWithDevTools } = require('redux-devtools-extension')
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { createLogger } = require('redux-logger');
+    const logger = createLogger()
+    middleware.push(logger)
+    return composeWithDevTools(applyMiddleware(...middleware))
   }
+  return applyMiddleware(...middleware)
 }
 
 export const makeStore: MakeStore<RootState> = (context: Context) => {
-  const sagaMiddleware = createSagaMiddleware()
-  const logger = createLogger()
-  const store: SagaStore = createStore(reducer, initialState, applyMiddleware(sagaMiddleware, logger))
+  if (typeof window == "undefined") {
+    console.log("undefined")
+  } else {
+    console.log('window')
+  }
+  console.log('wrapper', wrapper)
+  console.log('makeStore')
+  const store = createStore(reducer, initialState, bindMiddleware([sagaMiddleware]))
   store.sagaTask = sagaMiddleware.run(rootSaga)
   return store;
 }

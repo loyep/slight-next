@@ -1,5 +1,10 @@
 import ErrorPage from '~/components/Errors/NotFound'
 
-export default function NotFoundPage() {
-  return <ErrorPage statusCode={404} />
+interface NotFoundPageProps extends PageProps {
+  statusCode: number
+}
+
+export default function NotFoundPage(props: NotFoundPageProps) {
+  const { statusCode } = props
+  return <ErrorPage statusCode={statusCode} />
 }

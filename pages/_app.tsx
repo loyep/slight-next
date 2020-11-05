@@ -1,4 +1,4 @@
-import { AppProps } from 'next/app'
+import { AppProps, AppContext } from 'next/app'
 import Head from 'next/head'
 import { generateTitle } from '~/utils'
 import SltLayout from '~/components/Layout'
@@ -10,7 +10,7 @@ import '~/styles/sass/index.scss'
 
 type NextContext = AppProps & Record<string, any>
 
-function App(props: NextContext) {
+const SltApp = (props: NextContext) => {
   const { Component, pageProps } = props
   const { title, description } = pageProps
 
@@ -32,4 +32,4 @@ function App(props: NextContext) {
   )
 }
 
-export default wrapper.withRedux(App)
+export default wrapper.withRedux(SltApp)

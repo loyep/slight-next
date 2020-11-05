@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react'
 import { Button } from 'antd'
 import { NextPage, GetServerSideProps } from 'next'
 
-interface HistoryProps {
-  title?: string
+interface HistoryProps extends PageProps {
   data: any[]
   page: number
 }

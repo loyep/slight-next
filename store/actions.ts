@@ -1,10 +1,8 @@
 import { LayoutState } from './types'
 
-import { HYDRATE } from 'next-redux-wrapper'
-
-export const ActionTypes = {
-  HYDRATE: HYDRATE,
+export const actionTypes = {
   INIT_CONFIG: "INIT_CONFIG",
+  CHECK_USER_STATUS: "CHECK_USER_STATUS",
   LAYOUT: "LAYOUT",
 }
 
@@ -18,7 +16,7 @@ export function toggleHeaderVisible(visible?: boolean) {
 
 export function updateLayout(layout: LayoutState) {
   return {
-    type: ActionTypes.LAYOUT,
+    type: actionTypes.LAYOUT,
     payload: layout
   }
 }
