@@ -1,7 +1,6 @@
 import { ReactNode, useMemo } from 'react'
-import Link from 'next/link'
-import { Tag, Popover, Card } from 'antd'
 import styles from './index.module.scss'
+import Tags from '../common/Tags'
 
 interface HeaderCategoryProps {
   href: string
@@ -23,19 +22,7 @@ export default function Header(props: HeaderProps) {
     if (!category) {
       return null
     }
-    const content = (<Card>{category.text}</Card>)
-    return (
-      <Popover
-        trigger="hover"
-        content={content}
-      >
-        <Tag color={category.color || '#448EF6'}>
-          <Link href={category.href}>
-            <a target="_blank">#{category.text}#</a>
-          </Link>
-        </Tag>
-      </Popover>
-    )
+    return <Tags tags={[category]}></Tags>
   }, [category])
 
   return (
