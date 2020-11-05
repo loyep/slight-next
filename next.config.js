@@ -12,7 +12,7 @@ module.exports = withSass({
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
-    localIdentName: '[local]__[hash:base64:5]',
+    localIdentName: '[local]_[name]__[hash:base64:4]',
   },
   webpack: (config, {
     buildId,
