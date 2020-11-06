@@ -13,8 +13,7 @@ if (typeof require !== 'undefined') {
 module.exports = withSass(withLess({
   cssModules: true,
   cssLoaderOptions: {
-    importLoaders: 1,
-    camelCase: true,
+    importLoaders: 2,
     localIdentName: '[path][name]_[local]__[hash:5]',
     getLocalIdent: (loaderContext, localIdentName, localName, options) => {
       const fileName = path.basename(loaderContext.resourcePath)
@@ -58,8 +57,8 @@ function getLocalIdent(loaderContext, localIdentName, localName, options) {
   const basename = parsed.name.replace(new RegExp('.module$'), '');
   const content = options.hashPrefix + request + "+" + localName;
   const url = localIdentName.replace(/\[local\]/gi, localName)
-    .replace(/\[name\]/gi, '-' + basename)
-    .replace(/\[path\]/gi, directory)
+    .replace(/\[name\]/gi, basename)
+    .replace(/\[path\]/gi, directory + '-')
     .replace(
       /\[(?:([^:\]]+):)?(?:hash|contenthash)(?::([a-z]+\d*))?(?::(\d+))?\]/gi,
       (all, hashType, digestType, maxLength) =>

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { Row } from 'antd'
-import styles from './index.module.scss'
 import Item, { CardsGridType } from './Item'
+import styles from './index.module.scss'
 
 export interface CardsProps<RecordType> {
   dataSource: RecordType[]
