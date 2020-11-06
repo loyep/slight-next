@@ -1,6 +1,6 @@
 import { NextPage, GetServerSideProps } from 'next'
 import { useEffect } from 'react'
-import styles from './index.module.scss'
+import './index.scss'
 import { Form, Input, Button } from 'antd'
 import { useDispatch } from 'react-redux'
 import { updateLayout } from '~/store/actions'
@@ -36,9 +36,9 @@ const SignIn: NextPage<SignInProps> = (props) => {
     console.log('Failed:', errorInfo)
   }
   return (
-    <div className={styles.main}>
+    <div className="signMain">
       {title}
-      <div className={styles.form}>
+      <div className="signForm">
         <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
           <Form.Item
             label="Username"

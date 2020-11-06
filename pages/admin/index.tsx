@@ -1,12 +1,5 @@
 import { NextPage, GetServerSideProps } from 'next'
-import { useEffect } from 'react'
-import styles from './index.module.scss'
-import { Form, Input, Button } from 'antd'
-import { useDispatch } from 'react-redux'
-import { END } from 'redux-saga'
-import { wrapper } from '~/store'
-import { updateLayout } from '~/store/actions'
-import { useRouter } from 'next/router'
+import './index.scss'
 
 interface DashboardProps extends PageProps {
   redirect?: string
@@ -15,7 +8,7 @@ interface DashboardProps extends PageProps {
 const Dashboard: NextPage<DashboardProps> = (props) => {
   const { title } = props
   return (
-    <div className={styles.main}>
+    <div className="adminMain">
       {title}
       假装是控制台
     </div>
