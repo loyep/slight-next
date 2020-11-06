@@ -3,8 +3,7 @@
 const withLess = require('@zeit/next-less')
 const withSass = require('@zeit/next-sass')
 const getLocalIdent = require('@zeit/next-css/node_modules/css-loader/lib/getLocalIdent')
-
-const _path = require('path')
+const path = require('path')
 
 // fix: prevents error when .css files are required by node
 if (typeof require !== 'undefined') {
@@ -18,7 +17,7 @@ module.exports = withSass({
     camelCase: true,
     localIdentName: '[path][name]_[local]__[hash:5]',
     getLocalIdent: (loaderContext, localIdentName, localName, options) => {
-      const fileName = _path.basename(loaderContext.resourcePath)
+      const fileName = path.basename(loaderContext.resourcePath)
       const name = fileName.replace(/\.[^/.]+$/, '')
       if (name.endsWith('.module')) {
         return getLocalIdent(loaderContext, localIdentName, localName, options)
@@ -26,7 +25,12 @@ module.exports = withSass({
       return localName
     },
   },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders }) => {
+  webpack: (config, {
+    buildId,
+    dev,
+    isServer,
+    defaultLoaders
+  }) => {
     config.resolve.alias['~'] = __dirname
     config.devtool = 'cheap-module-inline-source-map'
     return config
