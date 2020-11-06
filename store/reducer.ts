@@ -14,7 +14,6 @@ export const initialState: RootState = {
 
 // create your reducer
 export const reducer: Reducer<RootState, AnyAction> = (state, action) => {
-  console.log(action)
   switch (action.type) {
     case HYDRATE:
       return { ...state, ...action.payload };

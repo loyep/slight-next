@@ -32,12 +32,12 @@ const SltApp = (props: NextContext) => {
         <title>{generateTitle(title)}</title>
         <meta name="description" content={description} />
       </Head>
+      <NProgress />
       <ErrorPage statusCode={props.statusCode}>
         <SltLayout {...layoutProps}>
-          <Component {...pageProps}></Component>
+          <Component {...pageProps} />
         </SltLayout>
       </ErrorPage>
-      <NProgress></NProgress>
     </>
   )
 }

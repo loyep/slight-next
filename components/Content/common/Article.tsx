@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import styles from './Article.module.scss'
+import './Article.scss'
 
 interface ArticleProps {
   content: string
@@ -17,7 +17,7 @@ export default function Article(props: ArticleProps) {
 
   return (
     <div
-      className={styles.content}
+      className="ArticleContent"
       dangerouslySetInnerHTML={{ __html: content }}
     />
   )

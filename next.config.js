@@ -10,7 +10,7 @@ if (typeof require !== 'undefined') {
   require.extensions['.less'] = (file) => {}
 }
 
-module.exports = withSass(withLess({
+module.exports = withSass({
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 2,
@@ -34,12 +34,14 @@ module.exports = withSass(withLess({
     config.devtool = 'cheap-module-inline-source-map'
     return config
   },
-  lessLoaderOptions: {
-    lessOptions: {
-      javascriptEnabled: true,
-    },
-  },
-}))
+  ...withLess({
+    lessLoaderOptions: {
+      lessOptions: {
+        javascriptEnabled: true,
+      },
+    }
+  }),
+})
 
 function getLocalIdent(loaderContext, localIdentName, localName, options) {
   if (!options.context) {
@@ -69,7 +71,5 @@ function getLocalIdent(loaderContext, localIdentName, localName, options) {
     )
     .replace(new RegExp("[^a-zA-Z0-9\\-_\u00A0-\uFFFF]", "g"), "-")
     .replace(/^((-?[0-9])|--)/, "_$1");
-
-  console.log('url: ', url);
   return url;
 };

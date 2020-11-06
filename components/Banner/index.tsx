@@ -1,10 +1,14 @@
 import { NextPage } from 'next'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import classnames from 'classnames'
 import SwiperCore, { Autoplay, Navigation, Pagination, Lazy } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import styles from './index.module.scss'
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/effect-fade/effect-fade.scss';
+import 'swiper/components/pagination/pagination.scss';
 
 SwiperCore.use([Autoplay, Navigation, Pagination, Lazy])
 

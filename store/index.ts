@@ -10,7 +10,6 @@ import rootSaga from './saga';
 const sagaMiddleware = createSagaMiddleware()
 
 const bindMiddleware = (middleware: Middleware<any, any, any>[] = []) => {
-  console.log(process.env.NODE_ENV)
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { composeWithDevTools } = require('redux-devtools-extension')
@@ -24,13 +23,6 @@ const bindMiddleware = (middleware: Middleware<any, any, any>[] = []) => {
 }
 
 export const makeStore: MakeStore<RootState> = (context: Context) => {
-  if (typeof window == "undefined") {
-    console.log("undefined")
-  } else {
-    console.log('window')
-  }
-  console.log('wrapper', wrapper)
-  console.log('makeStore')
   const store = createStore(reducer, initialState, bindMiddleware([sagaMiddleware]))
   store.sagaTask = sagaMiddleware.run(rootSaga)
   return store;
